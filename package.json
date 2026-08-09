@@ -9,19 +9,23 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "next build",
-    "lint": "eslint . --ignore-pattern .next"
+    "data:build": "python data_science/pipeline.py",
+    "test:data": "python -m unittest data_science.test_pipeline",
+    "test:live": "node scripts/verify-live.mjs",
+    "test": "npm run test:data && next build",
+    "lint": "eslint app lib scripts next.config.ts"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "framer-motion": "^13.0.0",
     "lucide-react": "^1.31.0",
-    "next": "^16.2.6",
+    "next": "^16.3.0",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "9.39.4",
-    "@next/eslint-plugin-next": "16.2.6",
+    "@next/eslint-plugin-next": "^16.3.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
@@ -31,6 +35,7 @@
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "16.4.0",
+    "playwright": "^1.62.1",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "typescript-eslint": "8.59.3"

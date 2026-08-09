@@ -1,0 +1,19 @@
+{
+  "rawRows": 2840,
+  "cleanRows": 2840,
+  "missingBefore": {
+    "facility": 28,
+    "occupancy_pct": 35
+  },
+  "missingAfter": 0,
+  "duplicatesRemoved": 0,
+  "transformations": [
+    "lowercase and punctuation normalization",
+    "category-mode location imputation",
+    "median occupancy imputation",
+    "min-max impact normalization",
+    "z-score occupancy and humidity standardization",
+    "time, occupancy and humidity discretization",
+    "10% stratified analysis sample"
+  ]
+}

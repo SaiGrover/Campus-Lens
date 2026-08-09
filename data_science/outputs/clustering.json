@@ -1,0 +1,118 @@
+{
+  "sampleSize": 900,
+  "algorithms": {
+    "K-Means": {
+      "silhouette": 0.147,
+      "daviesBouldin": 1.578,
+      "clusters": 8
+    },
+    "Hierarchical": {
+      "silhouette": 0.0797,
+      "daviesBouldin": 1.8068,
+      "clusters": 8
+    },
+    "DBSCAN": {
+      "silhouette": -0.2425,
+      "daviesBouldin": 3.0895,
+      "clusters": 6,
+      "noisePoints": 451
+    }
+  },
+  "outlierCount": 71,
+  "outliers": [
+    {
+      "id": "CL-11802",
+      "score": -0.0311,
+      "text": "classroom door and several chairs need repair on floor 1 near a water cooler"
+    },
+    {
+      "id": "CL-10333",
+      "score": -0.0279,
+      "text": "three lab systems freeze during compilation in cr425 beside the canteen queue"
+    },
+    {
+      "id": "CL-11346",
+      "score": -0.0274,
+      "text": "garbage is overflowing in the corridor on floor 3"
+    },
+    {
+      "id": "CL-12712",
+      "score": -0.0247,
+      "text": "garbage is overflowing in the corridor on floor 4"
+    },
+    {
+      "id": "CL-11421",
+      "score": -0.0223,
+      "text": "monitor and keyboard are not detected at workstation in ts17"
+    },
+    {
+      "id": "CL-10765",
+      "score": -0.0202,
+      "text": "spill outside cl22 creates a safety hazard"
+    },
+    {
+      "id": "CL-10449",
+      "score": -0.0197,
+      "text": "garbage is overflowing in the corridor on floor 1"
+    },
+    {
+      "id": "CL-11318",
+      "score": -0.0188,
+      "text": "monitor and keyboard are not detected at workstation in ff6"
+    },
+    {
+      "id": "CL-10660",
+      "score": -0.0178,
+      "text": "garbage is overflowing in the corridor on floor 4"
+    },
+    {
+      "id": "CL-11053",
+      "score": -0.0177,
+      "text": "garbage is overflowing in the corridor on floor 3"
+    },
+    {
+      "id": "CL-10275",
+      "score": -0.0173,
+      "text": "three lab systems freeze during compilation in cl3"
+    },
+    {
+      "id": "CL-12834",
+      "score": -0.017,
+      "text": "garbage is overflowing in the corridor on ground floor"
+    }
+  ],
+  "clusters": [
+    {
+      "name": "Network \u00b7 10-12",
+      "share": 14.6
+    },
+    {
+      "name": "Network \u00b7 8-10",
+      "share": 14.1
+    },
+    {
+      "name": "Network \u00b7 8-10",
+      "share": 12.4
+    },
+    {
+      "name": "Infrastructure \u00b7 12-2",
+      "share": 12.4
+    },
+    {
+      "name": "Network \u00b7 8-10",
+      "share": 12.3
+    },
+    {
+      "name": "Infrastructure \u00b7 8-10",
+      "share": 11.7
+    },
+    {
+      "name": "Infrastructure \u00b7 12-2",
+      "share": 11.4
+    },
+    {
+      "name": "Lab Equipment \u00b7 2-4",
+      "share": 11.0
+    }
+  ]
+}

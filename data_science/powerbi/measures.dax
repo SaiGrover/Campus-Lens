@@ -1,0 +1,19 @@
+Complaint Count = COUNTROWS(complaints_clean)
+
+Critical Complaints =
+CALCULATE([Complaint Count], complaints_clean[severity] = "Critical")
+
+Mean Resolution Hours = AVERAGE(complaints_clean[resolution_hours])
+
+Resolved Rate =
+DIVIDE(
+  CALCULATE([Complaint Count], complaints_clean[status] = "Resolved"),
+  [Complaint Count]
+)
+
+Campus Health Score =
+ROUND(
+  MAX(0, 100 - DIVIDE([Critical Complaints], [Complaint Count]) * 120
+    - (1 - [Resolved Rate]) * 28),
+  0
+)

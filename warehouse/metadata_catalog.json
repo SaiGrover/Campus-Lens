@@ -1,0 +1,189 @@
+{
+  "dataset": "CampusLens complaints",
+  "owner": "CampusLens Data Team",
+  "rowCount": 2840,
+  "fields": [
+    {
+      "field": "complaint_id",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 2840,
+      "role": "dimension"
+    },
+    {
+      "field": "student_key",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 594,
+      "role": "dimension"
+    },
+    {
+      "field": "complaint_text",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 1089,
+      "role": "dimension"
+    },
+    {
+      "field": "category",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 8,
+      "role": "dimension"
+    },
+    {
+      "field": "zone",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 8,
+      "role": "dimension"
+    },
+    {
+      "field": "facility",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 22,
+      "role": "dimension"
+    },
+    {
+      "field": "floor",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "dimension"
+    },
+    {
+      "field": "room",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 8,
+      "role": "dimension"
+    },
+    {
+      "field": "day_name",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 6,
+      "role": "dimension"
+    },
+    {
+      "field": "hour",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 11,
+      "role": "measure"
+    },
+    {
+      "field": "observed_at",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 2805,
+      "role": "dimension"
+    },
+    {
+      "field": "impact_rating",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "measure"
+    },
+    {
+      "field": "severity",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 4,
+      "role": "dimension"
+    },
+    {
+      "field": "occupancy_pct",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 95,
+      "role": "measure"
+    },
+    {
+      "field": "humidity_pct",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 77,
+      "role": "measure"
+    },
+    {
+      "field": "recurring",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 2,
+      "role": "measure"
+    },
+    {
+      "field": "status",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "dimension"
+    },
+    {
+      "field": "resolution_hours",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 550,
+      "role": "measure"
+    },
+    {
+      "field": "has_image",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 2,
+      "role": "measure"
+    },
+    {
+      "field": "complaint_clean",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 967,
+      "role": "dimension"
+    },
+    {
+      "field": "time_band",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "dimension"
+    },
+    {
+      "field": "occupancy_band",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 3,
+      "role": "dimension"
+    },
+    {
+      "field": "humidity_band",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 3,
+      "role": "dimension"
+    },
+    {
+      "field": "impact_normalized",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "measure"
+    },
+    {
+      "field": "occupancy_standardized",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 95,
+      "role": "measure"
+    },
+    {
+      "field": "humidity_standardized",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 77,
+      "role": "measure"
+    }
+  ]
+}

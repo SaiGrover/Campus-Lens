@@ -1,0 +1,764 @@
+{
+  "generatedAt": "2026-08-09T19:05:24.377814+00:00",
+  "source": "data/processed/complaints_clean.csv",
+  "datasetCount": 2840,
+  "campusHealthScore": 56,
+  "criticalCount": 564,
+  "unresolvedCount": 2019,
+  "meanResolutionHours": 4.97,
+  "statusCounts": {
+    "Resolved": 821,
+    "Open": 742,
+    "In Progress": 606,
+    "Verified": 473,
+    "Escalated": 198
+  },
+  "issueMix": [
+    {
+      "name": "Network",
+      "count": 769,
+      "pct": 27.1
+    },
+    {
+      "name": "Infrastructure",
+      "count": 553,
+      "pct": 19.5
+    },
+    {
+      "name": "Cleanliness",
+      "count": 287,
+      "pct": 10.1
+    },
+    {
+      "name": "Canteen",
+      "count": 349,
+      "pct": 12.3
+    },
+    {
+      "name": "Electrical",
+      "count": 270,
+      "pct": 9.5
+    },
+    {
+      "name": "Lab Equipment",
+      "count": 302,
+      "pct": 10.6
+    },
+    {
+      "name": "Water",
+      "count": 193,
+      "pct": 6.8
+    },
+    {
+      "name": "Other",
+      "count": 117,
+      "pct": 4.1
+    }
+  ],
+  "hotspots": [
+    {
+      "name": "CL3",
+      "count": 384,
+      "pct": 100.0
+    },
+    {
+      "name": "Aryabhatt Bhawan II",
+      "count": 334,
+      "pct": 87.0
+    },
+    {
+      "name": "CL15",
+      "count": 283,
+      "pct": 73.7
+    },
+    {
+      "name": "A2/1",
+      "count": 229,
+      "pct": 59.6
+    },
+    {
+      "name": "Cafeteria / Canteen",
+      "count": 195,
+      "pct": 50.8
+    },
+    {
+      "name": "LRC",
+      "count": 171,
+      "pct": 44.5
+    },
+    {
+      "name": "Annapurna / Main Mess",
+      "count": 167,
+      "pct": 43.5
+    },
+    {
+      "name": "CL22",
+      "count": 149,
+      "pct": 38.8
+    }
+  ],
+  "heatmap": {
+    "timeBands": [
+      "8-10",
+      "10-12",
+      "12-2",
+      "2-4",
+      "4-7"
+    ],
+    "rows": [
+      {
+        "place": "CL3",
+        "values": [
+          159,
+          93,
+          58,
+          43,
+          31
+        ]
+      },
+      {
+        "place": "Aryabhatt Bhawan II",
+        "values": [
+          135,
+          81,
+          70,
+          26,
+          22
+        ]
+      },
+      {
+        "place": "CL15",
+        "values": [
+          128,
+          89,
+          45,
+          11,
+          10
+        ]
+      },
+      {
+        "place": "A2/1",
+        "values": [
+          72,
+          36,
+          46,
+          37,
+          38
+        ]
+      },
+      {
+        "place": "Cafeteria / Canteen",
+        "values": [
+          0,
+          38,
+          157,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "models": {
+    "datasetSize": 2840,
+    "trainingSize": 2272,
+    "testSize": 568,
+    "randomSeed": 313,
+    "featureCount": 669,
+    "models": [
+      {
+        "name": "Naive Bayes",
+        "accuracy": 94.89,
+        "precision": 94.93,
+        "recall": 94.89,
+        "f1": 94.86,
+        "best": true
+      },
+      {
+        "name": "SVM",
+        "accuracy": 94.89,
+        "precision": 94.93,
+        "recall": 94.89,
+        "f1": 94.86
+      },
+      {
+        "name": "Neural Network",
+        "accuracy": 94.72,
+        "precision": 94.74,
+        "recall": 94.72,
+        "f1": 94.66
+      },
+      {
+        "name": "kNN",
+        "accuracy": 94.01,
+        "precision": 94.02,
+        "recall": 94.01,
+        "f1": 93.96
+      },
+      {
+        "name": "Random Forest",
+        "accuracy": 93.49,
+        "precision": 93.51,
+        "recall": 93.49,
+        "f1": 93.42
+      },
+      {
+        "name": "ID3",
+        "accuracy": 92.96,
+        "precision": 92.92,
+        "recall": 92.96,
+        "f1": 92.83
+      }
+    ],
+    "bestModel": "Naive Bayes",
+    "confusionMatrix": {
+      "labels": [
+        "Network",
+        "Infrastructure",
+        "Cleanliness",
+        "Canteen",
+        "Electrical",
+        "Lab Equipment",
+        "Water",
+        "Other"
+      ],
+      "values": [
+        [
+          151,
+          1,
+          0,
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          109,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          1,
+          53,
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          2,
+          0,
+          66,
+          0,
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0,
+          1,
+          51,
+          0,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          56,
+          0,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1,
+          0,
+          36,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          4,
+          0,
+          0,
+          0,
+          17
+        ]
+      ]
+    },
+    "regression": [
+      {
+        "name": "Linear Regression",
+        "rmse": 0.621,
+        "best": true
+      },
+      {
+        "name": "Neural Network Backpropagation",
+        "rmse": 0.631
+      },
+      {
+        "name": "Random Forest Regressor",
+        "rmse": 0.663
+      }
+    ]
+  },
+  "association": {
+    "transactionCount": 2840,
+    "minSupport": 0.025,
+    "minConfidence": 0.52,
+    "aprioriFrequentItemsets": 503,
+    "fpGrowthFrequentItemsets": 503,
+    "algorithmsAgree": true,
+    "rules": [
+      {
+        "when": [
+          "Facility=H5 Boys Hostel"
+        ],
+        "then": "Category=Electrical",
+        "support": 0.0313,
+        "confidence": 0.9368,
+        "lift": 9.854,
+        "leverage": 0.0282,
+        "conviction": 14.328
+      },
+      {
+        "when": [
+          "Facility=Aryabhatt Bhawan III"
+        ],
+        "then": "Category=Cleanliness",
+        "support": 0.0317,
+        "confidence": 0.9574,
+        "lift": 9.474,
+        "leverage": 0.0283,
+        "conviction": 21.125
+      },
+      {
+        "when": [
+          "Facility=H4 Boys Hostel"
+        ],
+        "then": "Category=Cleanliness",
+        "support": 0.0338,
+        "confidence": 0.932,
+        "lift": 9.223,
+        "leverage": 0.0301,
+        "conviction": 13.227
+      },
+      {
+        "when": [
+          "Facility=Washrooms"
+        ],
+        "then": "Category=Cleanliness",
+        "support": 0.0278,
+        "confidence": 0.908,
+        "lift": 8.986,
+        "leverage": 0.0247,
+        "conviction": 9.776
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen"
+        ],
+        "then": "Category=Canteen + Time=12-2",
+        "support": 0.0518,
+        "confidence": 0.7538,
+        "lift": 8.171,
+        "leverage": 0.0454,
+        "conviction": 3.688
+      },
+      {
+        "when": [
+          "Facility=Annapurna / Main Mess"
+        ],
+        "then": "Category=Canteen + Occupancy=High",
+        "support": 0.0377,
+        "confidence": 0.6407,
+        "lift": 7.946,
+        "leverage": 0.0329,
+        "conviction": 2.559
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen",
+          "Time=12-2"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0518,
+        "confidence": 0.9363,
+        "lift": 7.619,
+        "leverage": 0.045,
+        "conviction": 13.771
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen"
+        ],
+        "then": "Category=Canteen + Occupancy=High",
+        "support": 0.0419,
+        "confidence": 0.6103,
+        "lift": 7.568,
+        "leverage": 0.0364,
+        "conviction": 2.359
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0637,
+        "confidence": 0.9282,
+        "lift": 7.553,
+        "leverage": 0.0553,
+        "conviction": 12.217
+      },
+      {
+        "when": [
+          "Facility=Annapurna / Main Mess"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0546,
+        "confidence": 0.9281,
+        "lift": 7.553,
+        "leverage": 0.0474,
+        "conviction": 12.206
+      },
+      {
+        "when": [
+          "Facility=Annapurna / Main Mess",
+          "Time=12-2"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0398,
+        "confidence": 0.9262,
+        "lift": 7.537,
+        "leverage": 0.0345,
+        "conviction": 11.89
+      },
+      {
+        "when": [
+          "Facility=Annapurna / Main Mess",
+          "Occupancy=High"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0377,
+        "confidence": 0.9224,
+        "lift": 7.506,
+        "leverage": 0.0327,
+        "conviction": 11.305
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen",
+          "Humidity=Low"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.025,
+        "confidence": 0.9221,
+        "lift": 7.503,
+        "leverage": 0.0217,
+        "conviction": 11.256
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen",
+          "Humidity=Medium"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0282,
+        "confidence": 0.9195,
+        "lift": 7.483,
+        "leverage": 0.0244,
+        "conviction": 10.901
+      },
+      {
+        "when": [
+          "Facility=Cafeteria / Canteen",
+          "Occupancy=High"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0419,
+        "confidence": 0.9154,
+        "lift": 7.449,
+        "leverage": 0.0363,
+        "conviction": 10.366
+      },
+      {
+        "when": [
+          "Facility=Annapurna / Main Mess"
+        ],
+        "then": "Category=Canteen + Time=12-2",
+        "support": 0.0398,
+        "confidence": 0.6766,
+        "lift": 7.335,
+        "leverage": 0.0344,
+        "conviction": 2.807
+      },
+      {
+        "when": [
+          "Facility=CL22"
+        ],
+        "then": "Category=Electrical",
+        "support": 0.0324,
+        "confidence": 0.6174,
+        "lift": 6.495,
+        "leverage": 0.0274,
+        "conviction": 2.366
+      },
+      {
+        "when": [
+          "Facility=A2/2"
+        ],
+        "then": "Category=Infrastructure + Occupancy=Medium",
+        "support": 0.0313,
+        "confidence": 0.6096,
+        "lift": 5.168,
+        "leverage": 0.0253,
+        "conviction": 2.259
+      },
+      {
+        "when": [
+          "Facility=A2/2",
+          "Occupancy=Medium"
+        ],
+        "then": "Category=Infrastructure",
+        "support": 0.0313,
+        "confidence": 0.9368,
+        "lift": 4.811,
+        "leverage": 0.0248,
+        "conviction": 12.75
+      },
+      {
+        "when": [
+          "Facility=A2/2"
+        ],
+        "then": "Category=Infrastructure",
+        "support": 0.0468,
+        "confidence": 0.911,
+        "lift": 4.678,
+        "leverage": 0.0368,
+        "conviction": 9.044
+      },
+      {
+        "when": [
+          "Occupancy=High",
+          "Time=12-2"
+        ],
+        "then": "Category=Canteen",
+        "support": 0.0616,
+        "confidence": 0.5352,
+        "lift": 4.355,
+        "leverage": 0.0475,
+        "conviction": 1.887
+      },
+      {
+        "when": [
+          "Facility=LRC"
+        ],
+        "then": "Category=Network + Occupancy=High",
+        "support": 0.0363,
+        "confidence": 0.6023,
+        "lift": 3.586,
+        "leverage": 0.0262,
+        "conviction": 2.092
+      },
+      {
+        "when": [
+          "Facility=LRC",
+          "Occupancy=High"
+        ],
+        "then": "Category=Network",
+        "support": 0.0363,
+        "confidence": 0.9626,
+        "lift": 3.555,
+        "leverage": 0.0261,
+        "conviction": 19.507
+      },
+      {
+        "when": [
+          "Facility=LRC",
+          "Humidity=Low"
+        ],
+        "then": "Category=Network",
+        "support": 0.0278,
+        "confidence": 0.9518,
+        "lift": 3.515,
+        "leverage": 0.0199,
+        "conviction": 15.131
+      }
+    ]
+  },
+  "clustering": {
+    "sampleSize": 900,
+    "algorithms": {
+      "K-Means": {
+        "silhouette": 0.147,
+        "daviesBouldin": 1.578,
+        "clusters": 8
+      },
+      "Hierarchical": {
+        "silhouette": 0.0797,
+        "daviesBouldin": 1.8068,
+        "clusters": 8
+      },
+      "DBSCAN": {
+        "silhouette": -0.2425,
+        "daviesBouldin": 3.0895,
+        "clusters": 6,
+        "noisePoints": 451
+      }
+    },
+    "outlierCount": 71,
+    "outliers": [
+      {
+        "id": "CL-11802",
+        "score": -0.0311,
+        "text": "classroom door and several chairs need repair on floor 1 near a water cooler"
+      },
+      {
+        "id": "CL-10333",
+        "score": -0.0279,
+        "text": "three lab systems freeze during compilation in cr425 beside the canteen queue"
+      },
+      {
+        "id": "CL-11346",
+        "score": -0.0274,
+        "text": "garbage is overflowing in the corridor on floor 3"
+      },
+      {
+        "id": "CL-12712",
+        "score": -0.0247,
+        "text": "garbage is overflowing in the corridor on floor 4"
+      },
+      {
+        "id": "CL-11421",
+        "score": -0.0223,
+        "text": "monitor and keyboard are not detected at workstation in ts17"
+      },
+      {
+        "id": "CL-10765",
+        "score": -0.0202,
+        "text": "spill outside cl22 creates a safety hazard"
+      },
+      {
+        "id": "CL-10449",
+        "score": -0.0197,
+        "text": "garbage is overflowing in the corridor on floor 1"
+      },
+      {
+        "id": "CL-11318",
+        "score": -0.0188,
+        "text": "monitor and keyboard are not detected at workstation in ff6"
+      },
+      {
+        "id": "CL-10660",
+        "score": -0.0178,
+        "text": "garbage is overflowing in the corridor on floor 4"
+      },
+      {
+        "id": "CL-11053",
+        "score": -0.0177,
+        "text": "garbage is overflowing in the corridor on floor 3"
+      },
+      {
+        "id": "CL-10275",
+        "score": -0.0173,
+        "text": "three lab systems freeze during compilation in cl3"
+      },
+      {
+        "id": "CL-12834",
+        "score": -0.017,
+        "text": "garbage is overflowing in the corridor on ground floor"
+      }
+    ],
+    "clusters": [
+      {
+        "name": "Network \u00b7 10-12",
+        "share": 14.6
+      },
+      {
+        "name": "Network \u00b7 8-10",
+        "share": 14.1
+      },
+      {
+        "name": "Network \u00b7 8-10",
+        "share": 12.4
+      },
+      {
+        "name": "Infrastructure \u00b7 12-2",
+        "share": 12.4
+      },
+      {
+        "name": "Network \u00b7 8-10",
+        "share": 12.3
+      },
+      {
+        "name": "Infrastructure \u00b7 8-10",
+        "share": 11.7
+      },
+      {
+        "name": "Infrastructure \u00b7 12-2",
+        "share": 11.4
+      },
+      {
+        "name": "Lab Equipment \u00b7 2-4",
+        "share": 11.0
+      }
+    ]
+  },
+  "imagePipeline": {
+    "original": "/images/evidence/lab-equipment-original.jpg",
+    "processed": "/images/evidence/lab-equipment-processed.jpg",
+    "originalSize": [
+      720,
+      440
+    ],
+    "processedSize": [
+      480,
+      293
+    ],
+    "normalization": "pixel / 255.0",
+    "operations": [
+      "median noise removal",
+      "contrast enhancement",
+      "sharpening",
+      "Lanczos resize",
+      "0-1 normalization"
+    ]
+  },
+  "dataQuality": {
+    "rawRows": 2840,
+    "cleanRows": 2840,
+    "missingBefore": {
+      "facility": 28,
+      "occupancy_pct": 35
+    },
+    "missingAfter": 0,
+    "duplicatesRemoved": 0,
+    "transformations": [
+      "lowercase and punctuation normalization",
+      "category-mode location imputation",
+      "median occupancy imputation",
+      "min-max impact normalization",
+      "z-score occupancy and humidity standardization",
+      "time, occupancy and humidity discretization",
+      "10% stratified analysis sample"
+    ]
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "datasetSize": 2840,
+  "trainingSize": 2272,
+  "testSize": 568,
+  "randomSeed": 313,
+  "featureCount": 669,
+  "models": [
+    {
+      "name": "Naive Bayes",
+      "accuracy": 94.89,
+      "precision": 94.93,
+      "recall": 94.89,
+      "f1": 94.86,
+      "best": true
+    },
+    {
+      "name": "SVM",
+      "accuracy": 94.89,
+      "precision": 94.93,
+      "recall": 94.89,
+      "f1": 94.86
+    },
+    {
+      "name": "Neural Network",
+      "accuracy": 94.72,
+      "precision": 94.74,
+      "recall": 94.72,
+      "f1": 94.66
+    },
+    {
+      "name": "kNN",
+      "accuracy": 94.01,
+      "precision": 94.02,
+      "recall": 94.01,
+      "f1": 93.96
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 93.49,
+      "precision": 93.51,
+      "recall": 93.49,
+      "f1": 93.42
+    },
+    {
+      "name": "ID3",
+      "accuracy": 92.96,
+      "precision": 92.92,
+      "recall": 92.96,
+      "f1": 92.83
+    }
+  ],
+  "bestModel": "Naive Bayes",
+  "confusionMatrix": {
+    "labels": [
+      "Network",
+      "Infrastructure",
+      "Cleanliness",
+      "Canteen",
+      "Electrical",
+      "Lab Equipment",
+      "Water",
+      "Other"
+    ],
+    "values": [
+      [
+        151,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        109,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        53,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        0,
+        66,
+        0,
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        51,
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        56,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        36,
+        0
+      ],
+      [
+        2,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        17
+      ]
+    ]
+  },
+  "regression": [
+    {
+      "name": "Linear Regression",
+      "rmse": 0.621,
+      "best": true
+    },
+    {
+      "name": "Neural Network Backpropagation",
+      "rmse": 0.631
+    },
+    {
+      "name": "Random Forest Regressor",
+      "rmse": 0.663
+    }
+  ]
+}
