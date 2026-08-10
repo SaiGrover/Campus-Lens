@@ -1,0 +1,12 @@
+{
+  "tool": "Weka 3.8.7 stable",
+  "classifier": "weka.classifiers.meta.FilteredClassifier",
+  "filter": "weka.filters.unsupervised.attribute.StringToWordVector -R first -W 3000 -prune-rate -1.0 -N 1 -L",
+  "baseClassifier": "weka.classifiers.bayes.NaiveBayes",
+  "trainingData": "../outputs/weka-development.arff",
+  "testData": "../outputs/weka-unseen-template-test.arff",
+  "classIndex": "last",
+  "splitRule": "evaluation_fold != 4 for development; evaluation_fold == 4 for untouched template test",
+  "seed": 313,
+  "wekaVersion": "3.8.7"
+}

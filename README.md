@@ -2,428 +2,349 @@
 
 ### Mining the hidden problems of a college campus
 
-CampusLens is a **Campus Friction Intelligence System** that transforms everyday student complaints into operational insight. Instead of treating each report as an isolated ticket, the platform mines complaint text, location hierarchies, timestamps, severity, images, duplicate patterns and historical trends to answer four questions:
+CampusLens is a campus-friction intelligence system for discovering which problems students repeatedly face, where and when they occur, and which operating conditions tend to appear together. It combines anonymous issue reporting with a reproducible data warehouse, text and image mining, supervised and unsupervised learning, spatial analysis, stream monitoring, and decision-support dashboards.
 
-> **What problems repeatedly affect students? Where and when do they occur? Which conditions appear together? What should the campus address first?**
+This repository is an academic data-mining project, not a claim about actual JIIT campus conditions. The benchmark records, labels, images, web sessions, and anomaly ground truth are synthetic. That boundary is deliberate and visible throughout the interface and artifacts.
 
-The project combines a student-friendly reporting experience with an administrator-facing intelligence dashboard. It demonstrates text mining, image preprocessing, classification, clustering, association-rule mining, regression, multidimensional analysis, OLAP drill-down and data-warehouse design in one cohesive system.
-
-![CampusLens cobalt editorial landing page](./public/screenshots/landing-v2.webp)
-
-The interface uses a dark editorial “signal room” identity: midnight indigo foundations, cobalt analytical accents, coral alerts and amber context markers. Original campus imagery gives the problem a human setting without loading a video or 3D scene.
-
----
+![CampusLens landing page](public/screenshots/landing-v2.webp)
 
 ## The problem
 
-Students experience recurring operational friction across campus:
+Campus problems are normally scattered across conversations, forms, emails, and informal groups. A single Wi-Fi report says little; hundreds of time-, place-, and context-linked observations can reveal a recurring service pattern.
 
-- unstable Wi-Fi and network outages;
-- broken projectors, furniture, fans and air conditioning;
-- laboratory computers and equipment failures;
-- overcrowded classrooms and canteen queues;
-- cleanliness and washroom issues;
-- unavailable drinking water;
-- parking congestion and blocked walkways.
+CampusLens reframes complaint collection as a knowledge-discovery problem:
 
-These problems are usually reported through disconnected conversations, forms or emails. That makes it difficult to distinguish a one-off complaint from a campus-wide pattern. CampusLens creates a single analytical pipeline that consolidates reports and exposes recurring incidents, hotspots, peak periods and emerging anomalies.
+> How can heterogeneous, anonymous campus reports be transformed into reliable multidimensional intelligence that reveals recurring friction, spatial and temporal hotspots, associated conditions, emerging anomalies, and likely operational risk?
 
-The dedicated **[problem-statement page](https://campus-lens-pi.vercel.app/problem-statement)** frames this institutional blind spot, the limitations of ticket-oriented complaint portals and the research question addressed by CampusLens.
+Reports can describe network failures, damaged infrastructure, cleanliness, food-service queues, electrical problems, lab equipment, water availability, parking, or another operational issue. Each report may contain text, a hierarchy-valid location, time, impact rating, environmental context, and optional visual evidence.
 
-![CampusLens problem statement](./public/screenshots/problem-statement.webp)
+![Problem statement page](public/screenshots/problem-statement.webp)
 
-## Project objectives
-
-1. Collect structured and unstructured campus issue data.
-2. Automatically classify complaint text into meaningful categories.
-3. Detect similar reports and merge them into shared incidents.
-4. Analyse issues across location, time, category and severity dimensions.
-5. Discover hidden associations using support, confidence and lift.
-6. Compare Naïve Bayes, kNN, ID3 and SVM classifiers.
-7. Predict issue severity and expected resolution time.
-8. Demonstrate image preprocessing using submitted evidence.
-9. Present insights through a decision-support dashboard.
-
----
-
-## Platform overview
+## System at a glance
 
 ```mermaid
 flowchart LR
-    Student["Student report"] --> Collection["Data collection"]
-    Collection --> ETL["ETL and preprocessing"]
-    ETL --> Warehouse["Campus data warehouse"]
-    Warehouse --> Mining["Data-mining engine"]
-    Mining --> Intelligence["Campus intelligence layer"]
-    Intelligence --> Dashboard["Administrator dashboard"]
-    Intelligence --> Feedback["Incident feedback to student"]
+    A["Anonymous report"] --> B["Validation and privacy controls"]
+    B --> C["Operational PostgreSQL table"]
+    C --> D["Incremental dimensions and fact table"]
+    D --> E["Live aggregate endpoint"]
 
-    ETL --> Text["Text cleaning and TF-IDF"]
-    ETL --> Image["Image enhancement"]
-    Mining --> Classification["Classification"]
-    Mining --> Clustering["Clustering"]
-    Mining --> Rules["Association rules"]
-    Mining --> Regression["Resolution prediction"]
+    F["Synthetic complaint source"] --> I["Multi-source integration"]
+    G["Facility master"] --> I
+    H["Service and web events"] --> I
+    I --> J["Cleaning and transformation"]
+    J --> K["SQLite star and snowflake warehouse"]
+    K --> L["OLAP marts"]
+    J --> M["Text, rules, clusters, regression"]
+    J --> N["Spatial, stream and anomaly mining"]
+    O["Synthetic image benchmark"] --> P["Preprocessing and multimedia mining"]
+    L --> Q["Decision-support dashboard"]
+    M --> Q
+    N --> Q
+    P --> Q
 ```
 
-CampusLens is divided into six connected modules:
+The deployed application is a dark, responsive Next.js interface. The landing page introduces the problem visually; the workspace provides a campus pulse, issue explorer, model laboratory, validated rules, advanced-mining evidence, methodology, and a report form.
 
-| Module | Responsibility |
+![CampusLens dashboard](public/screenshots/dashboard-v2.webp)
+
+## Data design
+
+### Integrated sources
+
+The reproducible benchmark contains 2,840 complaint facts built from three independently represented sources:
+
+| Source | Role |
 |---|---|
-| Data Collection | Complaint form, evidence upload, location, time and identity preference |
-| ETL & Preprocessing | Text normalization, tokenisation, TF-IDF and image enhancement |
-| Data Warehouse | FactIssue records and analytical dimensions |
-| Data Mining | Classification, duplicate detection, clustering, rule mining and prediction |
-| Evaluation | Accuracy, precision, recall, F1, confusion matrix, RMSE and WEKA comparison |
-| Intelligence Dashboard | Heatmaps, digital pulse, health score, trends and recommendations |
+| Student complaint stream | Text, category, impact, time, status, contextual measurements |
+| Facility master | Valid campus → zone → facility → floor → room ownership and generalized coordinates |
+| Campus service/web events | Session counts, dwell, route transitions, searches, and service context |
 
----
-
-## Student issue reporting
-
-The reporting flow intentionally remains simple while collecting enough metadata for mining.
+The generator first selects a valid location from the master hierarchy, derives the weekday from the actual timestamp, and then samples overlapping probabilistic issue conditions. It does not create random facility-room Cartesian pairs.
 
 ```mermaid
 flowchart TD
-    A["Describe the issue"] --> B["Choose anonymous or named"]
-    B --> C["Select campus area"]
-    C --> D["Select building or facility"]
-    D --> E["Add floor or room"]
-    E --> F["Select impact severity"]
-    F --> G["Upload optional evidence image"]
-    G --> H["Automatic text classification"]
-    H --> I{"Similar incident found?"}
-    I -- Yes --> J["Merge with existing incident"]
-    I -- No --> K["Create a new incident"]
-    J --> L["Return prediction and incident status"]
-    K --> L
+    C["JIIT Sector 62"] --> Z1["Academic and Teaching"]
+    C --> Z2["Labs and Research"]
+    C --> Z3["Food"]
+    C --> Z4["Hostels"]
+    C --> Z5["General and Utilities"]
+    Z1 --> F1["Aryabhatt Bhawan II"]
+    F1 --> FL1["Floor 4"]
+    FL1 --> R1["CR425"]
+    Z2 --> F2["CL3"]
+    F2 --> FL2["Ground Floor"]
+    FL2 --> R2["CL3-A / CL3-B"]
+    Z3 --> F3["Cafeteria"]
+    Z4 --> F4["H4 / H5 / Girls Hostel"]
 ```
 
-Each report can contain:
+Current semantic checks:
 
-- issue title and detailed description;
-- automatic and user-correctable category;
-- campus area, facility, floor and room;
-- impact rating;
-- anonymous or named submission preference;
-- automatically captured timestamp;
-- optional image evidence.
+| Check | Result |
+|---|---:|
+| Unique cleaned complaint text | 100% |
+| Test text duplicated in development data | 0% |
+| Test template groups seen in development | 0 |
+| Timestamp/weekday consistency | 100% |
+| Valid location hierarchy | 100% |
+| Missing values after preprocessing | 0 |
 
-After submission, CampusLens returns the predicted category, confidence, risk level, estimated resolution time and any duplicate incident match.
+### Preprocessing and transformation
 
----
-
-## Hierarchical JIIT Sector 62 location model
-
-A flat location dropdown cannot support room-level heatmaps or OLAP analysis. CampusLens therefore models locations as a hierarchy.
-
-```mermaid
-flowchart TD
-    Campus["JIIT Campus"] --> Sector["Sector 62"]
-    Sector --> Academic["Academic & Teaching"]
-    Sector --> Labs["Labs & Research"]
-    Sector --> Library["Library & Study"]
-    Sector --> Admin["Administration"]
-    Sector --> Food["Food"]
-    Sector --> Hostels["Hostels"]
-    Sector --> Sports["Sports & Recreation"]
-    Sector --> General["General & Utilities"]
-
-    Academic --> AB2["Aryabhatt Bhawan II"]
-    Academic --> AB3["Aryabhatt Bhawan III"]
-    Academic --> A21["A2/1"]
-    Academic --> A22["A2/2"]
-    Labs --> CL1["CL1"]
-    Labs --> CL3["CL3"]
-    Labs --> CL15["CL15"]
-    Labs --> Idea["AICTE IDEA Lab"]
-    Food --> Annapurna["Annapurna"]
-    Food --> Canteen["Cafeteria"]
-    Hostels --> H4["H4 Boys Hostel"]
-    Hostels --> H5["H5 Boys Hostel"]
-    Hostels --> Girls["Girls Hostel"]
-
-    CL3 --> Floor["Floor 2"]
-    Floor --> Room["Specific workstation / room"]
-```
-
-The implemented master list also includes LRC areas, administrative offices, seminar halls, sports facilities, gyms, parking, water coolers, washrooms, lifts, corridors and network-infrastructure points. Optional room codes such as `CR425`, `FF6`, `G2`, `CL22` and `TS17` can be captured without pretending that a publicly unavailable room inventory is complete.
-
----
-
-## Intelligence dashboard
-
-The dashboard is designed as a decision-support system rather than a list of complaints.
-
-![CampusLens intelligence dashboard](./public/screenshots/dashboard-v2.webp)
-
-### Campus health score
-
-The health score summarises open issue volume, severity, recurrence and resolution performance into a value from 0 to 100. It can be calculated for the whole campus, a category or an individual location.
-
-### Campus problem heatmap
-
-The heatmap shows issue intensity by location and time block. Administrators can move from campus-level patterns to a building, floor, room, category and specific issue.
-
-### Emerging issue detector
-
-Current complaint frequency is compared with historical frequency. A sudden increase—for example, projector failures rising far above their normal weekly baseline—is surfaced before it becomes a long-running problem.
-
-### CampusLens Digital Pulse
-
-Every location receives a continuously calculated state between **Normal** and **Critical**. The state combines repeat complaints, issue severity, duplicate volume, unresolved time and resolution rate.
+The pipeline demonstrates cleaning, integration, imputation, normalization, discretization, reduction, hierarchy validation, and sampling. Defects are inserted independently of the target label and repaired using target-independent logic.
 
 ```mermaid
 flowchart LR
-    Reports["Current reports"] --> Pulse["Digital Pulse"]
-    History["Historical baseline"] --> Pulse
-    Duplicates["Duplicate volume"] --> Pulse
-    Resolution["Resolution rate"] --> Pulse
-    Pulse --> Normal["Normal"]
-    Pulse --> Watch["Watch"]
-    Pulse --> Stressed["Stressed"]
-    Pulse --> Critical["Critical"]
+    R["Raw sources"] --> V["Schema validation"]
+    V --> P["PII-safe text cleaning"]
+    P --> I["Hierarchy-aware imputation"]
+    I --> T["Temporal derivation"]
+    T --> B["Bands and normalization"]
+    B --> S["Clean fact-ready dataset"]
+    S --> A["10% analysis sample"]
 ```
 
----
+An ETL/ELT comparison is recorded in the data-quality artifact, including row counts, timing, transformation placement, and trade-offs. The metadata catalogue records business meaning, type, nullability, allowed domains, sensitivity, steward, refresh frequency, lineage, quality thresholds, and relationships.
 
-## Text-mining pipeline
+## Warehouse and OLAP
 
-Complaint descriptions are converted from free text into features that classification algorithms can process.
-
-```mermaid
-flowchart LR
-    Raw["Wi-Fi is not working properly in CL3!!!"] --> Lower["Lowercase"]
-    Lower --> Clean["Remove punctuation and noise"]
-    Clean --> Tokens["Tokenisation"]
-    Tokens --> Stops["Stop-word removal"]
-    Stops --> Vector["TF-IDF vectorisation"]
-    Vector --> Model["Classifier"]
-    Model --> Output["Network · 93% confidence"]
-```
-
-The deployed form uses the exported Multinomial Naive Bayes parameters generated by `data_science/pipeline.py`. Browser inference applies the learned vocabulary, inverse-document-frequency weights, class priors and feature likelihoods rather than keyword rules. A user can accept or correct the suggested category; both the prediction and final human label are retained.
-
-## Classification and model evaluation
-
-The same stratified split of 2,840 labelled complaints is evaluated with six algorithms:
-
-- Naïve Bayes;
-- k-Nearest Neighbours;
-- ID3 decision tree;
-- Support Vector Machine;
-- Random Forest;
-- Multilayer Perceptron neural network.
-
-![CampusLens model-comparison workspace](./public/screenshots/models-v2.webp)
-
-| Model | Accuracy | Precision | Recall | F1 score |
-|---|---:|---:|---:|---:|
-| Naïve Bayes | 94.89% | 94.93% | 94.89% | 94.86% |
-| SVM | 94.89% | 94.93% | 94.89% | 94.86% |
-| Neural Network | 94.72% | 94.74% | 94.72% | 94.66% |
-| kNN | 94.01% | 94.02% | 94.01% | 93.96% |
-| Random Forest | 93.49% | 93.51% | 93.49% | 93.42% |
-| ID3 | 92.96% | 92.92% | 92.96% | 92.83% |
-
-These values are generated from a fixed random seed and a 568-record holdout test set. The eight-class confusion matrix contains exactly 568 evaluated predictions and its diagonal reproduces the displayed accuracy.
-
-The platform also includes:
-
-- confusion-matrix visualisation;
-- downloadable WEKA-compatible ARFF data;
-- side-by-side Python and WEKA validation support;
-- best-model recommendation based on validation F1.
-
----
-
-## Duplicate complaint detection
-
-CampusLens scores duplicate candidates using token-set similarity together with normalized facility and category agreement, then consolidates matches into a shared incident.
-
-```text
-"Wi-Fi is not working in CL3"
-"Internet is slow in CL3"
-"CL3 network is down"
-                    ↓
-Incident INC-NET-74
-3 related reports · HIGH priority
-```
-
-This implementation is deterministic and testable. Sentence embeddings remain a possible future experiment, but are not required to make the current duplicate score functional.
-
----
-
-## Image preprocessing
-
-Uploaded evidence is prepared for analysis using the image-processing pipeline required by the project syllabus.
-
-```mermaid
-flowchart LR
-    Original["Original image"] --> Resize["Resize"]
-    Resize --> Noise["Noise removal"]
-    Noise --> Contrast["Contrast enhancement"]
-    Contrast --> Normalize["Normalisation"]
-    Normalize --> Ready["Mining-ready image"]
-```
-
-The pipeline generates distinct before-and-after files using median denoising, contrast enhancement, sharpening, Lanczos resizing and pixel normalization. Uploaded evidence is independently decoded and redrawn through a canvas, which validates size and type, resizes the image and removes embedded EXIF metadata before storage.
-
----
-
-## Data warehouse and OLAP
-
-CampusLens includes a populated SQLite warehouse with 2,840 facts, surrogate keys, indexes, an SCD-ready location dimension, two data marts and documented OLAP queries. A normalized snowflake alternative is included for schema comparison.
+CampusLens materializes both a star schema and a normalized snowflake schema in `warehouse/campuslens.db`.
 
 ```mermaid
 erDiagram
-    FACT_COMPLAINT }o--|| DIM_STUDENT : submitted_by
-    FACT_COMPLAINT }o--|| DIM_LOCATION : occurs_at
-    FACT_COMPLAINT }o--|| DIM_CATEGORY : belongs_to
-    FACT_COMPLAINT }o--|| DIM_DATE : reported_on
-    FACT_COMPLAINT }o--|| DIM_TIME : reported_at
-    FACT_COMPLAINT }o--|| DIM_SEVERITY : has
-
-    FACT_COMPLAINT {
-        int complaint_key PK
-        int student_key FK
-        int location_key FK
-        int category_key FK
-        int date_key FK
-        int time_key FK
-        int severity_key FK
-        float resolution_time
-        int impact_rating
-        int occupancy_pct
-    }
-    DIM_LOCATION {
-        int location_key PK
-        string zone
-        string facility
-        string floor
-        string room
-    }
-    DIM_CATEGORY {
-        int category_key PK
-        string category
-    }
+    DIM_STUDENT ||--o{ FACT_COMPLAINT : reports
+    DIM_LOCATION ||--o{ FACT_COMPLAINT : occurs_at
+    DIM_DATE ||--o{ FACT_COMPLAINT : observed_on
+    DIM_TIME ||--o{ FACT_COMPLAINT : observed_at
+    DIM_CATEGORY ||--o{ FACT_COMPLAINT : classified_as
+    DIM_SEVERITY ||--o{ FACT_COMPLAINT : has
+    DIM_SOURCE ||--o{ FACT_COMPLAINT : collected_by
 ```
 
-Supported drill paths include:
+The normalized location path is physical, not illustrative:
 
-```text
-Campus → Zone → Facility → Floor → Room → Category → Specific issue
-Year → Semester → Month → Week → Day → Hour
+```mermaid
+flowchart LR
+    CAMPUS["sf_dim_campus"] --> ZONE["sf_dim_zone"]
+    ZONE --> FACILITY["sf_dim_facility"]
+    FACILITY --> FLOOR["sf_dim_floor"]
+    FLOOR --> ROOM["sf_dim_room"]
+    ROOM --> FACT["sf_fact_complaint"]
 ```
 
-This enables questions such as:
+Warehouse evidence:
 
-> Show Network complaints → Labs & Research → CL3 → Floor 2 → August → 10 AM–12 PM.
+- 2,840 star facts and 2,840 snowflake facts
+- Executable roll-up view implemented with SQLite-compatible `UNION ALL`
+- Roll-up, drill-down, slice, dice, and pivot queries
+- Six expired SCD Type-2 location versions with `valid_from`, `valid_to`, and `is_current`
+- Foreign-key validation with zero violations
+- ETL audit, data marts, indexes, surrogate keys, and lineage metadata
 
----
+New community submissions also enter a PostgreSQL location dimension and complaint fact table immediately, create an ETL audit record, and update the live aggregate endpoint. This closes the earlier split between a “live” report list and static intelligence.
 
-## Association-rule mining
+## Text classification
 
-Apriori and FP-Growth independently mine the same one-hot transaction matrix. The pipeline verifies that both algorithms discover the same frequent-itemset set before association rules are exported.
+The category task compares seven algorithms:
 
-```text
-{ Facility=Annapurna / Main Mess, Time=12-2 } => { Category=Canteen }
-Support, confidence, lift, leverage and conviction are exported for every rule.
-```
+- Multinomial Naïve Bayes
+- k-nearest neighbours
+- ID3 decision tree
+- linear SVM
+- Random Forest
+- neural network/backpropagation
+- Extra Trees ensemble
 
-The Pattern Rules workspace reads the generated rule artifact and provides an interactive minimum-lift filter. A companion `arules` experiment in `data_science/r/association_rules.R` reproduces the transaction design in R.
+Model selection uses template fold 3. Final evaluation happens once on untouched template fold 4. Four-fold `StratifiedGroupKFold` cross-validation groups complaints by authored template. The pipeline also provides a most-frequent baseline, macro and weighted metrics, per-class metrics, a 95% bootstrap interval, McNemar comparison, subgroup performance, and calibrated browser probabilities.
 
----
+| Selected model | Holdout accuracy | Holdout macro-F1 | Grouped-CV macro-F1 | 95% macro-F1 CI | Baseline macro-F1 |
+|---|---:|---:|---:|---:|---:|
+| Neural Network | 56.66% | 57.68% | 45.16% | 53.06–61.54% | 3.71% |
 
-## Clustering and prediction
+The moderate result is intentional evidence of a harder unseen-language task. It replaces the previous leaked ~95% headline.
 
-Unsupervised clustering combines reduced TF-IDF text features with standardized impact, occupancy, humidity and hour features. K-Means, hierarchical clustering and DBSCAN are compared using silhouette and Davies-Bouldin scores. Isolation Forest separately identifies anomalous complaints.
+![Model laboratory](public/screenshots/models-v2.webp)
 
-CampusLens additionally demonstrates two predictive tasks:
+### Independent WEKA experiment
 
-| Task | Type | Example output | Evaluation |
-|---|---|---|---|
-| Issue risk | Classification | `CRITICAL` | Accuracy, precision, recall, F1 |
-| Resolution time | Regression | Expected repair hours | RMSE across Linear Regression, Random Forest and neural backpropagation |
+Weka 3.8.7 trains a `FilteredClassifier(StringToWordVector → NaiveBayes)` on 2,307 development records and evaluates 533 unseen-template records. The checked-in evidence includes:
 
-Predicted risk considers complaint text, location, selected impact, duplicate volume and historical recurrence. Resolution time considers category, severity, location, report count and historical repair duration.
+- development and test ARFF files
+- complete evaluation summary and confusion matrix
+- per-class metrics
+- experiment configuration
+- a 1.6 MB serialized Weka model
 
----
+Weka obtains 53.66% accuracy and 0.531 weighted F1 on the same difficult boundary. This is genuine command-line Weka output, not a screenshot-only claim.
 
-## Synthetic dataset
+## Association rules and correlation
 
-The interactive platform is seeded with synthetic complaint records so every dashboard feature can be demonstrated without exposing real student data.
+Transactions contain facility type, time band, day, occupancy, humidity, severity, source channel, and category. Apriori and FP-Growth must agree on the frequent itemsets.
 
-Each record contains:
+Rules are mined on the first 70% of time and validated on the last 30%. Accepted rules must have:
 
-```text
-issue_id, title, complaint, category, campus_area,
-facility, floor_or_room, timestamp, impact, status,
-image, predicted_category, confidence, duplicate_count,
-incident_id, predicted_risk, expected_resolution_hours
-```
+- one category consequent
+- one or two non-category antecedents
+- at least one contextual antecedent
+- minimum training and validation support
+- stable confidence across periods
+- validation lift above one
+- Fisher exact-test significance after Benjamini–Hochberg FDR correction
+- redundant supersets pruned
 
-Example record:
+Four rules currently survive. A separate base-R implementation produces the same four rules, giving a Python/R Jaccard agreement of 1.0. Cramér’s V results provide a distinct correlation-analysis artifact.
 
-```json
-{
-  "issue_id": "CL-1048",
-  "category": "Network",
-  "location": "CL3 · Floor 2",
-  "impact": 2,
-  "status": "Recurring",
-  "complaint": "Wi-Fi drops every few minutes during the morning lecture block."
-}
-```
+Low support is treated as exploratory; lift alone is never presented as proof.
 
-Reports added through the interface are validated by a Next.js API, classified by the exported model, persisted in Neon PostgreSQL, and immediately update the live feed, report count and Issue Explorer. Search, hierarchical filters, CSV export and the complete 2,840-row WEKA ARFF operate on the shared synthetic-data layer.
+## Regression
 
----
+Resolution-time regression uses a chronological 70/15/15 split and selects a model on the validation period before one future holdout evaluation.
 
-## Functional coverage
+| Model | RMSE | MAE | R² |
+|---|---:|---:|---:|
+| Mean baseline | 2.209 | 1.514 | -0.003 |
+| Linear Regression | 2.206 | 1.504 | -0.000 |
+| Random Forest Regressor | **2.116** | **1.508** | **0.079** |
+| Neural Network | 2.151 | 1.547 | 0.049 |
 
-| Capability | CampusLens implementation |
+The weak R² is shown plainly. The artifact also contains residual quantiles, a 90% prediction interval, validation RMSE, and feature importance. Target generation includes unobserved maintenance and vendor factors so the model cannot simply reverse a deterministic formula.
+
+## Clustering and anomaly detection
+
+Five unsupervised methods are compared on a tuning/evaluation split:
+
+| Method | Selected structure | Silhouette | Interpretation |
+|---|---:|---:|---|
+| K-Means | 6 clusters | 0.1401 | weak separation; stability ARI 0.9218 |
+| Hierarchical | 6 clusters | 0.0887 | very weak separation |
+| Gaussian Mixture | 10 components by BIC | -0.0320 | poor geometric separation |
+| DBSCAN | 5 clusters, 433 noise | -0.2076 | poor density structure |
+| STING-style grid | 18 cells | -0.0908 | grid coverage, not natural clusters |
+
+K is selected across 2–12 rather than fixed to the known class count. Names come from top terms, not ground-truth categories. The UI labels these clusters exploratory.
+
+Isolation Forest uses a labelled synthetic anomaly validation set to select its threshold and a chronological holdout to report precision, recall, and F1. The current anomaly F1 is 0.414; that limitation is more scientifically meaningful than forcing a fixed contamination count and calling every flagged point correct.
+
+## Image and multimodal mining
+
+Image handling has two distinct layers.
+
+1. Upload privacy: the server decodes, validates, rotates, resizes, flattens, and re-encodes images as WebP. Metadata is removed. The database stores only a SHA-256 fingerprint and MIME type; the thumbnail returned to the submitting browser is ephemeral.
+2. Mining experiment: a synthetic labelled image set is transformed into texture, edge, colour, brightness, and histogram features. A Random Forest visual classifier, PCA embedding, confusion matrix, per-class metrics, and cosine duplicate search are generated.
+
+The visual holdout reaches 83.33% accuracy and 83.22% macro-F1.
+
+| Original evidence | Enhanced evidence |
 |---|---|
-| Student issue reporting | Two-step anonymous/named form with hierarchical location and image upload |
-| Durable operations store | Neon PostgreSQL submission table, indexes and append-only audit events |
-| Automatic classification | Category and confidence returned after submission |
-| Duplicate detection | Similar location/category reports merge into an incident |
-| Heatmap | Location × time intensity matrix |
-| Time mining | Hour and week trend visualisations |
-| OLAP drill-down | Campus to room and time hierarchy |
-| Data warehouse | Populated SQLite star schema, snowflake alternative, metadata catalogue and data marts |
-| Association rules | Support, confidence, lift and minimum-lift filtering |
-| Emerging issues | Current-versus-historical anomaly card |
-| Campus health | Overall and location-oriented health indicators |
-| Severity prediction | Low, medium, high or critical risk |
-| Resolution prediction | Expected hours and RMSE |
-| Image preprocessing | Original versus enhanced evidence pipeline |
-| Clustering | K-Means, hierarchical, DBSCAN and Isolation Forest evaluation |
-| Model comparison | NB, kNN, ID3, SVM, Random Forest and neural-network metrics |
-| WEKA experiment | Downloadable 2,840-row, eight-class ARFF dataset |
-| Digital Pulse | Normal-to-critical location state |
+| ![Original synthetic lab evidence](public/images/evidence/lab-equipment-original.jpg) | ![Processed synthetic lab evidence](public/images/evidence/lab-equipment-processed.jpg) |
 
----
+## Advanced mining
 
-## Technology stack
+### Spatial mining
 
-- **Next.js 16** and React 19;
-- TypeScript;
-- Tailwind CSS processing and custom responsive CSS;
-- Framer Motion for interface transitions;
-- Lucide React for accessible interface icons;
-- Mermaid diagrams for project documentation;
-- Python, pandas, scikit-learn, mlxtend and Pillow for reproducible mining;
-- SQLite star/snowflake warehouse artefacts and OLAP data marts;
-- Neon PostgreSQL for durable, multi-session web submissions and audit events;
-- R `arules` experiment and Power BI-ready measures;
-- GitHub Actions for ETL, warehouse, metric and production-build verification;
-- Vercel for the current web demonstration.
+Twenty-two valid facility centroids are analyzed with global and local Moran-style statistics and an 8×8 grid. Global Moran’s I is 0.0182, correctly indicating little global spatial autocorrelation. Coordinates are generalized; no person-level location is stored.
 
-## Current scope
+### Web mining
 
-CampusLens is a complete, reproducible **synthetic-data academic implementation** of the mining and intelligence workflow. Raw data, clean data, model artefacts, rule outputs, clustering evaluation, processed images and the populated warehouse are versioned with the project. User-added records pass through a validated Next.js API and are stored in managed Neon PostgreSQL; a local browser copy provides resilient immediate UI feedback. Images are resized and re-encoded before upload to remove metadata. An institutional rollout would additionally require campus identity integration, role-based administration and dedicated object storage with malware scanning.
+The service-event source contains 5,680 privacy-safe synthetic events. The experiment extracts route popularity, search intent, report-conversion rates, dwell time, and first-order route transitions.
 
-The central project idea remains the same:
+### Stream mining
 
-> **CampusLens is not merely a complaint-management portal. It is a digital campus pulse that mines operational data to discover recurring problems, emerging anomalies and hidden relationships.**
+A bounded sliding window tracks category distributions and impact. Jensen–Shannon divergence flags drift; drift queues human review and retraining rather than silently replacing a deployed model.
+
+```mermaid
+sequenceDiagram
+    participant S as Incoming reports
+    participant W as Sliding window
+    participant D as Drift monitor
+    participant H as Human reviewer
+    participant R as Model registry
+    S->>W: append observation
+    W->>D: compare category distribution
+    alt sustained drift
+        D->>H: queue review
+        H->>R: approve or reject retraining
+    else stable
+        D-->>W: continue monitoring
+    end
+```
+
+## Live reporting, privacy, and governance
+
+CampusLens accepts anonymous reports without requiring an identity. Administrative reads require a bearer token. Public records never expose names, hashes, image payloads, or administrative-only fields.
+
+Controls include:
+
+- PII redaction in both title and description
+- one-way reporter alias hashing when a non-anonymous alias is supplied
+- persistent PostgreSQL rate limiting using hashed client identifiers
+- same-origin and JSON content-type checks
+- strict size/type validation and server-side image re-encoding
+- no base64 image storage
+- protected admin scope
+- 365-day retention with authenticated daily cleanup
+- audit logs, incremental ETL logs, and a refresh queue
+- model registry with dataset SHA-256, stage, protocol, monitoring, and human approval
+- ethics report covering domain shift, under-reporting, privacy, and automation bias
+- channel and facility-type subgroup performance; no unsupported demographic-fairness claim
+
+## Business-intelligence artifacts
+
+The project includes two source-controlled external BI artifacts:
+
+- `data_science/powerbi/CampusLens.pbip`: a Power BI Project using the documented PBIP/PBIR structure and a TMDL semantic model with import partition and DAX measures.
+- `data_science/tableau/CampusLens.twb`: a Tableau workbook with issue-mix and facility-hotspot sheets in a campus-health dashboard.
+
+PBIP is used instead of an opaque PBIX so the semantic model, data source, measures, report page, and lineage remain reviewable in Git.
+
+## Course-outcome coverage
+
+| Outcome | Demonstrated evidence |
+|---|---|
+| CO1 — warehousing, OLAP, mining concepts | Physical star and snowflake schemas; facts/dimensions; marts; SCD2; executable OLAP; PBIP and Tableau artifacts |
+| CO2 — preprocessing and transformation | Three-source integration; cleaning; hierarchy-aware imputation; normalization; discretization; sampling; ETL/ELT comparison; metadata/lineage |
+| CO3 — association and classification | Apriori, FP-Growth, base-R rules, FDR/holdout validation, Cramér’s V, seven classifiers, grouped CV, WEKA |
+| CO4 — clustering and discovery | K-Means, hierarchical, DBSCAN, Gaussian mixture, STING grid, tuning, stability, labelled anomaly evaluation |
+| CO5 — advanced real-world mining | Spatial autocorrelation, web usage mining, windowed stream drift, image classification/embedding/duplicate search, governance |
+
+## Reproducibility and evidence map
+
+```mermaid
+flowchart TD
+    P["python -m data_science.pipeline"] --> D["Raw and clean CSV"]
+    P --> W["SQLite warehouse"]
+    P --> M["Model and regression metrics"]
+    P --> A["Python rules and correlations"]
+    P --> C["Clusters, anomalies, advanced mining"]
+    P --> U["Dashboard JSON and paginated records"]
+    R["R base-rule miner"] --> RC["R rules CSV"]
+    A --> X["Python/R comparison"]
+    RC --> X
+    K["Weka 3.8.7"] --> WK["Evaluation, confusion matrix, model"]
+    CI["GitHub Actions"] --> P
+    CI --> R
+    CI --> K
+    CI --> T["Scientific, warehouse, API and build tests"]
+```
+
+The principal evidence lives in:
+
+- `data_science/outputs/` — metrics, rules, model registry, fairness, advanced-mining, R, and Weka outputs
+- `warehouse/` — database, DDL, OLAP SQL, and metadata catalogue
+- `public/data/` — browser-safe analytics, classifier, ARFF, and paginated records
+- `data_science/powerbi/` and `data_science/tableau/` — external BI projects
+- `data_science/test_pipeline.py` — semantic and scientific invariants
+- `scripts/test-api.mjs` — running API privacy/security contract
+
+## Honest limitations
+
+- Synthetic evidence can validate software and experimental design, not establish actual campus prevalence.
+- Classification performance on unseen authoring templates is moderate and subject to real-language domain shift.
+- Cluster separation is weak; clusters are exploratory summaries rather than proven operational segments.
+- Regression explains little holdout variance because important maintenance/vendor factors remain unobserved.
+- Spatial coordinates are generalized centroids, so room-scale geographic conclusions are inappropriate.
+- Demographic fairness cannot be claimed because protected attributes are deliberately excluded.
+- Visual mining uses a controlled synthetic image benchmark and needs independently labelled real evidence before operational use.
+
+CampusLens is therefore best understood as a transparent end-to-end mining laboratory and decision-support prototype: it demonstrates how campus friction could be collected, governed, warehoused, evaluated, and explored without disguising synthetic results as institutional truth.

@@ -1,0 +1,229 @@
+{
+  "method": "visual feature extraction + Random Forest image classification + PCA embeddings + cosine duplicate search",
+  "datasetSize": 144,
+  "testSize": 36,
+  "classes": [
+    "equipment_fault",
+    "infrastructure_damage",
+    "cleanliness_hazard",
+    "normal"
+  ],
+  "accuracy": 0.8333,
+  "macroF1": 0.8322,
+  "perClass": {
+    "cleanliness_hazard": {
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "f1-score": 0.8421052631578947,
+      "support": 9.0
+    },
+    "equipment_fault": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6666666666666666,
+      "f1-score": 0.75,
+      "support": 9.0
+    },
+    "infrastructure_damage": {
+      "precision": 0.7,
+      "recall": 0.7777777777777778,
+      "f1-score": 0.7368421052631579,
+      "support": 9.0
+    },
+    "normal": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 9.0
+    },
+    "accuracy": 0.8333333333333334,
+    "macro avg": {
+      "precision": 0.8392857142857142,
+      "recall": 0.8333333333333333,
+      "f1-score": 0.8322368421052632,
+      "support": 36.0
+    },
+    "weighted avg": {
+      "precision": 0.8392857142857143,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.8322368421052632,
+      "support": 36.0
+    }
+  },
+  "confusionMatrix": {
+    "labels": [
+      "equipment_fault",
+      "infrastructure_damage",
+      "cleanliness_hazard",
+      "normal"
+    ],
+    "values": [
+      [
+        6,
+        2,
+        1,
+        0
+      ],
+      [
+        1,
+        7,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        8,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        9
+      ]
+    ]
+  },
+  "embedding": {
+    "method": "PCA",
+    "components": 3,
+    "explainedVariance": 0.7511,
+    "sample": [
+      {
+        "id": "IMG-EQU-000",
+        "x": 2.94,
+        "y": -0.864,
+        "z": 0.368
+      },
+      {
+        "id": "IMG-EQU-001",
+        "x": 2.476,
+        "y": 0.335,
+        "z": 0.184
+      },
+      {
+        "id": "IMG-EQU-002",
+        "x": 3.31,
+        "y": 0.518,
+        "z": -0.634
+      },
+      {
+        "id": "IMG-EQU-003",
+        "x": 4.698,
+        "y": -0.009,
+        "z": -2.117
+      },
+      {
+        "id": "IMG-EQU-004",
+        "x": 0.815,
+        "y": -2.974,
+        "z": -1.716
+      },
+      {
+        "id": "IMG-EQU-005",
+        "x": 3.155,
+        "y": 1.392,
+        "z": 0.93
+      },
+      {
+        "id": "IMG-EQU-006",
+        "x": 3.523,
+        "y": 2.282,
+        "z": 1.435
+      },
+      {
+        "id": "IMG-EQU-007",
+        "x": 3.87,
+        "y": 1.634,
+        "z": 0.662
+      },
+      {
+        "id": "IMG-EQU-008",
+        "x": 2.543,
+        "y": 0.263,
+        "z": -1.08
+      },
+      {
+        "id": "IMG-EQU-009",
+        "x": 3.737,
+        "y": -0.595,
+        "z": 0.265
+      },
+      {
+        "id": "IMG-EQU-010",
+        "x": 2.325,
+        "y": 0.524,
+        "z": 2.285
+      },
+      {
+        "id": "IMG-EQU-011",
+        "x": -0.719,
+        "y": -2.853,
+        "z": -1.58
+      },
+      {
+        "id": "IMG-EQU-012",
+        "x": 2.194,
+        "y": 0.343,
+        "z": -0.209
+      },
+      {
+        "id": "IMG-EQU-013",
+        "x": 4.038,
+        "y": 0.932,
+        "z": 0.192
+      },
+      {
+        "id": "IMG-EQU-014",
+        "x": 3.01,
+        "y": 1.402,
+        "z": 0.77
+      },
+      {
+        "id": "IMG-EQU-015",
+        "x": 3.141,
+        "y": 1.646,
+        "z": 0.631
+      },
+      {
+        "id": "IMG-EQU-016",
+        "x": -0.531,
+        "y": -1.121,
+        "z": -0.025
+      },
+      {
+        "id": "IMG-EQU-017",
+        "x": -1.641,
+        "y": -3.138,
+        "z": 0.538
+      },
+      {
+        "id": "IMG-EQU-018",
+        "x": -0.339,
+        "y": -3.073,
+        "z": -1.338
+      },
+      {
+        "id": "IMG-EQU-019",
+        "x": 2.829,
+        "y": 0.175,
+        "z": 0.17
+      }
+    ]
+  },
+  "nearestDuplicateCandidate": {
+    "left": "IMG-INF-020",
+    "right": "IMG-INF-029",
+    "cosineSimilarity": 0.9931
+  },
+  "original": "/images/evidence/lab-equipment-original.jpg",
+  "processed": "/images/evidence/lab-equipment-processed.jpg",
+  "operations": [
+    "server-compatible decode",
+    "median noise removal",
+    "contrast enhancement",
+    "Lanczos resize",
+    "visual feature extraction",
+    "classification",
+    "embedding"
+  ]
+}

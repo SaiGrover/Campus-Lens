@@ -1,55 +1,156 @@
 {
+  "evaluationProtocol": "model selection on template fold 3; final evaluation on untouched template fold 4; grouped 4-fold CV on development data",
   "datasetSize": 2840,
-  "trainingSize": 2272,
-  "testSize": 568,
+  "trainingSize": 1702,
+  "validationSize": 605,
+  "testSize": 533,
   "randomSeed": 313,
-  "featureCount": 669,
+  "featureCount": 2689,
   "models": [
     {
-      "name": "Naive Bayes",
-      "accuracy": 94.89,
-      "precision": 94.93,
-      "recall": 94.89,
-      "f1": 94.86,
+      "name": "Neural Network",
+      "accuracy": 56.66,
+      "precision": 70.49,
+      "recall": 56.66,
+      "f1": 57.39,
+      "macroF1": 57.68,
+      "groupedCvMacroF1": 45.16,
+      "groupedCvStd": 3.59,
+      "validationMacroF1": 61.16,
       "best": true
     },
     {
-      "name": "SVM",
-      "accuracy": 94.89,
-      "precision": 94.93,
-      "recall": 94.89,
-      "f1": 94.86
+      "name": "Naive Bayes",
+      "accuracy": 57.22,
+      "precision": 61.77,
+      "recall": 57.22,
+      "f1": 57.45,
+      "macroF1": 57.22,
+      "groupedCvMacroF1": 46.74,
+      "groupedCvStd": 4.28,
+      "validationMacroF1": 59.22
     },
     {
-      "name": "Neural Network",
-      "accuracy": 94.72,
-      "precision": 94.74,
-      "recall": 94.72,
-      "f1": 94.66
-    },
-    {
-      "name": "kNN",
-      "accuracy": 94.01,
-      "precision": 94.02,
-      "recall": 94.01,
-      "f1": 93.96
-    },
-    {
-      "name": "Random Forest",
-      "accuracy": 93.49,
-      "precision": 93.51,
-      "recall": 93.49,
-      "f1": 93.42
+      "name": "Extra Trees Ensemble",
+      "accuracy": 62.1,
+      "precision": 79.17,
+      "recall": 62.1,
+      "f1": 66.57,
+      "macroF1": 64.49,
+      "groupedCvMacroF1": 55.29,
+      "groupedCvStd": 7.88,
+      "validationMacroF1": 57.05
     },
     {
       "name": "ID3",
-      "accuracy": 92.96,
-      "precision": 92.92,
-      "recall": 92.96,
-      "f1": 92.83
+      "accuracy": 55.16,
+      "precision": 71.91,
+      "recall": 55.16,
+      "f1": 57.58,
+      "macroF1": 58.67,
+      "groupedCvMacroF1": 48.11,
+      "groupedCvStd": 8.76,
+      "validationMacroF1": 55.38
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 60.98,
+      "precision": 66.63,
+      "recall": 60.98,
+      "f1": 62.31,
+      "macroF1": 62.21,
+      "groupedCvMacroF1": 57.9,
+      "groupedCvStd": 8.18,
+      "validationMacroF1": 55.09
+    },
+    {
+      "name": "kNN",
+      "accuracy": 56.66,
+      "precision": 57.07,
+      "recall": 56.66,
+      "f1": 56.6,
+      "macroF1": 56.31,
+      "groupedCvMacroF1": 46.57,
+      "groupedCvStd": 4.69,
+      "validationMacroF1": 54.8
+    },
+    {
+      "name": "SVM",
+      "accuracy": 50.28,
+      "precision": 55.1,
+      "recall": 50.28,
+      "f1": 49.95,
+      "macroF1": 49.81,
+      "groupedCvMacroF1": 33.61,
+      "groupedCvStd": 4.07,
+      "validationMacroF1": 53.39
     }
   ],
-  "bestModel": "Naive Bayes",
+  "bestModel": "Neural Network",
+  "baseline": {
+    "name": "Most frequent class",
+    "macroF1": 3.71
+  },
+  "macroF1ConfidenceInterval95": [
+    53.06,
+    61.54
+  ],
+  "mcnemarVsRunnerUp": {
+    "runnerUp": "Naive Bayes",
+    "bestOnlyCorrect": 22,
+    "runnerUpOnlyCorrect": 25,
+    "pValue": 0.77087
+  },
+  "perClass": {
+    "Network": {
+      "precision": 100.0,
+      "recall": 44.09,
+      "f1-score": 61.19,
+      "support": 93
+    },
+    "Infrastructure": {
+      "precision": 59.72,
+      "recall": 55.13,
+      "f1-score": 57.33,
+      "support": 78
+    },
+    "Cleanliness": {
+      "precision": 38.37,
+      "recall": 50.77,
+      "f1-score": 43.71,
+      "support": 65
+    },
+    "Canteen": {
+      "precision": 43.2,
+      "recall": 77.14,
+      "f1-score": 55.38,
+      "support": 70
+    },
+    "Electrical": {
+      "precision": 44.78,
+      "recall": 85.71,
+      "f1-score": 58.82,
+      "support": 70
+    },
+    "Lab Equipment": {
+      "precision": 96.3,
+      "recall": 40.62,
+      "f1-score": 57.14,
+      "support": 64
+    },
+    "Water": {
+      "precision": 100.0,
+      "recall": 46.43,
+      "f1-score": 63.41,
+      "support": 56
+    },
+    "Other": {
+      "precision": 86.36,
+      "recall": 51.35,
+      "f1-score": 64.41,
+      "support": 37
+    }
+  },
   "confusionMatrix": {
     "labels": [
       "Network",
@@ -63,31 +164,21 @@
     ],
     "values": [
       [
-        151,
-        1,
-        0,
-        0,
-        0,
-        1,
-        1,
-        0
-      ],
-      [
-        2,
-        109,
-        0,
-        0,
-        0,
+        41,
+        9,
+        19,
+        14,
+        10,
         0,
         0,
         0
       ],
       [
-        2,
-        1,
-        53,
-        1,
         0,
+        43,
+        9,
+        19,
+        7,
         0,
         0,
         0
@@ -95,68 +186,285 @@
       [
         0,
         2,
-        0,
-        66,
-        0,
+        33,
+        21,
+        7,
         1,
         0,
         1
       ],
       [
-        0,
-        1,
-        0,
-        1,
-        51,
-        0,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        1,
-        56,
-        0,
-        1
-      ],
-      [
-        1,
-        0,
-        0,
-        1,
-        1,
-        0,
-        36,
-        0
-      ],
-      [
-        2,
-        0,
         0,
         4,
+        6,
+        54,
+        5,
         0,
         0,
+        1
+      ],
+      [
         0,
-        17
+        7,
+        1,
+        2,
+        60,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        4,
+        14,
+        7,
+        13,
+        26,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        2,
+        1,
+        25,
+        0,
+        26,
+        1
+      ],
+      [
+        0,
+        2,
+        2,
+        7,
+        7,
+        0,
+        0,
+        19
       ]
     ]
   },
-  "regression": [
-    {
-      "name": "Linear Regression",
-      "rmse": 0.621,
-      "best": true
+  "subgroupPerformance": {
+    "source_system": [
+      {
+        "group": "kiosk",
+        "support": 41,
+        "accuracy": 58.54,
+        "macroF1": 60.28,
+        "macroF1GapFromOverall": 2.6
+      },
+      {
+        "group": "mobile",
+        "support": 297,
+        "accuracy": 55.89,
+        "macroF1": 56.89,
+        "macroF1GapFromOverall": -0.79
+      },
+      {
+        "group": "web",
+        "support": 195,
+        "accuracy": 57.44,
+        "macroF1": 57.55,
+        "macroF1GapFromOverall": -0.13
+      }
+    ],
+    "facility_type": [
+      {
+        "group": "academic",
+        "support": 174,
+        "accuracy": 57.47,
+        "macroF1": 57.92,
+        "macroF1GapFromOverall": 0.25
+      },
+      {
+        "group": "common",
+        "support": 11,
+        "accuracy": 27.27,
+        "macroF1": 17.78,
+        "macroF1GapFromOverall": -39.9
+      },
+      {
+        "group": "food",
+        "support": 44,
+        "accuracy": 59.09,
+        "macroF1": 53.13,
+        "macroF1GapFromOverall": -4.55
+      },
+      {
+        "group": "hostel",
+        "support": 69,
+        "accuracy": 43.48,
+        "macroF1": 41.38,
+        "macroF1GapFromOverall": -16.3
+      },
+      {
+        "group": "lab",
+        "support": 101,
+        "accuracy": 65.35,
+        "macroF1": 65.49,
+        "macroF1GapFromOverall": 7.81
+      },
+      {
+        "group": "library",
+        "support": 27,
+        "accuracy": 55.56,
+        "macroF1": 49.75,
+        "macroF1GapFromOverall": -7.92
+      },
+      {
+        "group": "office",
+        "support": 18,
+        "accuracy": 50.0,
+        "macroF1": 47.62,
+        "macroF1GapFromOverall": -10.06
+      },
+      {
+        "group": "outdoor",
+        "support": 36,
+        "accuracy": 63.89,
+        "macroF1": 62.33,
+        "macroF1GapFromOverall": 4.65
+      },
+      {
+        "group": "sports",
+        "support": 25,
+        "accuracy": 48.0,
+        "macroF1": 47.1,
+        "macroF1GapFromOverall": -10.57
+      },
+      {
+        "group": "utility",
+        "support": 28,
+        "accuracy": 64.29,
+        "macroF1": 63.42,
+        "macroF1GapFromOverall": 5.74
+      }
+    ]
+  },
+  "leakageAudit": {
+    "exactTestTextSeenInDevelopmentRate": 0.0,
+    "templateGroupsOverlap": 0
+  },
+  "calibration": {
+    "browserModel": "Naive Bayes",
+    "temperature": 0.9,
+    "validationLogLoss": 1.1868
+  },
+  "hyperparameters": {
+    "Naive Bayes": {
+      "alpha": 0.45,
+      "class_prior": null,
+      "fit_prior": true,
+      "force_alpha": true
     },
-    {
-      "name": "Neural Network Backpropagation",
-      "rmse": 0.631
+    "kNN": {
+      "algorithm": "auto",
+      "leaf_size": 30,
+      "metric": "cosine",
+      "metric_params": null,
+      "n_jobs": null,
+      "n_neighbors": 9,
+      "p": 2,
+      "weights": "distance"
     },
-    {
-      "name": "Random Forest Regressor",
-      "rmse": 0.663
+    "ID3": {
+      "ccp_alpha": 0.0,
+      "class_weight": null,
+      "criterion": "entropy",
+      "max_depth": 28,
+      "max_features": null,
+      "max_leaf_nodes": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 3,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "random_state": 313,
+      "splitter": "best"
+    },
+    "SVM": {
+      "C": 1.0,
+      "class_weight": null,
+      "dual": "auto",
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "loss": "squared_hinge",
+      "max_iter": 1000,
+      "multi_class": "ovr",
+      "penalty": "l2",
+      "random_state": 313,
+      "tol": 0.0001,
+      "verbose": 0
+    },
+    "Random Forest": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "class_weight": null,
+      "criterion": "gini",
+      "max_depth": 32,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 180,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 313,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "Neural Network": {
+      "activation": "relu",
+      "alpha": 0.0001,
+      "batch_size": "auto",
+      "beta_1": 0.9,
+      "beta_2": 0.999,
+      "early_stopping": true,
+      "epsilon": 1e-08,
+      "hidden_layer_sizes": [
+        48
+      ],
+      "learning_rate": "constant",
+      "learning_rate_init": 0.001,
+      "max_fun": 15000,
+      "max_iter": 260,
+      "momentum": 0.9,
+      "n_iter_no_change": 10,
+      "nesterovs_momentum": true,
+      "power_t": 0.5,
+      "random_state": 313,
+      "shuffle": true,
+      "solver": "adam",
+      "tol": 0.0001,
+      "validation_fraction": 0.1,
+      "verbose": false,
+      "warm_start": false
+    },
+    "Extra Trees Ensemble": {
+      "bootstrap": false,
+      "ccp_alpha": 0.0,
+      "class_weight": null,
+      "criterion": "gini",
+      "max_depth": null,
+      "max_features": "sqrt",
+      "max_leaf_nodes": null,
+      "max_samples": null,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 2,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "monotonic_cst": null,
+      "n_estimators": 180,
+      "n_jobs": -1,
+      "oob_score": false,
+      "random_state": 313,
+      "verbose": 0,
+      "warm_start": false
     }
-  ]
+  }
 }

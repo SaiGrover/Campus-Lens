@@ -3,4 +3,4 @@ numpy==2.2.6
 scikit-learn==1.5.2
 Pillow==11.2.1
 mlxtend==0.23.4
-
+scipy==1.14.1

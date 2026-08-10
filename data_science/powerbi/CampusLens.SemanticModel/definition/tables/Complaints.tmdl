@@ -1,0 +1,71 @@
+table Complaints
+	description: Validated CampusLens benchmark complaint facts loaded from the clean CSV artifact.
+
+	column complaint_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: complaint_id
+
+	column category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: category
+
+	column facility
+		dataType: string
+		summarizeBy: none
+		sourceColumn: facility
+
+	column time_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: time_band
+
+	column severity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: severity
+
+	column impact_rating
+		dataType: int64
+		formatString: 0
+		summarizeBy: average
+		sourceColumn: impact_rating
+
+	column resolution_hours
+		dataType: double
+		formatString: 0.00
+		summarizeBy: average
+		sourceColumn: resolution_hours
+
+	column observed_at
+		dataType: dateTime
+		formatString: General Date
+		summarizeBy: none
+		sourceColumn: observed_at
+
+	measure 'Complaint Count' = COUNTROWS(Complaints)
+		formatString: #,0
+
+	measure 'Critical Complaints' = CALCULATE([Complaint Count], Complaints[severity] = "Critical")
+		formatString: #,0
+
+	measure 'Mean Resolution Hours' = AVERAGE(Complaints[resolution_hours])
+		formatString: 0.00
+
+	measure 'Campus Health Score' = MAX(0, 100 - DIVIDE([Critical Complaints], [Complaint Count], 0) * 105)
+		formatString: 0
+
+	partition Complaints = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("../../../data/processed/complaints_clean.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Headers = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    Selected = Table.SelectColumns(Headers, {"complaint_id", "category", "facility", "time_band", "severity", "impact_rating", "resolution_hours", "observed_at"}),
+				    Typed = Table.TransformColumnTypes(Selected, {{"complaint_id", type text}, {"category", type text}, {"facility", type text}, {"time_band", type text}, {"severity", type text}, {"impact_rating", Int64.Type}, {"resolution_hours", type number}, {"observed_at", type datetimezone}})
+				in
+				    Typed
+
+	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Table

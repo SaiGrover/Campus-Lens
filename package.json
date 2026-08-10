@@ -9,10 +9,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "data:build": "python data_science/pipeline.py",
+    "data:build": "python -m data_science.pipeline",
     "test:data": "python -m unittest data_science.test_pipeline",
     "test:live": "node scripts/verify-live.mjs",
-    "test": "npm run test:data && next build",
+    "test:api": "node scripts/test-api.mjs",
+    "test": "npm run lint && npm run test:data && next build && npm run test:api",
     "lint": "eslint app lib scripts next.config.ts"
   },
   "dependencies": {
@@ -21,7 +22,8 @@
     "lucide-react": "^1.31.0",
     "next": "^16.3.0",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
     "@eslint/js": "9.39.4",

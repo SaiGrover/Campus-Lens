@@ -1,0 +1,18 @@
+{
+  "protectedAttributesUsed": [],
+  "reason": "The benchmark intentionally excludes caste, gender, disability, religion and identity attributes.",
+  "fairnessScope": "Performance is monitored by collection channel and facility type; demographic fairness cannot be claimed without consented protected-attribute data.",
+  "risks": [
+    "synthetic-to-real domain shift",
+    "minority issue under-reporting",
+    "location privacy",
+    "automation bias"
+  ],
+  "controls": [
+    "human label correction",
+    "no automated disciplinary action",
+    "generalized coordinates",
+    "private named-report fields",
+    "model drift review"
+  ]
+}

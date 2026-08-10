@@ -1,0 +1,96 @@
+{
+  "protocol": "chronological 70/15/15 split; model chosen on validation period and evaluated once on future holdout",
+  "trainSize": 1987,
+  "validationSize": 427,
+  "testSize": 426,
+  "models": [
+    {
+      "name": "Mean baseline",
+      "rmse": 2.209,
+      "mae": 1.514,
+      "r2": -0.003,
+      "baseline": true
+    },
+    {
+      "name": "Linear Regression",
+      "rmse": 2.206,
+      "mae": 1.504,
+      "r2": -0.0,
+      "validationRmse": 2.063
+    },
+    {
+      "name": "Random Forest Regressor",
+      "rmse": 2.116,
+      "mae": 1.508,
+      "r2": 0.079,
+      "validationRmse": 2.04,
+      "best": true
+    },
+    {
+      "name": "Neural Network Backpropagation",
+      "rmse": 2.151,
+      "mae": 1.547,
+      "r2": 0.049,
+      "validationRmse": 2.063
+    }
+  ],
+  "bestModel": "Random Forest Regressor",
+  "residualQuantiles": {
+    "0.05": -3.129,
+    "0.25": -1.376,
+    "0.5": -0.342,
+    "0.75": 0.795,
+    "0.95": 3.036
+  },
+  "predictionInterval90HalfWidth": 3.049,
+  "featureImportance": [
+    {
+      "feature": "occupancy_pct",
+      "importance": 0.3214
+    },
+    {
+      "feature": "humidity_pct",
+      "importance": 0.1337
+    },
+    {
+      "feature": "mean_dwell_seconds",
+      "importance": 0.1155
+    },
+    {
+      "feature": "hour",
+      "importance": 0.0838
+    },
+    {
+      "feature": "impact_rating",
+      "importance": 0.0683
+    },
+    {
+      "feature": "recurring",
+      "importance": 0.0303
+    },
+    {
+      "feature": "service_sessions",
+      "importance": 0.0271
+    },
+    {
+      "feature": "facility_type_academic",
+      "importance": 0.0188
+    },
+    {
+      "feature": "status_In Progress",
+      "importance": 0.0159
+    },
+    {
+      "feature": "status_Resolved",
+      "importance": 0.0158
+    },
+    {
+      "feature": "facility_type_lab",
+      "importance": 0.0138
+    },
+    {
+      "feature": "facility_type_hostel",
+      "importance": 0.0136
+    }
+  ]
+}

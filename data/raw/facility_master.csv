@@ -1,0 +1,59 @@
+campus,zone,facility,facility_type,floor,room,latitude,longitude
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan II,academic,Floor 1,CR101,28.6297,77.3729
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan II,academic,Floor 1,CR102,28.6297,77.3729
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan II,academic,Floor 2,CR201,28.6297,77.3729
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan II,academic,Floor 2,CR202,28.6297,77.3729
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan II,academic,Floor 4,CR425,28.6297,77.3729
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan III,academic,Floor 1,CS1,28.6299,77.37315
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan III,academic,Floor 1,CS2,28.6299,77.37315
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan III,academic,Floor 2,G2,28.6299,77.37315
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan III,academic,Floor 2,G3,28.6299,77.37315
+JIIT Sector 62,Academic & Teaching,Aryabhatt Bhawan III,academic,Floor 3,FF6,28.6299,77.37315
+JIIT Sector 62,Academic & Teaching,A2/1,academic,Ground Floor,G1,28.6301,77.37255
+JIIT Sector 62,Academic & Teaching,A2/1,academic,Ground Floor,G2,28.6301,77.37255
+JIIT Sector 62,Academic & Teaching,A2/1,academic,Floor 1,TS11,28.6301,77.37255
+JIIT Sector 62,Academic & Teaching,A2/1,academic,Floor 1,TS12,28.6301,77.37255
+JIIT Sector 62,Academic & Teaching,A2/2,academic,Ground Floor,G5,28.63024,77.37275
+JIIT Sector 62,Academic & Teaching,A2/2,academic,Ground Floor,G6,28.63024,77.37275
+JIIT Sector 62,Academic & Teaching,A2/2,academic,Floor 1,TS17,28.63024,77.37275
+JIIT Sector 62,Academic & Teaching,A2/2,academic,Floor 1,TS18,28.63024,77.37275
+JIIT Sector 62,Labs & Research,CL1,lab,Ground Floor,CL1-A,28.62958,77.37248
+JIIT Sector 62,Labs & Research,CL1,lab,Ground Floor,CL1-B,28.62958,77.37248
+JIIT Sector 62,Labs & Research,CL3,lab,Ground Floor,CL3-A,28.62964,77.37261
+JIIT Sector 62,Labs & Research,CL3,lab,Ground Floor,CL3-B,28.62964,77.37261
+JIIT Sector 62,Labs & Research,CL15,lab,Floor 1,CL15-A,28.62978,77.37254
+JIIT Sector 62,Labs & Research,CL15,lab,Floor 1,CL15-B,28.62978,77.37254
+JIIT Sector 62,Labs & Research,CL22,lab,Floor 2,CL22-A,28.62986,77.37266
+JIIT Sector 62,Labs & Research,CL22,lab,Floor 2,CL22-B,28.62986,77.37266
+JIIT Sector 62,Labs & Research,ECE Labs,lab,Floor 2,ECE-201,28.62974,77.37282
+JIIT Sector 62,Labs & Research,ECE Labs,lab,Floor 2,ECE-202,28.62974,77.37282
+JIIT Sector 62,Library & Study,LRC,library,Ground Floor,Reading Hall,28.63002,77.37302
+JIIT Sector 62,Library & Study,LRC,library,Floor 1,Digital Area,28.63002,77.37302
+JIIT Sector 62,Library & Study,LRC,library,Floor 1,Group Study,28.63002,77.37302
+JIIT Sector 62,Food,Annapurna / Main Mess,food,Ground Floor,Dining Hall,28.63042,77.37312
+JIIT Sector 62,Food,Annapurna / Main Mess,food,Ground Floor,Counter A,28.63042,77.37312
+JIIT Sector 62,Food,Cafeteria / Canteen,food,Ground Floor,Food Court,28.63031,77.37298
+JIIT Sector 62,Food,Cafeteria / Canteen,food,Ground Floor,Billing Counter,28.63031,77.37298
+JIIT Sector 62,Hostels,H4 Boys Hostel,hostel,Ground Floor,H4 Common Room,28.63062,77.37262
+JIIT Sector 62,Hostels,H4 Boys Hostel,hostel,Floor 1,H4 Corridor 1,28.63062,77.37262
+JIIT Sector 62,Hostels,H4 Boys Hostel,hostel,Floor 2,H4 Corridor 2,28.63062,77.37262
+JIIT Sector 62,Hostels,H5 Boys Hostel,hostel,Ground Floor,H5 Common Room,28.63075,77.37278
+JIIT Sector 62,Hostels,H5 Boys Hostel,hostel,Floor 1,H5 Corridor 1,28.63075,77.37278
+JIIT Sector 62,Hostels,H5 Boys Hostel,hostel,Floor 2,H5 Corridor 2,28.63075,77.37278
+JIIT Sector 62,Hostels,Girls Hostel,hostel,Ground Floor,GH Common Room,28.63087,77.37294
+JIIT Sector 62,Hostels,Girls Hostel,hostel,Floor 1,GH Corridor 1,28.63087,77.37294
+JIIT Sector 62,General & Utilities,Administration Block,office,Ground Floor,Reception,28.62992,77.37334
+JIIT Sector 62,General & Utilities,Administration Block,office,Floor 1,Academic Office,28.62992,77.37334
+JIIT Sector 62,General & Utilities,Auditorium,common,Ground Floor,Main Hall,28.63016,77.3733
+JIIT Sector 62,General & Utilities,Auditorium,common,Ground Floor,Backstage,28.63016,77.3733
+JIIT Sector 62,General & Utilities,Main Gate,outdoor,Outdoor,Gate 1,28.62938,77.37238
+JIIT Sector 62,General & Utilities,Main Gate,outdoor,Outdoor,Security Post,28.62938,77.37238
+JIIT Sector 62,General & Utilities,Parking,outdoor,Outdoor,Student Parking,28.62945,77.37222
+JIIT Sector 62,General & Utilities,Parking,outdoor,Outdoor,Visitor Parking,28.62945,77.37222
+JIIT Sector 62,General & Utilities,Water Points,utility,Ground Floor,Cooler A,28.63005,77.37238
+JIIT Sector 62,General & Utilities,Water Points,utility,Ground Floor,Cooler B,28.63005,77.37238
+JIIT Sector 62,Sports & Recreation,Sports Complex,sports,Ground Floor,Gym,28.63102,77.37322
+JIIT Sector 62,Sports & Recreation,Sports Complex,sports,Ground Floor,Indoor Court,28.63102,77.37322
+JIIT Sector 62,Sports & Recreation,Sports Complex,sports,Outdoor,Basketball Court,28.63102,77.37322
+JIIT Sector 62,General & Utilities,Washrooms,utility,Ground Floor,Washroom G,28.62982,77.37326
+JIIT Sector 62,General & Utilities,Washrooms,utility,Floor 1,Washroom 1,28.62982,77.37326

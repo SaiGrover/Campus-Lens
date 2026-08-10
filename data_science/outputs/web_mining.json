@@ -1,0 +1,139 @@
+{
+  "method": "usage mining of service routes, searches, dwell and report conversion",
+  "eventCount": 5680,
+  "routePopularity": [
+    {
+      "route": "/help",
+      "events": 1172
+    },
+    {
+      "route": "/campus-map",
+      "events": 1168
+    },
+    {
+      "route": "/status",
+      "events": 1119
+    },
+    {
+      "route": "/explore",
+      "events": 1112
+    },
+    {
+      "route": "/report",
+      "events": 1109
+    }
+  ],
+  "searchIntent": [
+    {
+      "search_term": "cleaning",
+      "searches": 850,
+      "conversions": 162,
+      "meanDwell": 42.1129,
+      "conversionRate": 0.1906
+    },
+    {
+      "search_term": "wifi",
+      "searches": 811,
+      "conversions": 151,
+      "meanDwell": 42.2244,
+      "conversionRate": 0.1862
+    },
+    {
+      "search_term": "projector",
+      "searches": 820,
+      "conversions": 150,
+      "meanDwell": 42.2317,
+      "conversionRate": 0.1829
+    },
+    {
+      "search_term": "parking",
+      "searches": 800,
+      "conversions": 132,
+      "meanDwell": 41.7325,
+      "conversionRate": 0.165
+    },
+    {
+      "search_term": "queue",
+      "searches": 796,
+      "conversions": 131,
+      "meanDwell": 43.6143,
+      "conversionRate": 0.1646
+    },
+    {
+      "search_term": "water",
+      "searches": 816,
+      "conversions": 134,
+      "meanDwell": 43.3113,
+      "conversionRate": 0.1642
+    },
+    {
+      "search_term": "lab",
+      "searches": 787,
+      "conversions": 126,
+      "meanDwell": 40.9784,
+      "conversionRate": 0.1601
+    }
+  ],
+  "topTransitions": [
+    {
+      "from": "/campus-map",
+      "to": "/campus-map",
+      "count": 253
+    },
+    {
+      "from": "/help",
+      "to": "/status",
+      "count": 246
+    },
+    {
+      "from": "/status",
+      "to": "/campus-map",
+      "count": 246
+    },
+    {
+      "from": "/help",
+      "to": "/help",
+      "count": 245
+    },
+    {
+      "from": "/status",
+      "to": "/help",
+      "count": 244
+    },
+    {
+      "from": "/explore",
+      "to": "/report",
+      "count": 243
+    },
+    {
+      "from": "/campus-map",
+      "to": "/explore",
+      "count": 239
+    },
+    {
+      "from": "/campus-map",
+      "to": "/status",
+      "count": 234
+    },
+    {
+      "from": "/explore",
+      "to": "/help",
+      "count": 234
+    },
+    {
+      "from": "/report",
+      "to": "/help",
+      "count": 230
+    },
+    {
+      "from": "/help",
+      "to": "/report",
+      "count": 228
+    },
+    {
+      "from": "/help",
+      "to": "/explore",
+      "count": 226
+    }
+  ]
+}

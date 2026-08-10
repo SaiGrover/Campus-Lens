@@ -1,0 +1,37 @@
+{
+  "pythonStableRules": 4,
+  "rStableRules": 4,
+  "sharedRules": 4,
+  "jaccardAgreement": 1.0,
+  "shared": [
+    {
+      "when": [
+        "FacilityType=academic",
+        "Occupancy=High"
+      ],
+      "then": "Category=Infrastructure"
+    },
+    {
+      "when": [
+        "FacilityType=food",
+        "Source=mobile"
+      ],
+      "then": "Category=Canteen"
+    },
+    {
+      "when": [
+        "FacilityType=lab",
+        "Occupancy=High"
+      ],
+      "then": "Category=Network"
+    },
+    {
+      "when": [
+        "Humidity=High",
+        "Source=web"
+      ],
+      "then": "Category=Electrical"
+    }
+  ],
+  "interpretation": "Independent implementations agree on the same chronological holdout-stable, FDR-controlled rules."
+}

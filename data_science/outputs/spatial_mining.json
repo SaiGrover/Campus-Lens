@@ -1,0 +1,186 @@
+{
+  "method": "global/local Moran-style spatial autocorrelation with privacy-jittered facility coordinates",
+  "globalMoranI": 0.0182,
+  "facilityCount": 22,
+  "grid": {
+    "resolution": "8x8",
+    "activeCells": 18,
+    "cells": [
+      {
+        "lat_cell": 0,
+        "lon_cell": 0,
+        "complaints": 102,
+        "meanImpact": 2.843
+      },
+      {
+        "lat_cell": 0,
+        "lon_cell": 1,
+        "complaints": 192,
+        "meanImpact": 2.703
+      },
+      {
+        "lat_cell": 1,
+        "lon_cell": 2,
+        "complaints": 207,
+        "meanImpact": 2.58
+      },
+      {
+        "lat_cell": 1,
+        "lon_cell": 4,
+        "complaints": 324,
+        "meanImpact": 2.651
+      },
+      {
+        "lat_cell": 2,
+        "lon_cell": 3,
+        "complaints": 95,
+        "meanImpact": 2.737
+      },
+      {
+        "lat_cell": 2,
+        "lon_cell": 6,
+        "complaints": 268,
+        "meanImpact": 2.754
+      },
+      {
+        "lat_cell": 2,
+        "lon_cell": 7,
+        "complaints": 176,
+        "meanImpact": 2.75
+      },
+      {
+        "lat_cell": 3,
+        "lon_cell": 1,
+        "complaints": 89,
+        "meanImpact": 2.573
+      },
+      {
+        "lat_cell": 3,
+        "lon_cell": 2,
+        "complaints": 182,
+        "meanImpact": 2.61
+      },
+      {
+        "lat_cell": 3,
+        "lon_cell": 5,
+        "complaints": 170,
+        "meanImpact": 2.759
+      },
+      {
+        "lat_cell": 3,
+        "lon_cell": 7,
+        "complaints": 85,
+        "meanImpact": 2.929
+      },
+      {
+        "lat_cell": 4,
+        "lon_cell": 3,
+        "complaints": 209,
+        "meanImpact": 2.89
+      },
+      {
+        "lat_cell": 4,
+        "lon_cell": 5,
+        "complaints": 109,
+        "meanImpact": 2.706
+      },
+      {
+        "lat_cell": 5,
+        "lon_cell": 6,
+        "complaints": 98,
+        "meanImpact": 2.878
+      },
+      {
+        "lat_cell": 6,
+        "lon_cell": 2,
+        "complaints": 157,
+        "meanImpact": 2.796
+      },
+      {
+        "lat_cell": 6,
+        "lon_cell": 3,
+        "complaints": 141,
+        "meanImpact": 2.667
+      },
+      {
+        "lat_cell": 7,
+        "lon_cell": 5,
+        "complaints": 95,
+        "meanImpact": 2.747
+      },
+      {
+        "lat_cell": 7,
+        "lon_cell": 7,
+        "complaints": 141,
+        "meanImpact": 2.66
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "facility": "CL15",
+      "latitude": 28.62978,
+      "longitude": 77.37254,
+      "complaints": 95,
+      "meanImpact": 2.54737,
+      "localMoranScore": 2.18076
+    },
+    {
+      "facility": "Aryabhatt Bhawan II",
+      "latitude": 28.6297,
+      "longitude": 77.3729,
+      "complaints": 236,
+      "meanImpact": 2.63136,
+      "localMoranScore": 1.84649
+    },
+    {
+      "facility": "CL1",
+      "latitude": 28.62958,
+      "longitude": 77.37248,
+      "complaints": 91,
+      "meanImpact": 2.61538,
+      "localMoranScore": 1.50045
+    },
+    {
+      "facility": "Main Gate",
+      "latitude": 28.62938,
+      "longitude": 77.37238,
+      "complaints": 101,
+      "meanImpact": 2.78218,
+      "localMoranScore": 1.21057
+    },
+    {
+      "facility": "Parking",
+      "latitude": 28.62945,
+      "longitude": 77.37222,
+      "complaints": 102,
+      "meanImpact": 2.84314,
+      "localMoranScore": 1.17751
+    },
+    {
+      "facility": "Aryabhatt Bhawan III",
+      "latitude": 28.6299,
+      "longitude": 77.37315,
+      "complaints": 268,
+      "meanImpact": 2.75373,
+      "localMoranScore": 1.1084
+    },
+    {
+      "facility": "LRC",
+      "latitude": 28.63002,
+      "longitude": 77.37302,
+      "complaints": 170,
+      "meanImpact": 2.75882,
+      "localMoranScore": 0.62668
+    },
+    {
+      "facility": "CL3",
+      "latitude": 28.62964,
+      "longitude": 77.37261,
+      "complaints": 112,
+      "meanImpact": 2.60714,
+      "localMoranScore": 0.60534
+    }
+  ],
+  "privacy": "Coordinates are generalized and jittered; no person-level position is stored."
+}

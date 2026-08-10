@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<workbook original-version='18.1' source-build='2024.1.0' source-platform='win' version='18.1' xml:base='https://localhost:3000'>
+  <document-format-change-manifest>
+    <SheetIdentifierTracking ignorable='true' predowngraded='true' />
+  </document-format-change-manifest>
+  <preferences><preference name='ui.encoding.shelf.height' value='24' /></preferences>
+  <datasources>
+    <datasource caption='CampusLens Clean Complaints' inline='true' name='federated.campuslens' version='18.1'>
+      <connection class='textscan' directory='../data/processed' filename='complaints_clean.csv' password='' server='' />
+      <aliases enabled='yes' />
+      <column caption='Category' datatype='string' name='[category]' role='dimension' type='nominal' />
+      <column caption='Facility' datatype='string' name='[facility]' role='dimension' type='nominal' />
+      <column caption='Severity' datatype='string' name='[severity]' role='dimension' type='nominal' />
+      <column caption='Impact rating' datatype='integer' name='[impact_rating]' role='measure' type='quantitative' />
+      <column caption='Complaint ID' datatype='string' name='[complaint_id]' role='dimension' type='nominal' />
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Issue mix'>
+      <table>
+        <view><datasources><datasource caption='CampusLens Clean Complaints' name='federated.campuslens' /></datasources>
+          <datasource-dependencies datasource='federated.campuslens'>
+            <column datatype='string' name='[category]' role='dimension' type='nominal' />
+            <column aggregation='Count' datatype='string' name='[complaint_id]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation>Count</aggregation>
+        </view>
+        <style><style-rule element='worksheet'><format attr='display-tabs' value='false' /></style-rule></style>
+        <panes><pane selection-relaxation-option='selection-relaxation-allow'><view><breakdown value='auto' /></view>
+          <mark class='Automatic' /><encodings><color column='[federated.campuslens].[category]' /><text column='[federated.campuslens].[ct:complaint_id:qk]' /></encodings>
+        </pane></panes>
+        <rows>[federated.campuslens].[category]</rows><cols>[federated.campuslens].[ct:complaint_id:qk]</cols>
+      </table>
+    </worksheet>
+    <worksheet name='Facility hotspots'>
+      <table>
+        <view><datasources><datasource caption='CampusLens Clean Complaints' name='federated.campuslens' /></datasources>
+          <datasource-dependencies datasource='federated.campuslens'>
+            <column datatype='string' name='[facility]' role='dimension' type='nominal' />
+            <column aggregation='Count' datatype='string' name='[complaint_id]' role='measure' type='quantitative' />
+          </datasource-dependencies><aggregation>Count</aggregation></view>
+        <panes><pane selection-relaxation-option='selection-relaxation-allow'><view><breakdown value='auto' /></view><mark class='Bar' />
+          <encodings><color column='[federated.campuslens].[facility]' /></encodings></pane></panes>
+        <rows>[federated.campuslens].[facility]</rows><cols>[federated.campuslens].[ct:complaint_id:qk]</cols>
+      </table>
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard name='CampusLens Campus Health'>
+      <style><style-rule element='dashboard'><format attr='background-color' value='#15131d' /></style-rule></style>
+      <zones>
+        <zone h='50000' id='1' name='Issue mix' type-v2='worksheet' w='50000' x='0' y='0' />
+        <zone h='50000' id='2' name='Facility hotspots' type-v2='worksheet' w='50000' x='50000' y='0' />
+      </zones>
+      <size sizing-mode='fixed'><maxheight>900</maxheight><maxwidth>1440</maxwidth><minheight>900</minheight><minwidth>1440</minwidth></size>
+    </dashboard>
+  </dashboards>
+  <windows><window class='dashboard' name='CampusLens Campus Health'><viewpoints /></window></windows>
+</workbook>

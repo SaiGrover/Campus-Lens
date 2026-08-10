@@ -1,0 +1,5 @@
+when,then,support,confidence,lift,validationSupport,validationConfidence,validationLift,pValue,leverage,conviction,fdrQValue,stable
+"['Humidity=High', 'Source=web']",Category=Electrical,0.0136,0.2903,2.364,0.0141,0.25,2.221,0.004559502899273965,0.0078,1.236,0.009119,True
+"['FacilityType=food', 'Source=mobile']",Category=Canteen,0.0186,0.4512,3.237,0.0129,0.3056,2.102,0.009379930658502874,0.0129,1.568,0.012132,True
+"['FacilityType=lab', 'Occupancy=High']",Category=Network,0.0161,0.2783,1.631,0.0176,0.3333,1.777,0.012131930623357705,0.0062,1.149,0.012132,True
+"['FacilityType=academic', 'Occupancy=High']",Category=Infrastructure,0.0297,0.2658,1.754,0.027,0.2473,1.743,0.00285968795772138,0.0128,1.156,0.009119,True

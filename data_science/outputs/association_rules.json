@@ -1,284 +1,185 @@
 {
   "transactionCount": 2840,
-  "minSupport": 0.025,
-  "minConfidence": 0.52,
-  "aprioriFrequentItemsets": 503,
-  "fpGrowthFrequentItemsets": 503,
+  "trainingTransactions": 1987,
+  "validationTransactions": 853,
+  "minSupport": 0.012,
+  "minConfidence": 0.25,
+  "validationMinimumSupport": 0.006,
+  "lowSupportWarning": "Rules near the minimum support are exploratory and must pass holdout stability plus FDR control; lift alone is not treated as evidence.",
+  "constraint": "single category consequent; one or two non-category antecedents; at least one contextual condition",
+  "aprioriFrequentItemsets": 2007,
+  "fpGrowthFrequentItemsets": 2007,
   "algorithmsAgree": true,
+  "benchmarkMs": {
+    "Apriori": 65.51,
+    "FP-Growth": 11519.64
+  },
+  "redundancyPruned": 0,
+  "stableRuleCount": 4,
   "rules": [
     {
       "when": [
-        "Facility=H5 Boys Hostel"
+        "Humidity=High",
+        "Source=web"
       ],
       "then": "Category=Electrical",
-      "support": 0.0313,
-      "confidence": 0.9368,
-      "lift": 9.854,
-      "leverage": 0.0282,
-      "conviction": 14.328
+      "support": 0.0136,
+      "confidence": 0.2903,
+      "lift": 2.364,
+      "validationSupport": 0.0141,
+      "validationConfidence": 0.25,
+      "validationLift": 2.221,
+      "pValue": 0.004559502899273965,
+      "leverage": 0.0078,
+      "conviction": 1.236,
+      "fdrQValue": 0.009119,
+      "stable": true
     },
     {
       "when": [
-        "Facility=Aryabhatt Bhawan III"
-      ],
-      "then": "Category=Cleanliness",
-      "support": 0.0317,
-      "confidence": 0.9574,
-      "lift": 9.474,
-      "leverage": 0.0283,
-      "conviction": 21.125
-    },
-    {
-      "when": [
-        "Facility=H4 Boys Hostel"
-      ],
-      "then": "Category=Cleanliness",
-      "support": 0.0338,
-      "confidence": 0.932,
-      "lift": 9.223,
-      "leverage": 0.0301,
-      "conviction": 13.227
-    },
-    {
-      "when": [
-        "Facility=Washrooms"
-      ],
-      "then": "Category=Cleanliness",
-      "support": 0.0278,
-      "confidence": 0.908,
-      "lift": 8.986,
-      "leverage": 0.0247,
-      "conviction": 9.776
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen"
-      ],
-      "then": "Category=Canteen + Time=12-2",
-      "support": 0.0518,
-      "confidence": 0.7538,
-      "lift": 8.171,
-      "leverage": 0.0454,
-      "conviction": 3.688
-    },
-    {
-      "when": [
-        "Facility=Annapurna / Main Mess"
-      ],
-      "then": "Category=Canteen + Occupancy=High",
-      "support": 0.0377,
-      "confidence": 0.6407,
-      "lift": 7.946,
-      "leverage": 0.0329,
-      "conviction": 2.559
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen",
-        "Time=12-2"
+        "FacilityType=food",
+        "Source=mobile"
       ],
       "then": "Category=Canteen",
-      "support": 0.0518,
-      "confidence": 0.9363,
-      "lift": 7.619,
-      "leverage": 0.045,
-      "conviction": 13.771
+      "support": 0.0186,
+      "confidence": 0.4512,
+      "lift": 3.237,
+      "validationSupport": 0.0129,
+      "validationConfidence": 0.3056,
+      "validationLift": 2.102,
+      "pValue": 0.009379930658502874,
+      "leverage": 0.0129,
+      "conviction": 1.568,
+      "fdrQValue": 0.012132,
+      "stable": true
     },
     {
       "when": [
-        "Facility=Cafeteria / Canteen"
-      ],
-      "then": "Category=Canteen + Occupancy=High",
-      "support": 0.0419,
-      "confidence": 0.6103,
-      "lift": 7.568,
-      "leverage": 0.0364,
-      "conviction": 2.359
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0637,
-      "confidence": 0.9282,
-      "lift": 7.553,
-      "leverage": 0.0553,
-      "conviction": 12.217
-    },
-    {
-      "when": [
-        "Facility=Annapurna / Main Mess"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0546,
-      "confidence": 0.9281,
-      "lift": 7.553,
-      "leverage": 0.0474,
-      "conviction": 12.206
-    },
-    {
-      "when": [
-        "Facility=Annapurna / Main Mess",
-        "Time=12-2"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0398,
-      "confidence": 0.9262,
-      "lift": 7.537,
-      "leverage": 0.0345,
-      "conviction": 11.89
-    },
-    {
-      "when": [
-        "Facility=Annapurna / Main Mess",
-        "Occupancy=High"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0377,
-      "confidence": 0.9224,
-      "lift": 7.506,
-      "leverage": 0.0327,
-      "conviction": 11.305
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen",
-        "Humidity=Low"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.025,
-      "confidence": 0.9221,
-      "lift": 7.503,
-      "leverage": 0.0217,
-      "conviction": 11.256
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen",
-        "Humidity=Medium"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0282,
-      "confidence": 0.9195,
-      "lift": 7.483,
-      "leverage": 0.0244,
-      "conviction": 10.901
-    },
-    {
-      "when": [
-        "Facility=Cafeteria / Canteen",
-        "Occupancy=High"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0419,
-      "confidence": 0.9154,
-      "lift": 7.449,
-      "leverage": 0.0363,
-      "conviction": 10.366
-    },
-    {
-      "when": [
-        "Facility=Annapurna / Main Mess"
-      ],
-      "then": "Category=Canteen + Time=12-2",
-      "support": 0.0398,
-      "confidence": 0.6766,
-      "lift": 7.335,
-      "leverage": 0.0344,
-      "conviction": 2.807
-    },
-    {
-      "when": [
-        "Facility=CL22"
-      ],
-      "then": "Category=Electrical",
-      "support": 0.0324,
-      "confidence": 0.6174,
-      "lift": 6.495,
-      "leverage": 0.0274,
-      "conviction": 2.366
-    },
-    {
-      "when": [
-        "Facility=A2/2"
-      ],
-      "then": "Category=Infrastructure + Occupancy=Medium",
-      "support": 0.0313,
-      "confidence": 0.6096,
-      "lift": 5.168,
-      "leverage": 0.0253,
-      "conviction": 2.259
-    },
-    {
-      "when": [
-        "Facility=A2/2",
-        "Occupancy=Medium"
-      ],
-      "then": "Category=Infrastructure",
-      "support": 0.0313,
-      "confidence": 0.9368,
-      "lift": 4.811,
-      "leverage": 0.0248,
-      "conviction": 12.75
-    },
-    {
-      "when": [
-        "Facility=A2/2"
-      ],
-      "then": "Category=Infrastructure",
-      "support": 0.0468,
-      "confidence": 0.911,
-      "lift": 4.678,
-      "leverage": 0.0368,
-      "conviction": 9.044
-    },
-    {
-      "when": [
-        "Occupancy=High",
-        "Time=12-2"
-      ],
-      "then": "Category=Canteen",
-      "support": 0.0616,
-      "confidence": 0.5352,
-      "lift": 4.355,
-      "leverage": 0.0475,
-      "conviction": 1.887
-    },
-    {
-      "when": [
-        "Facility=LRC"
-      ],
-      "then": "Category=Network + Occupancy=High",
-      "support": 0.0363,
-      "confidence": 0.6023,
-      "lift": 3.586,
-      "leverage": 0.0262,
-      "conviction": 2.092
-    },
-    {
-      "when": [
-        "Facility=LRC",
+        "FacilityType=lab",
         "Occupancy=High"
       ],
       "then": "Category=Network",
-      "support": 0.0363,
-      "confidence": 0.9626,
-      "lift": 3.555,
-      "leverage": 0.0261,
-      "conviction": 19.507
+      "support": 0.0161,
+      "confidence": 0.2783,
+      "lift": 1.631,
+      "validationSupport": 0.0176,
+      "validationConfidence": 0.3333,
+      "validationLift": 1.777,
+      "pValue": 0.012131930623357705,
+      "leverage": 0.0062,
+      "conviction": 1.149,
+      "fdrQValue": 0.012132,
+      "stable": true
     },
     {
       "when": [
-        "Facility=LRC",
-        "Humidity=Low"
+        "FacilityType=academic",
+        "Occupancy=High"
       ],
-      "then": "Category=Network",
-      "support": 0.0278,
-      "confidence": 0.9518,
-      "lift": 3.515,
-      "leverage": 0.0199,
-      "conviction": 15.131
+      "then": "Category=Infrastructure",
+      "support": 0.0297,
+      "confidence": 0.2658,
+      "lift": 1.754,
+      "validationSupport": 0.027,
+      "validationConfidence": 0.2473,
+      "validationLift": 1.743,
+      "pValue": 0.00285968795772138,
+      "leverage": 0.0128,
+      "conviction": 1.156,
+      "fdrQValue": 0.009119,
+      "stable": true
+    }
+  ],
+  "correlationAnalysis": [
+    {
+      "left": "time_band",
+      "right": "occupancy_band",
+      "cramersV": 0.175
+    },
+    {
+      "left": "category",
+      "right": "facility_type",
+      "cramersV": 0.0962
+    },
+    {
+      "left": "category",
+      "right": "humidity_band",
+      "cramersV": 0.0884
+    },
+    {
+      "left": "category",
+      "right": "time_band",
+      "cramersV": 0.0553
+    },
+    {
+      "left": "category",
+      "right": "occupancy_band",
+      "cramersV": 0.0525
+    },
+    {
+      "left": "day_name",
+      "right": "humidity_band",
+      "cramersV": 0.0457
+    },
+    {
+      "left": "facility_type",
+      "right": "time_band",
+      "cramersV": 0.0315
+    },
+    {
+      "left": "occupancy_band",
+      "right": "source_system",
+      "cramersV": 0.0314
+    },
+    {
+      "left": "facility_type",
+      "right": "humidity_band",
+      "cramersV": 0.0265
+    },
+    {
+      "left": "category",
+      "right": "day_name",
+      "cramersV": 0.0213
+    },
+    {
+      "left": "day_name",
+      "right": "severity",
+      "cramersV": 0.0208
+    },
+    {
+      "left": "severity",
+      "right": "source_system",
+      "cramersV": 0.0186
+    },
+    {
+      "left": "humidity_band",
+      "right": "severity",
+      "cramersV": 0.013
+    },
+    {
+      "left": "category",
+      "right": "source_system",
+      "cramersV": 0.0113
+    },
+    {
+      "left": "facility_type",
+      "right": "severity",
+      "cramersV": 0.0104
+    },
+    {
+      "left": "occupancy_band",
+      "right": "humidity_band",
+      "cramersV": 0.0081
+    },
+    {
+      "left": "category",
+      "right": "severity",
+      "cramersV": 0.005
+    },
+    {
+      "left": "time_band",
+      "right": "severity",
+      "cramersV": 0.0037
     }
   ]
 }

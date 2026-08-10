@@ -20,6 +20,22 @@ jobs:
           node-version: "24"
           cache: npm
       - run: npm ci
-      - run: npm run lint
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
       - run: npm run data:build
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+      - run: Rscript --vanilla data_science/r/association_rules.R
+      - run: python -m data_science.compare_rules
+      - name: Run Weka unseen-template experiment
+        run: |
+          curl -L --fail --retry 3 -o /tmp/weka.zip "https://downloads.sourceforge.net/project/weka/weka-3-8/3.8.7/weka-3-8-7.zip?download"
+          unzip -q /tmp/weka.zip -d /tmp
+          java --add-opens java.base/java.lang=ALL-UNNAMED -Xmx2g -cp /tmp/weka-3-8-7/weka.jar weka.classifiers.meta.FilteredClassifier \
+            -t data_science/outputs/weka-development.arff -T data_science/outputs/weka-unseen-template-test.arff -c last -v -o \
+            -F "weka.filters.unsupervised.attribute.StringToWordVector -R first -W 3000 -prune-rate -1.0 -N 1 -L" \
+            -W weka.classifiers.bayes.NaiveBayes --
       - run: npm test

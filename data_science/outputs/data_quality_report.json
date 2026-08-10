@@ -7,13 +7,28 @@
   },
   "missingAfter": 0,
   "duplicatesRemoved": 0,
+  "uniqueTextRate": 1.0,
+  "hierarchyValidRate": 1.0,
+  "weekdayConsistencyRate": 1.0,
+  "integratedSources": [
+    "student complaint stream",
+    "campus service web events",
+    "facility master"
+  ],
   "transformations": [
     "lowercase and punctuation normalization",
-    "category-mode location imputation",
-    "median occupancy imputation",
+    "explicit unknown-member location imputation",
+    "facility-type median occupancy imputation",
+    "validated campus concept hierarchy",
     "min-max impact normalization",
     "z-score occupancy and humidity standardization",
     "time, occupancy and humidity discretization",
-    "10% stratified analysis sample"
-  ]
+    "daily web-service feature integration",
+    "template-group evaluation folds",
+    "10% reproducible analysis sample"
+  ],
+  "etlVsElt": {
+    "ETL": "CSV sources are cleaned, validated and integrated before SQLite warehouse loading.",
+    "ELT": "Raw operational rows are retained in PostgreSQL and transformed into governed live marts after loading."
+  }
 }

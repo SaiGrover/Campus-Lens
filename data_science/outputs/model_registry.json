@@ -1,0 +1,14 @@
+{
+  "modelName": "Neural Network",
+  "version": "2.0.0",
+  "stage": "academic-benchmark",
+  "trainedAt": "2026-08-10T09:15:57.659774+00:00",
+  "datasetSha256": "0b3b59666f717a2cb4d57c10d487165a95a6c0d8c58ce1091933249f689da1a7",
+  "evaluationProtocol": "model selection on template fold 3; final evaluation on untouched template fold 4; grouped 4-fold CV on development data",
+  "approval": "human review required",
+  "monitoring": {
+    "driftMetric": "Jensen-Shannon divergence",
+    "driftWindows": 0,
+    "retrainingTrigger": "review after any sustained drift flag"
+  }
+}

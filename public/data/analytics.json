@@ -1,100 +1,101 @@
 {
-  "generatedAt": "2026-08-09T19:05:24.377814+00:00",
-  "source": "data/processed/complaints_clean.csv",
+  "generatedAt": "2026-08-10T09:15:57.622135+00:00",
+  "pipelineVersion": "2.0.0",
+  "source": "integrated multi-source benchmark",
   "datasetCount": 2840,
-  "campusHealthScore": 56,
-  "criticalCount": 564,
-  "unresolvedCount": 2019,
-  "meanResolutionHours": 4.97,
+  "campusHealthScore": 67,
+  "criticalCount": 471,
+  "unresolvedCount": 1877,
+  "meanResolutionHours": 6.0,
   "statusCounts": {
-    "Resolved": 821,
-    "Open": 742,
-    "In Progress": 606,
-    "Verified": 473,
-    "Escalated": 198
+    "Resolved": 963,
+    "In Progress": 641,
+    "Open": 620,
+    "Verified": 438,
+    "Escalated": 178
   },
   "issueMix": [
     {
       "name": "Network",
-      "count": 769,
-      "pct": 27.1
+      "count": 499,
+      "pct": 17.6
     },
     {
       "name": "Infrastructure",
-      "count": 553,
-      "pct": 19.5
+      "count": 422,
+      "pct": 14.9
     },
     {
       "name": "Cleanliness",
-      "count": 287,
-      "pct": 10.1
+      "count": 314,
+      "pct": 11.1
     },
     {
       "name": "Canteen",
-      "count": 349,
-      "pct": 12.3
+      "count": 401,
+      "pct": 14.1
     },
     {
       "name": "Electrical",
-      "count": 270,
-      "pct": 9.5
+      "count": 340,
+      "pct": 12.0
     },
     {
       "name": "Lab Equipment",
-      "count": 302,
-      "pct": 10.6
+      "count": 332,
+      "pct": 11.7
     },
     {
       "name": "Water",
-      "count": 193,
-      "pct": 6.8
+      "count": 292,
+      "pct": 10.3
     },
     {
       "name": "Other",
-      "count": 117,
-      "pct": 4.1
+      "count": 240,
+      "pct": 8.5
     }
   ],
   "hotspots": [
     {
-      "name": "CL3",
-      "count": 384,
+      "name": "Aryabhatt Bhawan III",
+      "count": 268,
       "pct": 100.0
     },
     {
       "name": "Aryabhatt Bhawan II",
-      "count": 334,
-      "pct": 87.0
+      "count": 236,
+      "pct": 88.1
     },
     {
-      "name": "CL15",
-      "count": 283,
-      "pct": 73.7
+      "name": "A2/2",
+      "count": 209,
+      "pct": 78.0
     },
     {
       "name": "A2/1",
-      "count": 229,
-      "pct": 59.6
-    },
-    {
-      "name": "Cafeteria / Canteen",
-      "count": 195,
-      "pct": 50.8
+      "count": 182,
+      "pct": 67.9
     },
     {
       "name": "LRC",
-      "count": 171,
-      "pct": 44.5
+      "count": 170,
+      "pct": 63.4
     },
     {
-      "name": "Annapurna / Main Mess",
-      "count": 167,
-      "pct": 43.5
+      "name": "H4 Boys Hostel",
+      "count": 157,
+      "pct": 58.6
     },
     {
-      "name": "CL22",
-      "count": 149,
-      "pct": 38.8
+      "name": "Sports Complex",
+      "count": 141,
+      "pct": 52.6
+    },
+    {
+      "name": "H5 Boys Hostel",
+      "count": 141,
+      "pct": 52.6
     }
   ],
   "heatmap": {
@@ -107,109 +108,210 @@
     ],
     "rows": [
       {
-        "place": "CL3",
+        "place": "Aryabhatt Bhawan III",
         "values": [
-          159,
-          93,
-          58,
-          43,
-          31
+          78,
+          42,
+          51,
+          47,
+          50
         ]
       },
       {
         "place": "Aryabhatt Bhawan II",
         "values": [
-          135,
-          81,
-          70,
-          26,
-          22
+          65,
+          42,
+          41,
+          36,
+          52
         ]
       },
       {
-        "place": "CL15",
+        "place": "A2/2",
         "values": [
-          128,
-          89,
+          65,
+          35,
+          32,
           45,
-          11,
-          10
+          32
         ]
       },
       {
         "place": "A2/1",
         "values": [
-          72,
-          36,
-          46,
+          49,
+          30,
           37,
-          38
+          26,
+          40
         ]
       },
       {
-        "place": "Cafeteria / Canteen",
+        "place": "LRC",
         "values": [
-          0,
-          38,
-          157,
-          0,
-          0
+          52,
+          27,
+          31,
+          32,
+          28
         ]
       }
     ]
   },
   "models": {
+    "evaluationProtocol": "model selection on template fold 3; final evaluation on untouched template fold 4; grouped 4-fold CV on development data",
     "datasetSize": 2840,
-    "trainingSize": 2272,
-    "testSize": 568,
+    "trainingSize": 1702,
+    "validationSize": 605,
+    "testSize": 533,
     "randomSeed": 313,
-    "featureCount": 669,
+    "featureCount": 2689,
     "models": [
       {
-        "name": "Naive Bayes",
-        "accuracy": 94.89,
-        "precision": 94.93,
-        "recall": 94.89,
-        "f1": 94.86,
+        "name": "Neural Network",
+        "accuracy": 56.66,
+        "precision": 70.49,
+        "recall": 56.66,
+        "f1": 57.39,
+        "macroF1": 57.68,
+        "groupedCvMacroF1": 45.16,
+        "groupedCvStd": 3.59,
+        "validationMacroF1": 61.16,
         "best": true
       },
       {
-        "name": "SVM",
-        "accuracy": 94.89,
-        "precision": 94.93,
-        "recall": 94.89,
-        "f1": 94.86
+        "name": "Naive Bayes",
+        "accuracy": 57.22,
+        "precision": 61.77,
+        "recall": 57.22,
+        "f1": 57.45,
+        "macroF1": 57.22,
+        "groupedCvMacroF1": 46.74,
+        "groupedCvStd": 4.28,
+        "validationMacroF1": 59.22
       },
       {
-        "name": "Neural Network",
-        "accuracy": 94.72,
-        "precision": 94.74,
-        "recall": 94.72,
-        "f1": 94.66
-      },
-      {
-        "name": "kNN",
-        "accuracy": 94.01,
-        "precision": 94.02,
-        "recall": 94.01,
-        "f1": 93.96
-      },
-      {
-        "name": "Random Forest",
-        "accuracy": 93.49,
-        "precision": 93.51,
-        "recall": 93.49,
-        "f1": 93.42
+        "name": "Extra Trees Ensemble",
+        "accuracy": 62.1,
+        "precision": 79.17,
+        "recall": 62.1,
+        "f1": 66.57,
+        "macroF1": 64.49,
+        "groupedCvMacroF1": 55.29,
+        "groupedCvStd": 7.88,
+        "validationMacroF1": 57.05
       },
       {
         "name": "ID3",
-        "accuracy": 92.96,
-        "precision": 92.92,
-        "recall": 92.96,
-        "f1": 92.83
+        "accuracy": 55.16,
+        "precision": 71.91,
+        "recall": 55.16,
+        "f1": 57.58,
+        "macroF1": 58.67,
+        "groupedCvMacroF1": 48.11,
+        "groupedCvStd": 8.76,
+        "validationMacroF1": 55.38
+      },
+      {
+        "name": "Random Forest",
+        "accuracy": 60.98,
+        "precision": 66.63,
+        "recall": 60.98,
+        "f1": 62.31,
+        "macroF1": 62.21,
+        "groupedCvMacroF1": 57.9,
+        "groupedCvStd": 8.18,
+        "validationMacroF1": 55.09
+      },
+      {
+        "name": "kNN",
+        "accuracy": 56.66,
+        "precision": 57.07,
+        "recall": 56.66,
+        "f1": 56.6,
+        "macroF1": 56.31,
+        "groupedCvMacroF1": 46.57,
+        "groupedCvStd": 4.69,
+        "validationMacroF1": 54.8
+      },
+      {
+        "name": "SVM",
+        "accuracy": 50.28,
+        "precision": 55.1,
+        "recall": 50.28,
+        "f1": 49.95,
+        "macroF1": 49.81,
+        "groupedCvMacroF1": 33.61,
+        "groupedCvStd": 4.07,
+        "validationMacroF1": 53.39
       }
     ],
-    "bestModel": "Naive Bayes",
+    "bestModel": "Neural Network",
+    "baseline": {
+      "name": "Most frequent class",
+      "macroF1": 3.71
+    },
+    "macroF1ConfidenceInterval95": [
+      53.06,
+      61.54
+    ],
+    "mcnemarVsRunnerUp": {
+      "runnerUp": "Naive Bayes",
+      "bestOnlyCorrect": 22,
+      "runnerUpOnlyCorrect": 25,
+      "pValue": 0.77087
+    },
+    "perClass": {
+      "Network": {
+        "precision": 100.0,
+        "recall": 44.09,
+        "f1-score": 61.19,
+        "support": 93
+      },
+      "Infrastructure": {
+        "precision": 59.72,
+        "recall": 55.13,
+        "f1-score": 57.33,
+        "support": 78
+      },
+      "Cleanliness": {
+        "precision": 38.37,
+        "recall": 50.77,
+        "f1-score": 43.71,
+        "support": 65
+      },
+      "Canteen": {
+        "precision": 43.2,
+        "recall": 77.14,
+        "f1-score": 55.38,
+        "support": 70
+      },
+      "Electrical": {
+        "precision": 44.78,
+        "recall": 85.71,
+        "f1-score": 58.82,
+        "support": 70
+      },
+      "Lab Equipment": {
+        "precision": 96.3,
+        "recall": 40.62,
+        "f1-score": 57.14,
+        "support": 64
+      },
+      "Water": {
+        "precision": 100.0,
+        "recall": 46.43,
+        "f1-score": 63.41,
+        "support": 56
+      },
+      "Other": {
+        "precision": 86.36,
+        "recall": 51.35,
+        "f1-score": 64.41,
+        "support": 37
+      }
+    },
     "confusionMatrix": {
       "labels": [
         "Network",
@@ -223,31 +325,21 @@
       ],
       "values": [
         [
-          151,
-          1,
-          0,
-          0,
-          0,
-          1,
-          1,
-          0
-        ],
-        [
-          2,
-          109,
-          0,
-          0,
-          0,
+          41,
+          9,
+          19,
+          14,
+          10,
           0,
           0,
           0
         ],
         [
-          2,
-          1,
-          53,
-          1,
           0,
+          43,
+          9,
+          19,
+          7,
           0,
           0,
           0
@@ -255,492 +347,1654 @@
         [
           0,
           2,
-          0,
-          66,
-          0,
+          33,
+          21,
+          7,
           1,
           0,
           1
         ],
         [
-          0,
-          1,
-          0,
-          1,
-          51,
-          0,
-          0,
-          1
-        ],
-        [
-          1,
-          0,
-          0,
-          1,
-          1,
-          56,
-          0,
-          1
-        ],
-        [
-          1,
-          0,
-          0,
-          1,
-          1,
-          0,
-          36,
-          0
-        ],
-        [
-          2,
-          0,
           0,
           4,
+          6,
+          54,
+          5,
           0,
           0,
+          1
+        ],
+        [
           0,
-          17
+          7,
+          1,
+          2,
+          60,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          4,
+          14,
+          7,
+          13,
+          26,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          2,
+          1,
+          25,
+          0,
+          26,
+          1
+        ],
+        [
+          0,
+          2,
+          2,
+          7,
+          7,
+          0,
+          0,
+          19
         ]
       ]
     },
+    "subgroupPerformance": {
+      "source_system": [
+        {
+          "group": "kiosk",
+          "support": 41,
+          "accuracy": 58.54,
+          "macroF1": 60.28,
+          "macroF1GapFromOverall": 2.6
+        },
+        {
+          "group": "mobile",
+          "support": 297,
+          "accuracy": 55.89,
+          "macroF1": 56.89,
+          "macroF1GapFromOverall": -0.79
+        },
+        {
+          "group": "web",
+          "support": 195,
+          "accuracy": 57.44,
+          "macroF1": 57.55,
+          "macroF1GapFromOverall": -0.13
+        }
+      ],
+      "facility_type": [
+        {
+          "group": "academic",
+          "support": 174,
+          "accuracy": 57.47,
+          "macroF1": 57.92,
+          "macroF1GapFromOverall": 0.25
+        },
+        {
+          "group": "common",
+          "support": 11,
+          "accuracy": 27.27,
+          "macroF1": 17.78,
+          "macroF1GapFromOverall": -39.9
+        },
+        {
+          "group": "food",
+          "support": 44,
+          "accuracy": 59.09,
+          "macroF1": 53.13,
+          "macroF1GapFromOverall": -4.55
+        },
+        {
+          "group": "hostel",
+          "support": 69,
+          "accuracy": 43.48,
+          "macroF1": 41.38,
+          "macroF1GapFromOverall": -16.3
+        },
+        {
+          "group": "lab",
+          "support": 101,
+          "accuracy": 65.35,
+          "macroF1": 65.49,
+          "macroF1GapFromOverall": 7.81
+        },
+        {
+          "group": "library",
+          "support": 27,
+          "accuracy": 55.56,
+          "macroF1": 49.75,
+          "macroF1GapFromOverall": -7.92
+        },
+        {
+          "group": "office",
+          "support": 18,
+          "accuracy": 50.0,
+          "macroF1": 47.62,
+          "macroF1GapFromOverall": -10.06
+        },
+        {
+          "group": "outdoor",
+          "support": 36,
+          "accuracy": 63.89,
+          "macroF1": 62.33,
+          "macroF1GapFromOverall": 4.65
+        },
+        {
+          "group": "sports",
+          "support": 25,
+          "accuracy": 48.0,
+          "macroF1": 47.1,
+          "macroF1GapFromOverall": -10.57
+        },
+        {
+          "group": "utility",
+          "support": 28,
+          "accuracy": 64.29,
+          "macroF1": 63.42,
+          "macroF1GapFromOverall": 5.74
+        }
+      ]
+    },
+    "leakageAudit": {
+      "exactTestTextSeenInDevelopmentRate": 0.0,
+      "templateGroupsOverlap": 0
+    },
+    "calibration": {
+      "browserModel": "Naive Bayes",
+      "temperature": 0.9,
+      "validationLogLoss": 1.1868
+    },
+    "hyperparameters": {
+      "Naive Bayes": {
+        "alpha": 0.45,
+        "class_prior": null,
+        "fit_prior": true,
+        "force_alpha": true
+      },
+      "kNN": {
+        "algorithm": "auto",
+        "leaf_size": 30,
+        "metric": "cosine",
+        "metric_params": null,
+        "n_jobs": null,
+        "n_neighbors": 9,
+        "p": 2,
+        "weights": "distance"
+      },
+      "ID3": {
+        "ccp_alpha": 0.0,
+        "class_weight": null,
+        "criterion": "entropy",
+        "max_depth": 28,
+        "max_features": null,
+        "max_leaf_nodes": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 3,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "random_state": 313,
+        "splitter": "best"
+      },
+      "SVM": {
+        "C": 1.0,
+        "class_weight": null,
+        "dual": "auto",
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "loss": "squared_hinge",
+        "max_iter": 1000,
+        "multi_class": "ovr",
+        "penalty": "l2",
+        "random_state": 313,
+        "tol": 0.0001,
+        "verbose": 0
+      },
+      "Random Forest": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": null,
+        "criterion": "gini",
+        "max_depth": 32,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 180,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 313,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "Neural Network": {
+        "activation": "relu",
+        "alpha": 0.0001,
+        "batch_size": "auto",
+        "beta_1": 0.9,
+        "beta_2": 0.999,
+        "early_stopping": true,
+        "epsilon": 1e-08,
+        "hidden_layer_sizes": [
+          48
+        ],
+        "learning_rate": "constant",
+        "learning_rate_init": 0.001,
+        "max_fun": 15000,
+        "max_iter": 260,
+        "momentum": 0.9,
+        "n_iter_no_change": 10,
+        "nesterovs_momentum": true,
+        "power_t": 0.5,
+        "random_state": 313,
+        "shuffle": true,
+        "solver": "adam",
+        "tol": 0.0001,
+        "validation_fraction": 0.1,
+        "verbose": false,
+        "warm_start": false
+      },
+      "Extra Trees Ensemble": {
+        "bootstrap": false,
+        "ccp_alpha": 0.0,
+        "class_weight": null,
+        "criterion": "gini",
+        "max_depth": null,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 180,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 313,
+        "verbose": 0,
+        "warm_start": false
+      }
+    },
     "regression": [
       {
+        "name": "Mean baseline",
+        "rmse": 2.209,
+        "mae": 1.514,
+        "r2": -0.003,
+        "baseline": true
+      },
+      {
         "name": "Linear Regression",
-        "rmse": 0.621,
+        "rmse": 2.206,
+        "mae": 1.504,
+        "r2": -0.0,
+        "validationRmse": 2.063
+      },
+      {
+        "name": "Random Forest Regressor",
+        "rmse": 2.116,
+        "mae": 1.508,
+        "r2": 0.079,
+        "validationRmse": 2.04,
         "best": true
       },
       {
         "name": "Neural Network Backpropagation",
-        "rmse": 0.631
+        "rmse": 2.151,
+        "mae": 1.547,
+        "r2": 0.049,
+        "validationRmse": 2.063
+      }
+    ]
+  },
+  "regression": {
+    "protocol": "chronological 70/15/15 split; model chosen on validation period and evaluated once on future holdout",
+    "trainSize": 1987,
+    "validationSize": 427,
+    "testSize": 426,
+    "models": [
+      {
+        "name": "Mean baseline",
+        "rmse": 2.209,
+        "mae": 1.514,
+        "r2": -0.003,
+        "baseline": true
+      },
+      {
+        "name": "Linear Regression",
+        "rmse": 2.206,
+        "mae": 1.504,
+        "r2": -0.0,
+        "validationRmse": 2.063
       },
       {
         "name": "Random Forest Regressor",
-        "rmse": 0.663
+        "rmse": 2.116,
+        "mae": 1.508,
+        "r2": 0.079,
+        "validationRmse": 2.04,
+        "best": true
+      },
+      {
+        "name": "Neural Network Backpropagation",
+        "rmse": 2.151,
+        "mae": 1.547,
+        "r2": 0.049,
+        "validationRmse": 2.063
+      }
+    ],
+    "bestModel": "Random Forest Regressor",
+    "residualQuantiles": {
+      "0.05": -3.129,
+      "0.25": -1.376,
+      "0.5": -0.342,
+      "0.75": 0.795,
+      "0.95": 3.036
+    },
+    "predictionInterval90HalfWidth": 3.049,
+    "featureImportance": [
+      {
+        "feature": "occupancy_pct",
+        "importance": 0.3214
+      },
+      {
+        "feature": "humidity_pct",
+        "importance": 0.1337
+      },
+      {
+        "feature": "mean_dwell_seconds",
+        "importance": 0.1155
+      },
+      {
+        "feature": "hour",
+        "importance": 0.0838
+      },
+      {
+        "feature": "impact_rating",
+        "importance": 0.0683
+      },
+      {
+        "feature": "recurring",
+        "importance": 0.0303
+      },
+      {
+        "feature": "service_sessions",
+        "importance": 0.0271
+      },
+      {
+        "feature": "facility_type_academic",
+        "importance": 0.0188
+      },
+      {
+        "feature": "status_In Progress",
+        "importance": 0.0159
+      },
+      {
+        "feature": "status_Resolved",
+        "importance": 0.0158
+      },
+      {
+        "feature": "facility_type_lab",
+        "importance": 0.0138
+      },
+      {
+        "feature": "facility_type_hostel",
+        "importance": 0.0136
       }
     ]
   },
   "association": {
     "transactionCount": 2840,
-    "minSupport": 0.025,
-    "minConfidence": 0.52,
-    "aprioriFrequentItemsets": 503,
-    "fpGrowthFrequentItemsets": 503,
+    "trainingTransactions": 1987,
+    "validationTransactions": 853,
+    "minSupport": 0.012,
+    "minConfidence": 0.25,
+    "validationMinimumSupport": 0.006,
+    "lowSupportWarning": "Rules near the minimum support are exploratory and must pass holdout stability plus FDR control; lift alone is not treated as evidence.",
+    "constraint": "single category consequent; one or two non-category antecedents; at least one contextual condition",
+    "aprioriFrequentItemsets": 2007,
+    "fpGrowthFrequentItemsets": 2007,
     "algorithmsAgree": true,
+    "benchmarkMs": {
+      "Apriori": 65.51,
+      "FP-Growth": 11519.64
+    },
+    "redundancyPruned": 0,
+    "stableRuleCount": 4,
     "rules": [
       {
         "when": [
-          "Facility=H5 Boys Hostel"
+          "Humidity=High",
+          "Source=web"
         ],
         "then": "Category=Electrical",
-        "support": 0.0313,
-        "confidence": 0.9368,
-        "lift": 9.854,
-        "leverage": 0.0282,
-        "conviction": 14.328
+        "support": 0.0136,
+        "confidence": 0.2903,
+        "lift": 2.364,
+        "validationSupport": 0.0141,
+        "validationConfidence": 0.25,
+        "validationLift": 2.221,
+        "pValue": 0.004559502899273965,
+        "leverage": 0.0078,
+        "conviction": 1.236,
+        "fdrQValue": 0.009119,
+        "stable": true
       },
       {
         "when": [
-          "Facility=Aryabhatt Bhawan III"
-        ],
-        "then": "Category=Cleanliness",
-        "support": 0.0317,
-        "confidence": 0.9574,
-        "lift": 9.474,
-        "leverage": 0.0283,
-        "conviction": 21.125
-      },
-      {
-        "when": [
-          "Facility=H4 Boys Hostel"
-        ],
-        "then": "Category=Cleanliness",
-        "support": 0.0338,
-        "confidence": 0.932,
-        "lift": 9.223,
-        "leverage": 0.0301,
-        "conviction": 13.227
-      },
-      {
-        "when": [
-          "Facility=Washrooms"
-        ],
-        "then": "Category=Cleanliness",
-        "support": 0.0278,
-        "confidence": 0.908,
-        "lift": 8.986,
-        "leverage": 0.0247,
-        "conviction": 9.776
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen"
-        ],
-        "then": "Category=Canteen + Time=12-2",
-        "support": 0.0518,
-        "confidence": 0.7538,
-        "lift": 8.171,
-        "leverage": 0.0454,
-        "conviction": 3.688
-      },
-      {
-        "when": [
-          "Facility=Annapurna / Main Mess"
-        ],
-        "then": "Category=Canteen + Occupancy=High",
-        "support": 0.0377,
-        "confidence": 0.6407,
-        "lift": 7.946,
-        "leverage": 0.0329,
-        "conviction": 2.559
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen",
-          "Time=12-2"
+          "FacilityType=food",
+          "Source=mobile"
         ],
         "then": "Category=Canteen",
-        "support": 0.0518,
-        "confidence": 0.9363,
-        "lift": 7.619,
-        "leverage": 0.045,
-        "conviction": 13.771
+        "support": 0.0186,
+        "confidence": 0.4512,
+        "lift": 3.237,
+        "validationSupport": 0.0129,
+        "validationConfidence": 0.3056,
+        "validationLift": 2.102,
+        "pValue": 0.009379930658502874,
+        "leverage": 0.0129,
+        "conviction": 1.568,
+        "fdrQValue": 0.012132,
+        "stable": true
       },
       {
         "when": [
-          "Facility=Cafeteria / Canteen"
-        ],
-        "then": "Category=Canteen + Occupancy=High",
-        "support": 0.0419,
-        "confidence": 0.6103,
-        "lift": 7.568,
-        "leverage": 0.0364,
-        "conviction": 2.359
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0637,
-        "confidence": 0.9282,
-        "lift": 7.553,
-        "leverage": 0.0553,
-        "conviction": 12.217
-      },
-      {
-        "when": [
-          "Facility=Annapurna / Main Mess"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0546,
-        "confidence": 0.9281,
-        "lift": 7.553,
-        "leverage": 0.0474,
-        "conviction": 12.206
-      },
-      {
-        "when": [
-          "Facility=Annapurna / Main Mess",
-          "Time=12-2"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0398,
-        "confidence": 0.9262,
-        "lift": 7.537,
-        "leverage": 0.0345,
-        "conviction": 11.89
-      },
-      {
-        "when": [
-          "Facility=Annapurna / Main Mess",
-          "Occupancy=High"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0377,
-        "confidence": 0.9224,
-        "lift": 7.506,
-        "leverage": 0.0327,
-        "conviction": 11.305
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen",
-          "Humidity=Low"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.025,
-        "confidence": 0.9221,
-        "lift": 7.503,
-        "leverage": 0.0217,
-        "conviction": 11.256
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen",
-          "Humidity=Medium"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0282,
-        "confidence": 0.9195,
-        "lift": 7.483,
-        "leverage": 0.0244,
-        "conviction": 10.901
-      },
-      {
-        "when": [
-          "Facility=Cafeteria / Canteen",
-          "Occupancy=High"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0419,
-        "confidence": 0.9154,
-        "lift": 7.449,
-        "leverage": 0.0363,
-        "conviction": 10.366
-      },
-      {
-        "when": [
-          "Facility=Annapurna / Main Mess"
-        ],
-        "then": "Category=Canteen + Time=12-2",
-        "support": 0.0398,
-        "confidence": 0.6766,
-        "lift": 7.335,
-        "leverage": 0.0344,
-        "conviction": 2.807
-      },
-      {
-        "when": [
-          "Facility=CL22"
-        ],
-        "then": "Category=Electrical",
-        "support": 0.0324,
-        "confidence": 0.6174,
-        "lift": 6.495,
-        "leverage": 0.0274,
-        "conviction": 2.366
-      },
-      {
-        "when": [
-          "Facility=A2/2"
-        ],
-        "then": "Category=Infrastructure + Occupancy=Medium",
-        "support": 0.0313,
-        "confidence": 0.6096,
-        "lift": 5.168,
-        "leverage": 0.0253,
-        "conviction": 2.259
-      },
-      {
-        "when": [
-          "Facility=A2/2",
-          "Occupancy=Medium"
-        ],
-        "then": "Category=Infrastructure",
-        "support": 0.0313,
-        "confidence": 0.9368,
-        "lift": 4.811,
-        "leverage": 0.0248,
-        "conviction": 12.75
-      },
-      {
-        "when": [
-          "Facility=A2/2"
-        ],
-        "then": "Category=Infrastructure",
-        "support": 0.0468,
-        "confidence": 0.911,
-        "lift": 4.678,
-        "leverage": 0.0368,
-        "conviction": 9.044
-      },
-      {
-        "when": [
-          "Occupancy=High",
-          "Time=12-2"
-        ],
-        "then": "Category=Canteen",
-        "support": 0.0616,
-        "confidence": 0.5352,
-        "lift": 4.355,
-        "leverage": 0.0475,
-        "conviction": 1.887
-      },
-      {
-        "when": [
-          "Facility=LRC"
-        ],
-        "then": "Category=Network + Occupancy=High",
-        "support": 0.0363,
-        "confidence": 0.6023,
-        "lift": 3.586,
-        "leverage": 0.0262,
-        "conviction": 2.092
-      },
-      {
-        "when": [
-          "Facility=LRC",
+          "FacilityType=lab",
           "Occupancy=High"
         ],
         "then": "Category=Network",
-        "support": 0.0363,
-        "confidence": 0.9626,
-        "lift": 3.555,
-        "leverage": 0.0261,
-        "conviction": 19.507
+        "support": 0.0161,
+        "confidence": 0.2783,
+        "lift": 1.631,
+        "validationSupport": 0.0176,
+        "validationConfidence": 0.3333,
+        "validationLift": 1.777,
+        "pValue": 0.012131930623357705,
+        "leverage": 0.0062,
+        "conviction": 1.149,
+        "fdrQValue": 0.012132,
+        "stable": true
       },
       {
         "when": [
-          "Facility=LRC",
-          "Humidity=Low"
+          "FacilityType=academic",
+          "Occupancy=High"
         ],
-        "then": "Category=Network",
-        "support": 0.0278,
-        "confidence": 0.9518,
-        "lift": 3.515,
-        "leverage": 0.0199,
-        "conviction": 15.131
+        "then": "Category=Infrastructure",
+        "support": 0.0297,
+        "confidence": 0.2658,
+        "lift": 1.754,
+        "validationSupport": 0.027,
+        "validationConfidence": 0.2473,
+        "validationLift": 1.743,
+        "pValue": 0.00285968795772138,
+        "leverage": 0.0128,
+        "conviction": 1.156,
+        "fdrQValue": 0.009119,
+        "stable": true
+      }
+    ],
+    "correlationAnalysis": [
+      {
+        "left": "time_band",
+        "right": "occupancy_band",
+        "cramersV": 0.175
+      },
+      {
+        "left": "category",
+        "right": "facility_type",
+        "cramersV": 0.0962
+      },
+      {
+        "left": "category",
+        "right": "humidity_band",
+        "cramersV": 0.0884
+      },
+      {
+        "left": "category",
+        "right": "time_band",
+        "cramersV": 0.0553
+      },
+      {
+        "left": "category",
+        "right": "occupancy_band",
+        "cramersV": 0.0525
+      },
+      {
+        "left": "day_name",
+        "right": "humidity_band",
+        "cramersV": 0.0457
+      },
+      {
+        "left": "facility_type",
+        "right": "time_band",
+        "cramersV": 0.0315
+      },
+      {
+        "left": "occupancy_band",
+        "right": "source_system",
+        "cramersV": 0.0314
+      },
+      {
+        "left": "facility_type",
+        "right": "humidity_band",
+        "cramersV": 0.0265
+      },
+      {
+        "left": "category",
+        "right": "day_name",
+        "cramersV": 0.0213
+      },
+      {
+        "left": "day_name",
+        "right": "severity",
+        "cramersV": 0.0208
+      },
+      {
+        "left": "severity",
+        "right": "source_system",
+        "cramersV": 0.0186
+      },
+      {
+        "left": "humidity_band",
+        "right": "severity",
+        "cramersV": 0.013
+      },
+      {
+        "left": "category",
+        "right": "source_system",
+        "cramersV": 0.0113
+      },
+      {
+        "left": "facility_type",
+        "right": "severity",
+        "cramersV": 0.0104
+      },
+      {
+        "left": "occupancy_band",
+        "right": "humidity_band",
+        "cramersV": 0.0081
+      },
+      {
+        "left": "category",
+        "right": "severity",
+        "cramersV": 0.005
+      },
+      {
+        "left": "time_band",
+        "right": "severity",
+        "cramersV": 0.0037
       }
     ]
   },
   "clustering": {
-    "sampleSize": 900,
+    "tuningSize": 900,
+    "evaluationSize": 900,
+    "featureReduction": {
+      "method": "TF-IDF + TruncatedSVD",
+      "components": 20,
+      "explainedVariance": 0.4107
+    },
+    "kSelection": [
+      {
+        "k": 2,
+        "silhouette": 0.1468
+      },
+      {
+        "k": 3,
+        "silhouette": 0.1455
+      },
+      {
+        "k": 4,
+        "silhouette": 0.1436
+      },
+      {
+        "k": 5,
+        "silhouette": 0.1423
+      },
+      {
+        "k": 6,
+        "silhouette": 0.151
+      },
+      {
+        "k": 7,
+        "silhouette": 0.1475
+      },
+      {
+        "k": 8,
+        "silhouette": 0.1405
+      },
+      {
+        "k": 9,
+        "silhouette": 0.1408
+      },
+      {
+        "k": 10,
+        "silhouette": 0.1414
+      },
+      {
+        "k": 11,
+        "silhouette": 0.138
+      },
+      {
+        "k": 12,
+        "silhouette": 0.1417
+      }
+    ],
+    "gmmSelection": [
+      {
+        "components": 2,
+        "bic": -9593.04
+      },
+      {
+        "components": 3,
+        "bic": -9947.01
+      },
+      {
+        "components": 4,
+        "bic": -9962.26
+      },
+      {
+        "components": 5,
+        "bic": -10599.93
+      },
+      {
+        "components": 6,
+        "bic": -10741.9
+      },
+      {
+        "components": 7,
+        "bic": -10664.24
+      },
+      {
+        "components": 8,
+        "bic": -11052.53
+      },
+      {
+        "components": 9,
+        "bic": -11038.24
+      },
+      {
+        "components": 10,
+        "bic": -11800.3
+      }
+    ],
     "algorithms": {
       "K-Means": {
-        "silhouette": 0.147,
-        "daviesBouldin": 1.578,
-        "clusters": 8
+        "silhouette": 0.1401,
+        "daviesBouldin": 1.6066,
+        "clusters": 6,
+        "noisePoints": 0,
+        "stabilityARI": 0.9218,
+        "selectedK": 6
       },
       "Hierarchical": {
-        "silhouette": 0.0797,
-        "daviesBouldin": 1.8068,
-        "clusters": 8
+        "silhouette": 0.0887,
+        "daviesBouldin": 1.8708,
+        "clusters": 6,
+        "noisePoints": 0
+      },
+      "Gaussian Mixture": {
+        "silhouette": -0.032,
+        "daviesBouldin": 8.4841,
+        "clusters": 10,
+        "noisePoints": 0,
+        "selectedBy": "minimum tuning BIC",
+        "components": 10
       },
       "DBSCAN": {
-        "silhouette": -0.2425,
-        "daviesBouldin": 3.0895,
-        "clusters": 6,
-        "noisePoints": 451
+        "silhouette": -0.2076,
+        "daviesBouldin": 2.8551,
+        "clusters": 5,
+        "noisePoints": 433,
+        "epsilonSelectedOnTuning": 1.2
+      },
+      "STING Grid": {
+        "silhouette": -0.0908,
+        "daviesBouldin": 15.7343,
+        "clusters": 18,
+        "noisePoints": 0,
+        "grid": "6x6",
+        "minimumCellDensity": 8
       }
     },
-    "outlierCount": 71,
+    "clusters": [
+      {
+        "id": 1,
+        "name": "case / teaching",
+        "topTerms": [
+          "case",
+          "teaching",
+          "service"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "4-7",
+        "share": 21.0
+      },
+      {
+        "id": 5,
+        "name": "case / service",
+        "topTerms": [
+          "case",
+          "service",
+          "staff"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "10-12",
+        "share": 18.2
+      },
+      {
+        "id": 4,
+        "name": "case / service",
+        "topTerms": [
+          "case",
+          "service",
+          "normal"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "4-7",
+        "share": 17.0
+      },
+      {
+        "id": 2,
+        "name": "case / affected",
+        "topTerms": [
+          "case",
+          "affected",
+          "staff"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "8-10",
+        "share": 15.9
+      },
+      {
+        "id": 0,
+        "name": "case / service",
+        "topTerms": [
+          "case",
+          "service",
+          "affected"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "8-10",
+        "share": 15.3
+      },
+      {
+        "id": 3,
+        "name": "case / normal",
+        "topTerms": [
+          "case",
+          "normal",
+          "service"
+        ],
+        "dominantFacilityType": "academic",
+        "dominantTime": "8-10",
+        "share": 12.6
+      }
+    ],
+    "anomalyEvaluation": {
+      "protocol": "threshold tuned on labelled validation anomalies; final metrics on chronological holdout",
+      "threshold": 0.09964,
+      "testSize": 568,
+      "positiveCount": 17,
+      "predictedCount": 12,
+      "precision": 0.5,
+      "recall": 0.3529,
+      "f1": 0.4138
+    },
+    "outlierCount": 12,
     "outliers": [
       {
-        "id": "CL-11802",
-        "score": -0.0311,
-        "text": "classroom door and several chairs need repair on floor 1 near a water cooler"
+        "id": "CL-12664",
+        "score": 0.1707,
+        "knownSyntheticAnomaly": true,
+        "text": "students report that several desks have loose or damaged fittings in backstage after normal troubleshooting was attempted during a regular teaching period at 10:09 case 2664"
       },
       {
-        "id": "CL-10333",
-        "score": -0.0279,
-        "text": "three lab systems freeze during compilation in cr425 beside the canteen queue"
+        "id": "CL-12441",
+        "score": 0.1628,
+        "knownSyntheticAnomaly": true,
+        "text": "a repeated observation is that the wash area needs urgent sanitation in cr201 and several students are affected while another campus service remains normal at 16:24 case 2441"
       },
       {
-        "id": "CL-11346",
-        "score": -0.0274,
-        "text": "garbage is overflowing in the corridor on floor 3"
+        "id": "CL-12327",
+        "score": 0.1415,
+        "knownSyntheticAnomaly": true,
+        "text": "please investigate because the area has not been cleaned since the morning in cooler a this is a hygiene and cleanliness concern and the condition has become more frequent at 10:27 case 2327"
       },
       {
         "id": "CL-12712",
-        "score": -0.0247,
-        "text": "garbage is overflowing in the corridor on floor 4"
+        "score": 0.1344,
+        "knownSyntheticAnomaly": true,
+        "text": "during the latest session the common area is overcrowded in h5 common room while another campus service remains normal and staff assistance has been requested at 8:58 case 2712"
       },
       {
-        "id": "CL-11421",
-        "score": -0.0223,
-        "text": "monitor and keyboard are not detected at workstation in ts17"
+        "id": "CL-12400",
+        "score": 0.1296,
+        "knownSyntheticAnomaly": false,
+        "text": "the class representative confirmed that a window latch is broken and requires maintenance in g2 without any warning notice and the condition has become more frequent at 8:42 case 2400"
       },
       {
-        "id": "CL-10765",
-        "score": -0.0202,
-        "text": "spill outside cl22 creates a safety hazard"
+        "id": "CL-12765",
+        "score": 0.1216,
+        "knownSyntheticAnomaly": true,
+        "text": "an urgent maintenance check is needed because the lunch rush is blocking the entrance in main hall the food service operation is affected and staff assistance has been requested at 15:52 case 2765"
       },
       {
-        "id": "CL-10449",
-        "score": -0.0197,
-        "text": "garbage is overflowing in the corridor on floor 1"
+        "id": "CL-12340",
+        "score": 0.1204,
+        "knownSyntheticAnomaly": false,
+        "text": "for the second time this week the lecture-room screen does not lower correctly in g2 the physical infrastructure needs attention and the issue lasts more than ten minutes at 18:14 case 2340"
       },
       {
-        "id": "CL-11318",
-        "score": -0.0188,
-        "text": "monitor and keyboard are not detected at workstation in ff6"
+        "id": "CL-12659",
+        "score": 0.1175,
+        "knownSyntheticAnomaly": false,
+        "text": "staff were informed that the writing surface is damaged and difficult to use in g1 the physical infrastructure needs attention and it interrupts scheduled teaching at 13:21 case 2659"
       },
       {
-        "id": "CL-10660",
-        "score": -0.0178,
-        "text": "garbage is overflowing in the corridor on floor 4"
+        "id": "CL-12797",
+        "score": 0.1107,
+        "knownSyntheticAnomaly": true,
+        "text": "an urgent maintenance check is needed because the lab printer is unavailable to student systems in cl3-b near the main entrance to the space without any warning notice at 16:49 case 2797"
       },
       {
-        "id": "CL-11053",
-        "score": -0.0177,
-        "text": "garbage is overflowing in the corridor on floor 3"
+        "id": "CL-12311",
+        "score": 0.1091,
+        "knownSyntheticAnomaly": false,
+        "text": "students report that several desks have loose or damaged fittings in g6 while the area is moderately occupied and the condition has become more frequent at 12:24 case 2311"
       },
       {
-        "id": "CL-10275",
-        "score": -0.0173,
-        "text": "three lab systems freeze during compilation in cl3"
+        "id": "CL-12614",
+        "score": 0.1073,
+        "knownSyntheticAnomaly": false,
+        "text": "the current problem is that the pickup counter is overcrowded in cs1 and it interrupts scheduled teaching while another campus service remains normal at 18:16 case 2614"
       },
       {
-        "id": "CL-12834",
-        "score": -0.017,
-        "text": "garbage is overflowing in the corridor on ground floor"
+        "id": "CL-12707",
+        "score": 0.1022,
+        "knownSyntheticAnomaly": false,
+        "text": "during the latest session the classroom door cannot close safely in cr202 the physical infrastructure needs attention and staff assistance has been requested at 18:30 case 2707"
       }
     ],
-    "clusters": [
+    "interpretation": "Cluster quality is reported without claiming operational separation when silhouette is weak."
+  },
+  "imagePipeline": {
+    "method": "visual feature extraction + Random Forest image classification + PCA embeddings + cosine duplicate search",
+    "datasetSize": 144,
+    "testSize": 36,
+    "classes": [
+      "equipment_fault",
+      "infrastructure_damage",
+      "cleanliness_hazard",
+      "normal"
+    ],
+    "accuracy": 0.8333,
+    "macroF1": 0.8322,
+    "perClass": {
+      "cleanliness_hazard": {
+        "precision": 0.8,
+        "recall": 0.8888888888888888,
+        "f1-score": 0.8421052631578947,
+        "support": 9.0
+      },
+      "equipment_fault": {
+        "precision": 0.8571428571428571,
+        "recall": 0.6666666666666666,
+        "f1-score": 0.75,
+        "support": 9.0
+      },
+      "infrastructure_damage": {
+        "precision": 0.7,
+        "recall": 0.7777777777777778,
+        "f1-score": 0.7368421052631579,
+        "support": 9.0
+      },
+      "normal": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 9.0
+      },
+      "accuracy": 0.8333333333333334,
+      "macro avg": {
+        "precision": 0.8392857142857142,
+        "recall": 0.8333333333333333,
+        "f1-score": 0.8322368421052632,
+        "support": 36.0
+      },
+      "weighted avg": {
+        "precision": 0.8392857142857143,
+        "recall": 0.8333333333333334,
+        "f1-score": 0.8322368421052632,
+        "support": 36.0
+      }
+    },
+    "confusionMatrix": {
+      "labels": [
+        "equipment_fault",
+        "infrastructure_damage",
+        "cleanliness_hazard",
+        "normal"
+      ],
+      "values": [
+        [
+          6,
+          2,
+          1,
+          0
+        ],
+        [
+          1,
+          7,
+          1,
+          0
+        ],
+        [
+          0,
+          1,
+          8,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          9
+        ]
+      ]
+    },
+    "embedding": {
+      "method": "PCA",
+      "components": 3,
+      "explainedVariance": 0.7511,
+      "sample": [
+        {
+          "id": "IMG-EQU-000",
+          "x": 2.94,
+          "y": -0.864,
+          "z": 0.368
+        },
+        {
+          "id": "IMG-EQU-001",
+          "x": 2.476,
+          "y": 0.335,
+          "z": 0.184
+        },
+        {
+          "id": "IMG-EQU-002",
+          "x": 3.31,
+          "y": 0.518,
+          "z": -0.634
+        },
+        {
+          "id": "IMG-EQU-003",
+          "x": 4.698,
+          "y": -0.009,
+          "z": -2.117
+        },
+        {
+          "id": "IMG-EQU-004",
+          "x": 0.815,
+          "y": -2.974,
+          "z": -1.716
+        },
+        {
+          "id": "IMG-EQU-005",
+          "x": 3.155,
+          "y": 1.392,
+          "z": 0.93
+        },
+        {
+          "id": "IMG-EQU-006",
+          "x": 3.523,
+          "y": 2.282,
+          "z": 1.435
+        },
+        {
+          "id": "IMG-EQU-007",
+          "x": 3.87,
+          "y": 1.634,
+          "z": 0.662
+        },
+        {
+          "id": "IMG-EQU-008",
+          "x": 2.543,
+          "y": 0.263,
+          "z": -1.08
+        },
+        {
+          "id": "IMG-EQU-009",
+          "x": 3.737,
+          "y": -0.595,
+          "z": 0.265
+        },
+        {
+          "id": "IMG-EQU-010",
+          "x": 2.325,
+          "y": 0.524,
+          "z": 2.285
+        },
+        {
+          "id": "IMG-EQU-011",
+          "x": -0.719,
+          "y": -2.853,
+          "z": -1.58
+        },
+        {
+          "id": "IMG-EQU-012",
+          "x": 2.194,
+          "y": 0.343,
+          "z": -0.209
+        },
+        {
+          "id": "IMG-EQU-013",
+          "x": 4.038,
+          "y": 0.932,
+          "z": 0.192
+        },
+        {
+          "id": "IMG-EQU-014",
+          "x": 3.01,
+          "y": 1.402,
+          "z": 0.77
+        },
+        {
+          "id": "IMG-EQU-015",
+          "x": 3.141,
+          "y": 1.646,
+          "z": 0.631
+        },
+        {
+          "id": "IMG-EQU-016",
+          "x": -0.531,
+          "y": -1.121,
+          "z": -0.025
+        },
+        {
+          "id": "IMG-EQU-017",
+          "x": -1.641,
+          "y": -3.138,
+          "z": 0.538
+        },
+        {
+          "id": "IMG-EQU-018",
+          "x": -0.339,
+          "y": -3.073,
+          "z": -1.338
+        },
+        {
+          "id": "IMG-EQU-019",
+          "x": 2.829,
+          "y": 0.175,
+          "z": 0.17
+        }
+      ]
+    },
+    "nearestDuplicateCandidate": {
+      "left": "IMG-INF-020",
+      "right": "IMG-INF-029",
+      "cosineSimilarity": 0.9931
+    },
+    "original": "/images/evidence/lab-equipment-original.jpg",
+    "processed": "/images/evidence/lab-equipment-processed.jpg",
+    "operations": [
+      "server-compatible decode",
+      "median noise removal",
+      "contrast enhancement",
+      "Lanczos resize",
+      "visual feature extraction",
+      "classification",
+      "embedding"
+    ]
+  },
+  "spatial": {
+    "method": "global/local Moran-style spatial autocorrelation with privacy-jittered facility coordinates",
+    "globalMoranI": 0.0182,
+    "facilityCount": 22,
+    "grid": {
+      "resolution": "8x8",
+      "activeCells": 18,
+      "cells": [
+        {
+          "lat_cell": 0,
+          "lon_cell": 0,
+          "complaints": 102,
+          "meanImpact": 2.843
+        },
+        {
+          "lat_cell": 0,
+          "lon_cell": 1,
+          "complaints": 192,
+          "meanImpact": 2.703
+        },
+        {
+          "lat_cell": 1,
+          "lon_cell": 2,
+          "complaints": 207,
+          "meanImpact": 2.58
+        },
+        {
+          "lat_cell": 1,
+          "lon_cell": 4,
+          "complaints": 324,
+          "meanImpact": 2.651
+        },
+        {
+          "lat_cell": 2,
+          "lon_cell": 3,
+          "complaints": 95,
+          "meanImpact": 2.737
+        },
+        {
+          "lat_cell": 2,
+          "lon_cell": 6,
+          "complaints": 268,
+          "meanImpact": 2.754
+        },
+        {
+          "lat_cell": 2,
+          "lon_cell": 7,
+          "complaints": 176,
+          "meanImpact": 2.75
+        },
+        {
+          "lat_cell": 3,
+          "lon_cell": 1,
+          "complaints": 89,
+          "meanImpact": 2.573
+        },
+        {
+          "lat_cell": 3,
+          "lon_cell": 2,
+          "complaints": 182,
+          "meanImpact": 2.61
+        },
+        {
+          "lat_cell": 3,
+          "lon_cell": 5,
+          "complaints": 170,
+          "meanImpact": 2.759
+        },
+        {
+          "lat_cell": 3,
+          "lon_cell": 7,
+          "complaints": 85,
+          "meanImpact": 2.929
+        },
+        {
+          "lat_cell": 4,
+          "lon_cell": 3,
+          "complaints": 209,
+          "meanImpact": 2.89
+        },
+        {
+          "lat_cell": 4,
+          "lon_cell": 5,
+          "complaints": 109,
+          "meanImpact": 2.706
+        },
+        {
+          "lat_cell": 5,
+          "lon_cell": 6,
+          "complaints": 98,
+          "meanImpact": 2.878
+        },
+        {
+          "lat_cell": 6,
+          "lon_cell": 2,
+          "complaints": 157,
+          "meanImpact": 2.796
+        },
+        {
+          "lat_cell": 6,
+          "lon_cell": 3,
+          "complaints": 141,
+          "meanImpact": 2.667
+        },
+        {
+          "lat_cell": 7,
+          "lon_cell": 5,
+          "complaints": 95,
+          "meanImpact": 2.747
+        },
+        {
+          "lat_cell": 7,
+          "lon_cell": 7,
+          "complaints": 141,
+          "meanImpact": 2.66
+        }
+      ]
+    },
+    "hotspots": [
       {
-        "name": "Network \u00b7 10-12",
-        "share": 14.6
+        "facility": "CL15",
+        "latitude": 28.62978,
+        "longitude": 77.37254,
+        "complaints": 95,
+        "meanImpact": 2.54737,
+        "localMoranScore": 2.18076
       },
       {
-        "name": "Network \u00b7 8-10",
-        "share": 14.1
+        "facility": "Aryabhatt Bhawan II",
+        "latitude": 28.6297,
+        "longitude": 77.3729,
+        "complaints": 236,
+        "meanImpact": 2.63136,
+        "localMoranScore": 1.84649
       },
       {
-        "name": "Network \u00b7 8-10",
-        "share": 12.4
+        "facility": "CL1",
+        "latitude": 28.62958,
+        "longitude": 77.37248,
+        "complaints": 91,
+        "meanImpact": 2.61538,
+        "localMoranScore": 1.50045
       },
       {
-        "name": "Infrastructure \u00b7 12-2",
-        "share": 12.4
+        "facility": "Main Gate",
+        "latitude": 28.62938,
+        "longitude": 77.37238,
+        "complaints": 101,
+        "meanImpact": 2.78218,
+        "localMoranScore": 1.21057
       },
       {
-        "name": "Network \u00b7 8-10",
-        "share": 12.3
+        "facility": "Parking",
+        "latitude": 28.62945,
+        "longitude": 77.37222,
+        "complaints": 102,
+        "meanImpact": 2.84314,
+        "localMoranScore": 1.17751
       },
       {
-        "name": "Infrastructure \u00b7 8-10",
-        "share": 11.7
+        "facility": "Aryabhatt Bhawan III",
+        "latitude": 28.6299,
+        "longitude": 77.37315,
+        "complaints": 268,
+        "meanImpact": 2.75373,
+        "localMoranScore": 1.1084
       },
       {
-        "name": "Infrastructure \u00b7 12-2",
-        "share": 11.4
+        "facility": "LRC",
+        "latitude": 28.63002,
+        "longitude": 77.37302,
+        "complaints": 170,
+        "meanImpact": 2.75882,
+        "localMoranScore": 0.62668
       },
       {
-        "name": "Lab Equipment \u00b7 2-4",
-        "share": 11.0
+        "facility": "CL3",
+        "latitude": 28.62964,
+        "longitude": 77.37261,
+        "complaints": 112,
+        "meanImpact": 2.60714,
+        "localMoranScore": 0.60534
+      }
+    ],
+    "privacy": "Coordinates are generalized and jittered; no person-level position is stored."
+  },
+  "webMining": {
+    "method": "usage mining of service routes, searches, dwell and report conversion",
+    "eventCount": 5680,
+    "routePopularity": [
+      {
+        "route": "/help",
+        "events": 1172
+      },
+      {
+        "route": "/campus-map",
+        "events": 1168
+      },
+      {
+        "route": "/status",
+        "events": 1119
+      },
+      {
+        "route": "/explore",
+        "events": 1112
+      },
+      {
+        "route": "/report",
+        "events": 1109
+      }
+    ],
+    "searchIntent": [
+      {
+        "search_term": "cleaning",
+        "searches": 850,
+        "conversions": 162,
+        "meanDwell": 42.1129,
+        "conversionRate": 0.1906
+      },
+      {
+        "search_term": "wifi",
+        "searches": 811,
+        "conversions": 151,
+        "meanDwell": 42.2244,
+        "conversionRate": 0.1862
+      },
+      {
+        "search_term": "projector",
+        "searches": 820,
+        "conversions": 150,
+        "meanDwell": 42.2317,
+        "conversionRate": 0.1829
+      },
+      {
+        "search_term": "parking",
+        "searches": 800,
+        "conversions": 132,
+        "meanDwell": 41.7325,
+        "conversionRate": 0.165
+      },
+      {
+        "search_term": "queue",
+        "searches": 796,
+        "conversions": 131,
+        "meanDwell": 43.6143,
+        "conversionRate": 0.1646
+      },
+      {
+        "search_term": "water",
+        "searches": 816,
+        "conversions": 134,
+        "meanDwell": 43.3113,
+        "conversionRate": 0.1642
+      },
+      {
+        "search_term": "lab",
+        "searches": 787,
+        "conversions": 126,
+        "meanDwell": 40.9784,
+        "conversionRate": 0.1601
+      }
+    ],
+    "topTransitions": [
+      {
+        "from": "/campus-map",
+        "to": "/campus-map",
+        "count": 253
+      },
+      {
+        "from": "/help",
+        "to": "/status",
+        "count": 246
+      },
+      {
+        "from": "/status",
+        "to": "/campus-map",
+        "count": 246
+      },
+      {
+        "from": "/help",
+        "to": "/help",
+        "count": 245
+      },
+      {
+        "from": "/status",
+        "to": "/help",
+        "count": 244
+      },
+      {
+        "from": "/explore",
+        "to": "/report",
+        "count": 243
+      },
+      {
+        "from": "/campus-map",
+        "to": "/explore",
+        "count": 239
+      },
+      {
+        "from": "/campus-map",
+        "to": "/status",
+        "count": 234
+      },
+      {
+        "from": "/explore",
+        "to": "/help",
+        "count": 234
+      },
+      {
+        "from": "/report",
+        "to": "/help",
+        "count": 230
+      },
+      {
+        "from": "/help",
+        "to": "/report",
+        "count": 228
+      },
+      {
+        "from": "/help",
+        "to": "/explore",
+        "count": 226
       }
     ]
   },
-  "imagePipeline": {
-    "original": "/images/evidence/lab-equipment-original.jpg",
-    "processed": "/images/evidence/lab-equipment-processed.jpg",
-    "originalSize": [
-      720,
-      440
+  "streamMining": {
+    "method": "bounded sliding-window stream mining",
+    "windowSize": 240,
+    "step": 120,
+    "driftThreshold": 0.025,
+    "windowCount": 22,
+    "driftWindowCount": 0,
+    "windows": [
+      {
+        "start": "2025-08-04T02:45:00+00:00",
+        "end": "2025-08-24T04:33:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.7
+      },
+      {
+        "start": "2025-08-14T05:28:00+00:00",
+        "end": "2025-09-03T03:44:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0035,
+        "drift": false,
+        "topCategory": "Canteen",
+        "meanImpact": 2.712
+      },
+      {
+        "start": "2025-08-24T04:36:00+00:00",
+        "end": "2025-09-13T07:18:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0205,
+        "drift": false,
+        "topCategory": "Canteen",
+        "meanImpact": 2.75
+      },
+      {
+        "start": "2025-09-03T03:48:00+00:00",
+        "end": "2025-09-23T06:38:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0196,
+        "drift": false,
+        "topCategory": "Infrastructure",
+        "meanImpact": 2.812
+      },
+      {
+        "start": "2025-09-13T07:24:00+00:00",
+        "end": "2025-10-03T03:30:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0101,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.792
+      },
+      {
+        "start": "2025-09-23T06:41:00+00:00",
+        "end": "2025-10-13T05:01:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0077,
+        "drift": false,
+        "topCategory": "Lab Equipment",
+        "meanImpact": 2.767
+      },
+      {
+        "start": "2025-10-03T03:37:00+00:00",
+        "end": "2025-10-23T05:44:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0064,
+        "drift": false,
+        "topCategory": "Infrastructure",
+        "meanImpact": 2.712
+      },
+      {
+        "start": "2025-10-13T06:48:00+00:00",
+        "end": "2025-11-02T03:40:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0034,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.737
+      },
+      {
+        "start": "2025-10-23T06:27:00+00:00",
+        "end": "2025-11-12T05:33:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0061,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.763
+      },
+      {
+        "start": "2025-11-02T03:51:00+00:00",
+        "end": "2025-11-22T06:18:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0062,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.671
+      },
+      {
+        "start": "2025-11-12T06:32:00+00:00",
+        "end": "2025-12-02T04:53:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0033,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.629
+      },
+      {
+        "start": "2025-11-22T06:20:00+00:00",
+        "end": "2025-12-12T07:13:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.004,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.692
+      },
+      {
+        "start": "2025-12-02T08:53:00+00:00",
+        "end": "2025-12-22T07:45:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0052,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.683
+      },
+      {
+        "start": "2025-12-12T08:14:00+00:00",
+        "end": "2026-01-01T04:25:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0141,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.737
+      },
+      {
+        "start": "2025-12-22T08:28:00+00:00",
+        "end": "2026-01-11T06:18:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0119,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.85
+      },
+      {
+        "start": "2026-01-01T06:11:00+00:00",
+        "end": "2026-01-21T06:25:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0036,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.842
+      },
+      {
+        "start": "2026-01-11T06:58:00+00:00",
+        "end": "2026-01-31T03:30:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0068,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.758
+      },
+      {
+        "start": "2026-01-21T08:18:00+00:00",
+        "end": "2026-02-10T06:24:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0092,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.679
+      },
+      {
+        "start": "2026-01-31T05:55:00+00:00",
+        "end": "2026-02-20T04:57:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0082,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.638
+      },
+      {
+        "start": "2026-02-10T07:48:00+00:00",
+        "end": "2026-03-02T07:39:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.004,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.671
+      },
+      {
+        "start": "2026-02-20T04:59:00+00:00",
+        "end": "2026-03-12T04:10:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.003,
+        "drift": false,
+        "topCategory": "Electrical",
+        "meanImpact": 2.642
+      },
+      {
+        "start": "2026-03-02T07:54:00+00:00",
+        "end": "2026-03-22T04:52:00+00:00",
+        "rows": 240,
+        "jensenShannonDrift": 0.0056,
+        "drift": false,
+        "topCategory": "Network",
+        "meanImpact": 2.7
+      }
     ],
-    "processedSize": [
-      480,
-      293
-    ],
-    "normalization": "pixel / 255.0",
-    "operations": [
-      "median noise removal",
-      "contrast enhancement",
-      "sharpening",
-      "Lanczos resize",
-      "0-1 normalization"
-    ]
+    "operationalPolicy": "A drift flag queues human review and retraining; it never silently replaces the deployed model."
   },
   "dataQuality": {
     "rawRows": 2840,
@@ -751,14 +2005,41 @@
     },
     "missingAfter": 0,
     "duplicatesRemoved": 0,
+    "uniqueTextRate": 1.0,
+    "hierarchyValidRate": 1.0,
+    "weekdayConsistencyRate": 1.0,
+    "integratedSources": [
+      "student complaint stream",
+      "campus service web events",
+      "facility master"
+    ],
     "transformations": [
       "lowercase and punctuation normalization",
-      "category-mode location imputation",
-      "median occupancy imputation",
+      "explicit unknown-member location imputation",
+      "facility-type median occupancy imputation",
+      "validated campus concept hierarchy",
       "min-max impact normalization",
       "z-score occupancy and humidity standardization",
       "time, occupancy and humidity discretization",
-      "10% stratified analysis sample"
-    ]
-  }
+      "daily web-service feature integration",
+      "template-group evaluation folds",
+      "10% reproducible analysis sample"
+    ],
+    "etlVsElt": {
+      "ETL": "CSV sources are cleaned, validated and integrated before SQLite warehouse loading.",
+      "ELT": "Raw operational rows are retained in PostgreSQL and transformed into governed live marts after loading."
+    }
+  },
+  "warehouse": {
+    "starFacts": 2840,
+    "snowflakeFacts": 2840,
+    "rollupRows": 125,
+    "scdHistoricalRows": 6,
+    "foreignKeyViolations": 0
+  },
+  "limitations": [
+    "All benchmark labels and anomalies are synthetic and must not be presented as institutional ground truth.",
+    "Model promotion requires human review when stream drift is detected.",
+    "Spatial coordinates are generalized facility centroids."
+  ]
 }

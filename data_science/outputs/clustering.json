@@ -1,118 +1,292 @@
 {
-  "sampleSize": 900,
+  "tuningSize": 900,
+  "evaluationSize": 900,
+  "featureReduction": {
+    "method": "TF-IDF + TruncatedSVD",
+    "components": 20,
+    "explainedVariance": 0.4107
+  },
+  "kSelection": [
+    {
+      "k": 2,
+      "silhouette": 0.1468
+    },
+    {
+      "k": 3,
+      "silhouette": 0.1455
+    },
+    {
+      "k": 4,
+      "silhouette": 0.1436
+    },
+    {
+      "k": 5,
+      "silhouette": 0.1423
+    },
+    {
+      "k": 6,
+      "silhouette": 0.151
+    },
+    {
+      "k": 7,
+      "silhouette": 0.1475
+    },
+    {
+      "k": 8,
+      "silhouette": 0.1405
+    },
+    {
+      "k": 9,
+      "silhouette": 0.1408
+    },
+    {
+      "k": 10,
+      "silhouette": 0.1414
+    },
+    {
+      "k": 11,
+      "silhouette": 0.138
+    },
+    {
+      "k": 12,
+      "silhouette": 0.1417
+    }
+  ],
+  "gmmSelection": [
+    {
+      "components": 2,
+      "bic": -9593.04
+    },
+    {
+      "components": 3,
+      "bic": -9947.01
+    },
+    {
+      "components": 4,
+      "bic": -9962.26
+    },
+    {
+      "components": 5,
+      "bic": -10599.93
+    },
+    {
+      "components": 6,
+      "bic": -10741.9
+    },
+    {
+      "components": 7,
+      "bic": -10664.24
+    },
+    {
+      "components": 8,
+      "bic": -11052.53
+    },
+    {
+      "components": 9,
+      "bic": -11038.24
+    },
+    {
+      "components": 10,
+      "bic": -11800.3
+    }
+  ],
   "algorithms": {
     "K-Means": {
-      "silhouette": 0.147,
-      "daviesBouldin": 1.578,
-      "clusters": 8
+      "silhouette": 0.1401,
+      "daviesBouldin": 1.6066,
+      "clusters": 6,
+      "noisePoints": 0,
+      "stabilityARI": 0.9218,
+      "selectedK": 6
     },
     "Hierarchical": {
-      "silhouette": 0.0797,
-      "daviesBouldin": 1.8068,
-      "clusters": 8
+      "silhouette": 0.0887,
+      "daviesBouldin": 1.8708,
+      "clusters": 6,
+      "noisePoints": 0
+    },
+    "Gaussian Mixture": {
+      "silhouette": -0.032,
+      "daviesBouldin": 8.4841,
+      "clusters": 10,
+      "noisePoints": 0,
+      "selectedBy": "minimum tuning BIC",
+      "components": 10
     },
     "DBSCAN": {
-      "silhouette": -0.2425,
-      "daviesBouldin": 3.0895,
-      "clusters": 6,
-      "noisePoints": 451
+      "silhouette": -0.2076,
+      "daviesBouldin": 2.8551,
+      "clusters": 5,
+      "noisePoints": 433,
+      "epsilonSelectedOnTuning": 1.2
+    },
+    "STING Grid": {
+      "silhouette": -0.0908,
+      "daviesBouldin": 15.7343,
+      "clusters": 18,
+      "noisePoints": 0,
+      "grid": "6x6",
+      "minimumCellDensity": 8
     }
   },
-  "outlierCount": 71,
+  "clusters": [
+    {
+      "id": 1,
+      "name": "case / teaching",
+      "topTerms": [
+        "case",
+        "teaching",
+        "service"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "4-7",
+      "share": 21.0
+    },
+    {
+      "id": 5,
+      "name": "case / service",
+      "topTerms": [
+        "case",
+        "service",
+        "staff"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "10-12",
+      "share": 18.2
+    },
+    {
+      "id": 4,
+      "name": "case / service",
+      "topTerms": [
+        "case",
+        "service",
+        "normal"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "4-7",
+      "share": 17.0
+    },
+    {
+      "id": 2,
+      "name": "case / affected",
+      "topTerms": [
+        "case",
+        "affected",
+        "staff"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "8-10",
+      "share": 15.9
+    },
+    {
+      "id": 0,
+      "name": "case / service",
+      "topTerms": [
+        "case",
+        "service",
+        "affected"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "8-10",
+      "share": 15.3
+    },
+    {
+      "id": 3,
+      "name": "case / normal",
+      "topTerms": [
+        "case",
+        "normal",
+        "service"
+      ],
+      "dominantFacilityType": "academic",
+      "dominantTime": "8-10",
+      "share": 12.6
+    }
+  ],
+  "anomalyEvaluation": {
+    "protocol": "threshold tuned on labelled validation anomalies; final metrics on chronological holdout",
+    "threshold": 0.09964,
+    "testSize": 568,
+    "positiveCount": 17,
+    "predictedCount": 12,
+    "precision": 0.5,
+    "recall": 0.3529,
+    "f1": 0.4138
+  },
+  "outlierCount": 12,
   "outliers": [
     {
-      "id": "CL-11802",
-      "score": -0.0311,
-      "text": "classroom door and several chairs need repair on floor 1 near a water cooler"
+      "id": "CL-12664",
+      "score": 0.1707,
+      "knownSyntheticAnomaly": true,
+      "text": "students report that several desks have loose or damaged fittings in backstage after normal troubleshooting was attempted during a regular teaching period at 10:09 case 2664"
     },
     {
-      "id": "CL-10333",
-      "score": -0.0279,
-      "text": "three lab systems freeze during compilation in cr425 beside the canteen queue"
+      "id": "CL-12441",
+      "score": 0.1628,
+      "knownSyntheticAnomaly": true,
+      "text": "a repeated observation is that the wash area needs urgent sanitation in cr201 and several students are affected while another campus service remains normal at 16:24 case 2441"
     },
     {
-      "id": "CL-11346",
-      "score": -0.0274,
-      "text": "garbage is overflowing in the corridor on floor 3"
+      "id": "CL-12327",
+      "score": 0.1415,
+      "knownSyntheticAnomaly": true,
+      "text": "please investigate because the area has not been cleaned since the morning in cooler a this is a hygiene and cleanliness concern and the condition has become more frequent at 10:27 case 2327"
     },
     {
       "id": "CL-12712",
-      "score": -0.0247,
-      "text": "garbage is overflowing in the corridor on floor 4"
+      "score": 0.1344,
+      "knownSyntheticAnomaly": true,
+      "text": "during the latest session the common area is overcrowded in h5 common room while another campus service remains normal and staff assistance has been requested at 8:58 case 2712"
     },
     {
-      "id": "CL-11421",
-      "score": -0.0223,
-      "text": "monitor and keyboard are not detected at workstation in ts17"
+      "id": "CL-12400",
+      "score": 0.1296,
+      "knownSyntheticAnomaly": false,
+      "text": "the class representative confirmed that a window latch is broken and requires maintenance in g2 without any warning notice and the condition has become more frequent at 8:42 case 2400"
     },
     {
-      "id": "CL-10765",
-      "score": -0.0202,
-      "text": "spill outside cl22 creates a safety hazard"
+      "id": "CL-12765",
+      "score": 0.1216,
+      "knownSyntheticAnomaly": true,
+      "text": "an urgent maintenance check is needed because the lunch rush is blocking the entrance in main hall the food service operation is affected and staff assistance has been requested at 15:52 case 2765"
     },
     {
-      "id": "CL-10449",
-      "score": -0.0197,
-      "text": "garbage is overflowing in the corridor on floor 1"
+      "id": "CL-12340",
+      "score": 0.1204,
+      "knownSyntheticAnomaly": false,
+      "text": "for the second time this week the lecture-room screen does not lower correctly in g2 the physical infrastructure needs attention and the issue lasts more than ten minutes at 18:14 case 2340"
     },
     {
-      "id": "CL-11318",
-      "score": -0.0188,
-      "text": "monitor and keyboard are not detected at workstation in ff6"
+      "id": "CL-12659",
+      "score": 0.1175,
+      "knownSyntheticAnomaly": false,
+      "text": "staff were informed that the writing surface is damaged and difficult to use in g1 the physical infrastructure needs attention and it interrupts scheduled teaching at 13:21 case 2659"
     },
     {
-      "id": "CL-10660",
-      "score": -0.0178,
-      "text": "garbage is overflowing in the corridor on floor 4"
+      "id": "CL-12797",
+      "score": 0.1107,
+      "knownSyntheticAnomaly": true,
+      "text": "an urgent maintenance check is needed because the lab printer is unavailable to student systems in cl3-b near the main entrance to the space without any warning notice at 16:49 case 2797"
     },
     {
-      "id": "CL-11053",
-      "score": -0.0177,
-      "text": "garbage is overflowing in the corridor on floor 3"
+      "id": "CL-12311",
+      "score": 0.1091,
+      "knownSyntheticAnomaly": false,
+      "text": "students report that several desks have loose or damaged fittings in g6 while the area is moderately occupied and the condition has become more frequent at 12:24 case 2311"
     },
     {
-      "id": "CL-10275",
-      "score": -0.0173,
-      "text": "three lab systems freeze during compilation in cl3"
+      "id": "CL-12614",
+      "score": 0.1073,
+      "knownSyntheticAnomaly": false,
+      "text": "the current problem is that the pickup counter is overcrowded in cs1 and it interrupts scheduled teaching while another campus service remains normal at 18:16 case 2614"
     },
     {
-      "id": "CL-12834",
-      "score": -0.017,
-      "text": "garbage is overflowing in the corridor on ground floor"
+      "id": "CL-12707",
+      "score": 0.1022,
+      "knownSyntheticAnomaly": false,
+      "text": "during the latest session the classroom door cannot close safely in cr202 the physical infrastructure needs attention and staff assistance has been requested at 18:30 case 2707"
     }
   ],
-  "clusters": [
-    {
-      "name": "Network \u00b7 10-12",
-      "share": 14.6
-    },
-    {
-      "name": "Network \u00b7 8-10",
-      "share": 14.1
-    },
-    {
-      "name": "Network \u00b7 8-10",
-      "share": 12.4
-    },
-    {
-      "name": "Infrastructure \u00b7 12-2",
-      "share": 12.4
-    },
-    {
-      "name": "Network \u00b7 8-10",
-      "share": 12.3
-    },
-    {
-      "name": "Infrastructure \u00b7 8-10",
-      "share": 11.7
-    },
-    {
-      "name": "Infrastructure \u00b7 12-2",
-      "share": 11.4
-    },
-    {
-      "name": "Lab Equipment \u00b7 2-4",
-      "share": 11.0
-    }
-  ]
+  "interpretation": "Cluster quality is reported without claiming operational separation when silhouette is weak."
 }

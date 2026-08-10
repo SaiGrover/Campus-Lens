@@ -1,0 +1,209 @@
+{
+  "method": "bounded sliding-window stream mining",
+  "windowSize": 240,
+  "step": 120,
+  "driftThreshold": 0.025,
+  "windowCount": 22,
+  "driftWindowCount": 0,
+  "windows": [
+    {
+      "start": "2025-08-04T02:45:00+00:00",
+      "end": "2025-08-24T04:33:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.7
+    },
+    {
+      "start": "2025-08-14T05:28:00+00:00",
+      "end": "2025-09-03T03:44:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0035,
+      "drift": false,
+      "topCategory": "Canteen",
+      "meanImpact": 2.712
+    },
+    {
+      "start": "2025-08-24T04:36:00+00:00",
+      "end": "2025-09-13T07:18:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0205,
+      "drift": false,
+      "topCategory": "Canteen",
+      "meanImpact": 2.75
+    },
+    {
+      "start": "2025-09-03T03:48:00+00:00",
+      "end": "2025-09-23T06:38:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0196,
+      "drift": false,
+      "topCategory": "Infrastructure",
+      "meanImpact": 2.812
+    },
+    {
+      "start": "2025-09-13T07:24:00+00:00",
+      "end": "2025-10-03T03:30:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0101,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.792
+    },
+    {
+      "start": "2025-09-23T06:41:00+00:00",
+      "end": "2025-10-13T05:01:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0077,
+      "drift": false,
+      "topCategory": "Lab Equipment",
+      "meanImpact": 2.767
+    },
+    {
+      "start": "2025-10-03T03:37:00+00:00",
+      "end": "2025-10-23T05:44:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0064,
+      "drift": false,
+      "topCategory": "Infrastructure",
+      "meanImpact": 2.712
+    },
+    {
+      "start": "2025-10-13T06:48:00+00:00",
+      "end": "2025-11-02T03:40:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0034,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.737
+    },
+    {
+      "start": "2025-10-23T06:27:00+00:00",
+      "end": "2025-11-12T05:33:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0061,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.763
+    },
+    {
+      "start": "2025-11-02T03:51:00+00:00",
+      "end": "2025-11-22T06:18:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0062,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.671
+    },
+    {
+      "start": "2025-11-12T06:32:00+00:00",
+      "end": "2025-12-02T04:53:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0033,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.629
+    },
+    {
+      "start": "2025-11-22T06:20:00+00:00",
+      "end": "2025-12-12T07:13:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.004,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.692
+    },
+    {
+      "start": "2025-12-02T08:53:00+00:00",
+      "end": "2025-12-22T07:45:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0052,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.683
+    },
+    {
+      "start": "2025-12-12T08:14:00+00:00",
+      "end": "2026-01-01T04:25:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0141,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.737
+    },
+    {
+      "start": "2025-12-22T08:28:00+00:00",
+      "end": "2026-01-11T06:18:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0119,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.85
+    },
+    {
+      "start": "2026-01-01T06:11:00+00:00",
+      "end": "2026-01-21T06:25:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0036,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.842
+    },
+    {
+      "start": "2026-01-11T06:58:00+00:00",
+      "end": "2026-01-31T03:30:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0068,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.758
+    },
+    {
+      "start": "2026-01-21T08:18:00+00:00",
+      "end": "2026-02-10T06:24:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0092,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.679
+    },
+    {
+      "start": "2026-01-31T05:55:00+00:00",
+      "end": "2026-02-20T04:57:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0082,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.638
+    },
+    {
+      "start": "2026-02-10T07:48:00+00:00",
+      "end": "2026-03-02T07:39:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.004,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.671
+    },
+    {
+      "start": "2026-02-20T04:59:00+00:00",
+      "end": "2026-03-12T04:10:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.003,
+      "drift": false,
+      "topCategory": "Electrical",
+      "meanImpact": 2.642
+    },
+    {
+      "start": "2026-03-02T07:54:00+00:00",
+      "end": "2026-03-22T04:52:00+00:00",
+      "rows": 240,
+      "jensenShannonDrift": 0.0056,
+      "drift": false,
+      "topCategory": "Network",
+      "meanImpact": 2.7
+    }
+  ],
+  "operationalPolicy": "A drift flag queues human review and retraining; it never silently replaces the deployed model."
+}

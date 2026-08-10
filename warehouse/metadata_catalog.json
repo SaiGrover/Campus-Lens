@@ -1,189 +1,453 @@
 {
-  "dataset": "CampusLens complaints",
+  "dataset": "CampusLens integrated complaints",
   "owner": "CampusLens Data Team",
+  "dataSteward": "Course project team",
+  "refreshFrequency": "pipeline run or governed incremental refresh",
+  "retention": "180 days for named operational reports; benchmark data versioned",
+  "qualityThresholds": {
+    "missingAfter": 0,
+    "weekdayConsistency": 1.0,
+    "hierarchyValidity": 1.0,
+    "testTextOverlapMaximum": 0.05
+  },
+  "lineage": [
+    "complaints_raw.csv + facility_master.csv + service_events.csv",
+    "preprocessing.py",
+    "complaints_clean.csv",
+    "campuslens.db",
+    "analytics.json"
+  ],
+  "artifactVersion": "2.0.0",
   "rowCount": 2840,
   "fields": [
     {
       "field": "complaint_id",
+      "businessDefinition": "Stable source complaint identifier",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 2840,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "source-preserved"
+    },
+    {
+      "field": "event_id",
+      "businessDefinition": "Synthetic incident batch identifier",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 575,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "student_key",
+      "businessDefinition": "Student key",
       "dtype": "object",
       "nullable": false,
-      "distinctValues": 594,
-      "role": "dimension"
+      "distinctValues": 773,
+      "role": "dimension",
+      "sensitivity": "restricted-pseudonymous",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "complaint_text",
+      "businessDefinition": "Complaint text",
       "dtype": "object",
       "nullable": false,
-      "distinctValues": 1089,
-      "role": "dimension"
+      "distinctValues": 2840,
+      "role": "dimension",
+      "sensitivity": "internal-free-text",
+      "source": "complaints_raw.csv",
+      "transformation": "source-preserved"
     },
     {
       "field": "category",
+      "businessDefinition": "Human-labelled complaint class",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 8,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "source-preserved"
+    },
+    {
+      "field": "template_group",
+      "businessDefinition": "Generation group used only for leakage-safe evaluation",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 80,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "evaluation_fold",
+      "businessDefinition": "Evaluation fold",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 5,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "campus",
+      "businessDefinition": "Campus",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 1,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "zone",
+      "businessDefinition": "Zone",
       "dtype": "object",
       "nullable": false,
-      "distinctValues": 8,
-      "role": "dimension"
+      "distinctValues": 7,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "facility",
+      "businessDefinition": "Facility",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 22,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "facility_type",
+      "businessDefinition": "Facility type",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 10,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "floor",
-      "dtype": "object",
-      "nullable": false,
-      "distinctValues": 5,
-      "role": "dimension"
-    },
-    {
-      "field": "room",
-      "dtype": "object",
-      "nullable": false,
-      "distinctValues": 8,
-      "role": "dimension"
-    },
-    {
-      "field": "day_name",
+      "businessDefinition": "Floor",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 6,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "room",
+      "businessDefinition": "Room",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 57,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "latitude",
+      "businessDefinition": "Privacy-jittered facility latitude",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 22,
+      "role": "measure",
+      "sensitivity": "generalized-location",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "longitude",
+      "businessDefinition": "Privacy-jittered facility longitude",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 21,
+      "role": "measure",
+      "sensitivity": "generalized-location",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "day_name",
+      "businessDefinition": "Day name",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 7,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "hour",
+      "businessDefinition": "Hour",
       "dtype": "int64",
       "nullable": false,
       "distinctValues": 11,
-      "role": "measure"
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "observed_at",
+      "businessDefinition": "ISO-8601 event timestamp with timezone",
       "dtype": "object",
       "nullable": false,
-      "distinctValues": 2805,
-      "role": "dimension"
+      "distinctValues": 2822,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "impact_rating",
+      "businessDefinition": "Impact rating",
       "dtype": "int64",
       "nullable": false,
       "distinctValues": 5,
-      "role": "measure"
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "severity",
+      "businessDefinition": "Severity",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 4,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "occupancy_pct",
+      "businessDefinition": "Occupancy pct",
       "dtype": "int64",
       "nullable": false,
-      "distinctValues": 95,
-      "role": "measure"
+      "distinctValues": 98,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "humidity_pct",
+      "businessDefinition": "Humidity pct",
       "dtype": "int64",
       "nullable": false,
-      "distinctValues": 77,
-      "role": "measure"
+      "distinctValues": 76,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "recurring",
+      "businessDefinition": "Recurring",
       "dtype": "int64",
       "nullable": false,
       "distinctValues": 2,
-      "role": "measure"
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "status",
+      "businessDefinition": "Status",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 5,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "resolution_hours",
+      "businessDefinition": "Elapsed hours until resolution",
       "dtype": "float64",
       "nullable": false,
-      "distinctValues": 550,
-      "role": "measure"
+      "distinctValues": 756,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "has_image",
+      "businessDefinition": "Has image",
       "dtype": "int64",
       "nullable": false,
       "distinctValues": 2,
-      "role": "measure"
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "is_seeded_anomaly",
+      "businessDefinition": "Synthetic benchmark ground truth for anomaly evaluation",
+      "dtype": "int64",
+      "nullable": false,
+      "distinctValues": 2,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "source_system",
+      "businessDefinition": "Source system",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 3,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "complaint_clean",
+      "businessDefinition": "Complaint clean",
       "dtype": "object",
       "nullable": false,
-      "distinctValues": 967,
-      "role": "dimension"
+      "distinctValues": 2840,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "full_date",
+      "businessDefinition": "Full date",
+      "dtype": "object",
+      "nullable": false,
+      "distinctValues": 237,
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "time_band",
+      "businessDefinition": "Time band",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 5,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "occupancy_band",
+      "businessDefinition": "Occupancy band",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 3,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "humidity_band",
+      "businessDefinition": "Humidity band",
       "dtype": "object",
       "nullable": false,
       "distinctValues": 3,
-      "role": "dimension"
+      "role": "dimension",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "impact_normalized",
+      "businessDefinition": "Impact normalized",
       "dtype": "float64",
       "nullable": false,
       "distinctValues": 5,
-      "role": "measure"
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "occupancy_standardized",
+      "businessDefinition": "Occupancy standardized",
       "dtype": "float64",
       "nullable": false,
-      "distinctValues": 95,
-      "role": "measure"
+      "distinctValues": 98,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
     },
     {
       "field": "humidity_standardized",
+      "businessDefinition": "Humidity standardized",
       "dtype": "float64",
       "nullable": false,
-      "distinctValues": 77,
-      "role": "measure"
+      "distinctValues": 76,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "complaints_raw.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "service_sessions",
+      "businessDefinition": "Service sessions",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 8,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "service_events.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "report_conversions",
+      "businessDefinition": "Report conversions",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 4,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "service_events.csv",
+      "transformation": "derived during governed ETL"
+    },
+    {
+      "field": "mean_dwell_seconds",
+      "businessDefinition": "Mean dwell seconds",
+      "dtype": "float64",
+      "nullable": false,
+      "distinctValues": 321,
+      "role": "measure",
+      "sensitivity": "internal",
+      "source": "service_events.csv",
+      "transformation": "derived during governed ETL"
     }
   ]
 }
