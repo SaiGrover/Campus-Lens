@@ -52,8 +52,8 @@ const toneByCategory: Record<string, string> = {
   Electrical: "purple", "Lab Equipment": "blue", Water: "blue", Other: "yellow",
 };
 const ease = [0.22, 1, 0.36, 1] as const;
-const fadeDown = { hidden: { opacity: 0, y: -20 }, visible: (index: number) => ({ opacity: 1, y: 0, transition: { delay: index * 0.08, duration: 0.45, ease } }) };
-const fadeUp = { hidden: { opacity: 0, y: 28 }, visible: (index: number) => ({ opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.55, ease } }) };
+const fadeDown = { hidden: { opacity: 0, y: -20 }, visible: (index: number) => ({ opacity: 1, y: 0, transition: { delay: index * 0.1, duration: 0.5, ease } }) };
+const fadeUp = { hidden: { opacity: 0, y: 32 }, visible: (index: number) => ({ opacity: 1, y: 0, transition: { delay: index * 0.12, duration: 0.6, ease } }) };
 
 function LogoMark() {
   return <span className="logo-mark" aria-hidden="true"><span /><span /><span /><span /></span>;
@@ -62,8 +62,8 @@ function LogoMark() {
 function Landing({ onEnter, onReport, onNavigate }: { onEnter: () => void; onReport: () => void; onNavigate: (view: View) => void }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const links: { label: string; view: View }[] = [
-    { label: "Signals", view: "overview" }, { label: "Explore", view: "explore" },
-    { label: "Models", view: "models" }, { label: "Rules", view: "rules" },
+    { label: "Overview", view: "overview" }, { label: "Explorer", view: "explore" },
+    { label: "Model lab", view: "models" }, { label: "Pattern rules", view: "rules" },
   ];
   const navigate = (view: View) => { setMenuOpen(false); onNavigate(view); };
   return <div className="landing-page">
@@ -75,24 +75,14 @@ function Landing({ onEnter, onReport, onNavigate }: { onEnter: () => void; onRep
       <motion.button custom={5} initial="hidden" animate="visible" variants={fadeDown} className="landing-menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu"><span /><span /><span /></motion.button>
     </nav>
     <section className="landing-hero">
-      <div className="landing-orbital" aria-hidden="true"><i /><i /><i /><b /></div>
-      <div className="landing-media-stack" aria-label="Campus friction evidence">
-        <motion.figure custom={3} initial="hidden" animate="visible" variants={fadeUp} className="landing-media-primary">
-          <Image src="/images/brand/campus-night-map.webp" alt="Nocturnal campus hotspots connected by data trails" fill priority sizes="(max-width: 767px) 58vw, 31vw" />
-          <figcaption><span>Field signal 01</span><b>Friction map · 22:14</b></figcaption>
-        </motion.figure>
-        <motion.figure custom={4} initial="hidden" animate="visible" variants={fadeUp} className="landing-media-secondary">
-          <Image src="/images/brand/campus-friction-collage.webp" alt="Campus network, crowding, queue and projector problems" fill sizes="(max-width: 767px) 43vw, 21vw" />
-          <figcaption><span>Evidence set 04</span><b>Recurring conditions</b></figcaption>
-        </motion.figure>
-      </div>
+      <video className="landing-video" autoPlay loop muted playsInline preload="metadata" poster="/images/brand/campus-night-map.webp" aria-hidden="true"><source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260517_222138_3e3205be-3364-417b-a64a-bfe087acbec4.mp4" type="video/mp4" /></video>
       <div className="landing-video-overlay" />
       <div className="landing-stats" aria-label="CampusLens verified dataset statistics">
-        {[[String(analyticsArtifact.datasetCount), "CAMPUS\nREPORTS"], [String(analyticsArtifact.association.rules.length), "STRONG\nRULES"], [String(analyticsArtifact.models.models[0].accuracy), "MODEL\nACCURACY"]].map(([value, label], index) => <motion.div custom={index + 2} initial="hidden" animate="visible" variants={fadeUp} className="landing-stat" key={label}><strong><span>+</span>{value}{label.startsWith("MODEL") && <small>%</small>}</strong><p>{label}</p></motion.div>)}
+        {[[analyticsArtifact.datasetCount.toLocaleString(), "VALIDATED\nREPORTS"], [String(analyticsArtifact.association.rules.length), "DISCOVERED\nRULES"], [analyticsArtifact.models.models[0].accuracy.toFixed(1), "MODEL\nACCURACY"]].map(([value, label], index) => <motion.div custom={index + 2} initial="hidden" animate="visible" variants={fadeUp} className="landing-stat" key={label}><strong><span>+</span>{value}{label.startsWith("MODEL") && <small>%</small>}</strong><p>{label}</p></motion.div>)}
       </div>
       <div className="landing-bottom">
-        <div className="landing-bottom-a"><motion.p custom={5} initial="hidden" animate="visible" variants={fadeUp}>Turning Everyday<br />Friction Into<br />Campus-Wide Action</motion.p><motion.button custom={6} initial="hidden" animate="visible" variants={fadeUp} onClick={onReport}>Report friction <ArrowUpRight size={22} /></motion.button></div>
-        <div className="landing-bottom-b"><motion.p custom={7} initial="hidden" animate="visible" variants={fadeUp}>A reproducible campus intelligence system built on {analyticsArtifact.datasetCount.toLocaleString()} validated synthetic records.</motion.p><h1 className="landing-headline">{["Hidden", "Friction", "Revealed"].map((word, index) => <span key={word}><motion.b initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: 0.35 + index * 0.12, duration: 0.65, ease }}>{word}</motion.b></span>)}</h1></div>
+        <div className="landing-bottom-a"><motion.p custom={5} initial="hidden" animate="visible" variants={fadeUp}>Turning Recurring<br />Campus Friction Into<br />Decision-Ready Evidence</motion.p><motion.button custom={6} initial="hidden" animate="visible" variants={fadeUp} onClick={onReport}>Report an issue <ArrowUpRight size={22} /></motion.button></div>
+        <div className="landing-bottom-b"><motion.p custom={7} initial="hidden" animate="visible" variants={fadeUp}>A privacy-aware intelligence system that reveals what breaks, where it happens, when it peaks, and which conditions recur together.</motion.p><h1 className="landing-headline">{["Campus", "Friction", "Revealed"].map((word, index) => <span key={word}><motion.b initial={{ y: "110%" }} animate={{ y: 0 }} transition={{ delay: 0.4 + index * 0.14, duration: 0.7, ease }}>{word}</motion.b></span>)}</h1></div>
       </div>
     </section>
     <AnimatePresence>{menuOpen && <motion.div className="landing-menu-overlay" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}><div className="landing-menu-top"><span className="landing-brand"><span className="orbit-logo"><i /></span><span><b>CAMPUS</b>LENS</span></span><button className="landing-menu-button close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={19} /></button></div><div className="landing-menu-links">{links.map((link) => <button key={link.view} onClick={() => navigate(link.view)}>{link.label}</button>)}<Link href="/problem-statement">The problem</Link></div><button className="landing-menu-report" onClick={onReport}>Report friction <ArrowUpRight size={22} /></button></motion.div>}</AnimatePresence>

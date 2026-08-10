@@ -26,6 +26,7 @@ async function inspect(name, path, viewport, action) {
     overflow: document.documentElement.scrollWidth > document.documentElement.clientWidth,
     overlay: Boolean(document.querySelector("[data-nextjs-dialog], .vite-error-overlay, #webpack-dev-server-client-overlay")),
     images: [...document.images].map((image) => ({ alt: image.alt, complete: image.complete, width: image.naturalWidth })),
+    videos: [...document.querySelectorAll("video")].map((video) => ({ readyState: video.readyState, paused: video.paused, source: video.currentSrc })),
   }));
   await page.screenshot({ path: resolve(output, `${name}.png`), fullPage: true });
   results.push({ name, errors, ...state });
@@ -70,6 +71,11 @@ try {
   });
   await inspect("problem-desktop", "/problem-statement", { width: 1440, height: 900 });
   await inspect("landing-mobile", "/", { width: 390, height: 844 });
+  await inspect("landing-menu-mobile", "/", { width: 390, height: 844 }, async (page) => {
+    await page.getByRole("button", { name: "Open menu" }).click();
+    await page.getByRole("button", { name: "Close menu" }).waitFor();
+    await page.getByRole("link", { name: "The problem" }).waitFor();
+  });
   await inspect("dashboard-mobile", "/", { width: 390, height: 844 }, async (page) => {
     await page.getByRole("button", { name: "Open CampusLens dashboard" }).click();
     await page.getByRole("button", { name: "Open navigation" }).click();
@@ -94,6 +100,6 @@ assert(networkAudit.complaintStatus === 200, `Complaint API failed (${networkAud
 assert(Array.isArray(networkAudit.complaintPayload.complaints), "Complaint API returned an invalid payload");
 assert(["postgres", "browser"].includes(networkAudit.complaintPayload.persistence), "Complaint API returned an invalid persistence mode");
 
-const failed = results.some((result) => result.errors.length || !result.content || result.overflow || result.overlay || result.images.some((image) => !image.complete || image.width === 0));
+const failed = results.some((result) => result.errors.length || !result.content || result.overflow || result.overlay || result.images.some((image) => !image.complete || image.width === 0) || result.videos.some((video) => video.readyState === 0 || !video.source));
 console.log(JSON.stringify({ ok: !failed, output, results }, null, 2));
 if (failed) process.exitCode = 1;
