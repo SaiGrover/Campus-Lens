@@ -8,7 +8,9 @@ CampusLens is a **Campus Friction Intelligence System** that transforms everyday
 
 The project combines a student-friendly reporting experience with an administrator-facing intelligence dashboard. It demonstrates text mining, image preprocessing, classification, clustering, association-rule mining, regression, multidimensional analysis, OLAP drill-down and data-warehouse design in one cohesive system.
 
-![CampusLens landing page](./public/screenshots/landing.png)
+![CampusLens cobalt editorial landing page](./public/screenshots/landing-v2.webp)
+
+The interface uses a dark editorial “signal room” identity: midnight indigo foundations, cobalt analytical accents, coral alerts and amber context markers. Original campus imagery gives the problem a human setting without loading a video or 3D scene.
 
 ---
 
@@ -25,6 +27,10 @@ Students experience recurring operational friction across campus:
 - parking congestion and blocked walkways.
 
 These problems are usually reported through disconnected conversations, forms or emails. That makes it difficult to distinguish a one-off complaint from a campus-wide pattern. CampusLens creates a single analytical pipeline that consolidates reports and exposes recurring incidents, hotspots, peak periods and emerging anomalies.
+
+The dedicated **[problem-statement page](https://campus-lens-pi.vercel.app/problem-statement)** frames this institutional blind spot, the limitations of ticket-oriented complaint portals and the research question addressed by CampusLens.
+
+![CampusLens problem statement](./public/screenshots/problem-statement.webp)
 
 ## Project objectives
 
@@ -149,7 +155,7 @@ The implemented master list also includes LRC areas, administrative offices, sem
 
 The dashboard is designed as a decision-support system rather than a list of complaints.
 
-![CampusLens intelligence dashboard](./public/screenshots/dashboard.png)
+![CampusLens intelligence dashboard](./public/screenshots/dashboard-v2.webp)
 
 ### Campus health score
 
@@ -209,7 +215,7 @@ The same stratified split of 2,840 labelled complaints is evaluated with six alg
 - Random Forest;
 - Multilayer Perceptron neural network.
 
-![CampusLens model-comparison workspace](./public/screenshots/models.png)
+![CampusLens model-comparison workspace](./public/screenshots/models-v2.webp)
 
 | Model | Accuracy | Precision | Recall | F1 score |
 |---|---:|---:|---:|---:|
