@@ -7,6 +7,7 @@ const output = resolve(".next/theme-audit");
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: "chrome", headless: true });
 const results = [];
+let networkAudit;
 
 function assert(condition, message) {
   if (!condition) throw new Error(message);
@@ -16,7 +17,8 @@ async function inspect(name, path, viewport, action) {
   const page = await browser.newPage({ viewport });
   const errors = [];
   page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
-  await page.goto(`${baseURL}${path}`, { waitUntil: "networkidle" });
+  await page.goto(`${baseURL}${path}`, { waitUntil: "domcontentloaded" });
+  await page.waitForTimeout(900);
   if (action) await action(page);
   await page.waitForTimeout(1_600);
   const state = await page.evaluate(() => ({
@@ -28,6 +30,7 @@ async function inspect(name, path, viewport, action) {
   await page.screenshot({ path: resolve(output, `${name}.png`), fullPage: true });
   results.push({ name, errors, ...state });
   await page.close();
+  console.log(`verified ${name}`);
 }
 
 try {
@@ -73,19 +76,23 @@ try {
     await page.getByRole("button", { name: "Issue explorer" }).waitFor();
   });
   await inspect("problem-mobile", "/problem-statement", { width: 390, height: 844 });
+  const auditPage = await browser.newPage();
+  await auditPage.goto(baseURL, { waitUntil: "domcontentloaded" });
+  networkAudit = await auditPage.evaluate(async () => {
+    const paths = ["/images/brand/campus-night-map.webp", "/images/brand/campus-friction-collage.webp", "/data/campuslens-complaints.arff"];
+    const assets = await Promise.all(paths.map(async (path) => ({ path, status: (await fetch(path)).status })));
+    const complaintResponse = await fetch("/api/complaints");
+    return { assets, complaintStatus: complaintResponse.status, complaintPayload: await complaintResponse.json() };
+  });
+  await auditPage.close();
 } finally {
   await browser.close();
 }
 
-for (const asset of ["/images/brand/campus-night-map.webp", "/images/brand/campus-friction-collage.webp", "/data/campuslens-complaints.arff"]) {
-  const response = await fetch(`${baseURL}${asset}`);
-  assert(response.ok, `Asset failed to load: ${asset} (${response.status})`);
-}
-const complaintResponse = await fetch(`${baseURL}/api/complaints`);
-assert(complaintResponse.ok, `Complaint API failed (${complaintResponse.status})`);
-const complaintPayload = await complaintResponse.json();
-assert(Array.isArray(complaintPayload.complaints), "Complaint API returned an invalid payload");
-assert(["postgres", "browser"].includes(complaintPayload.persistence), "Complaint API returned an invalid persistence mode");
+for (const asset of networkAudit.assets) assert(asset.status === 200, `Asset failed to load: ${asset.path} (${asset.status})`);
+assert(networkAudit.complaintStatus === 200, `Complaint API failed (${networkAudit.complaintStatus})`);
+assert(Array.isArray(networkAudit.complaintPayload.complaints), "Complaint API returned an invalid payload");
+assert(["postgres", "browser"].includes(networkAudit.complaintPayload.persistence), "Complaint API returned an invalid persistence mode");
 
 const failed = results.some((result) => result.errors.length || !result.content || result.overflow || result.overlay || result.images.some((image) => !image.complete || image.width === 0));
 console.log(JSON.stringify({ ok: !failed, output, results }, null, 2));
