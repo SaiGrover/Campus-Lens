@@ -206,3 +206,15 @@
 @media(max-width:980px){.landing-media-stack{left:3%;width:39vw}.landing-headline b{font-size:clamp(3rem,8.2vw,6.2rem)}.landing-stats{gap:25px}}
 @media(max-width:767px){.landing-hero{background-size:48px 48px}.landing-orbital{width:100vw;left:-46%;top:8%;opacity:.46}.landing-media-stack{left:-5%;top:14%;width:62vw;height:245px;opacity:.76}.landing-media-primary{width:78%}.landing-media-secondary{width:54%;right:-2%;bottom:4%}.landing-media-stack figcaption{inset:auto 7px 7px}.landing-media-stack figcaption span{font-size:5px}.landing-media-stack figcaption b{font-size:5px}.landing-stats{padding-top:12vh;gap:13px}.landing-stat strong{font-size:1.8rem}.landing-bottom{gap:18px}.landing-headline b{font-size:clamp(3.1rem,16.2vw,5rem);line-height:.73}.landing-bottom-a>button{font-size:16px}.landing-bottom-b>p{font-size:6px}}
 @media(max-width:430px){.landing-media-stack{top:16%;height:215px}.landing-stats{padding-top:14vh}.landing-stat strong{font-size:1.45rem}.landing-stat p{font-size:6px}.landing-headline b{font-size:clamp(3rem,15.7vw,4.35rem)}}
+
+/* Product-wide finish: typography, interaction, accessibility, and depth */
+.app-shell,.report-modal{font-family:var(--font-space-grotesk),sans-serif}
+.score-wrap strong,.metric-bottom b,.signal-card strong,.mini-intelligence strong,.rule-stats strong,.winner-card strong{font-family:var(--font-barlow-condensed),sans-serif;font-weight:600;letter-spacing:-.02em}
+.modal-backdrop{background:rgba(4,6,14,.8);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.report-modal{border:1px solid rgba(145,160,255,.24);box-shadow:0 28px 90px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.03)}
+:where(button,a,input,textarea,select):focus-visible{outline:2px solid #91a0ff;outline-offset:3px}
+.metric-card,.health-card,.panel,.winner-card,.rule-stats article{transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.table-report,.rule-row{content-visibility:auto;contain-intrinsic-size:auto 64px}
+*{scrollbar-width:thin;scrollbar-color:#5367d9 #0b0d18}
+*::-webkit-scrollbar{width:9px;height:9px}*::-webkit-scrollbar-track{background:#0b0d18}*::-webkit-scrollbar-thumb{background:#5367d9;border:2px solid #0b0d18;border-radius:10px}*::-webkit-scrollbar-thumb:hover{background:#ff786c}
+@media (hover:hover) and (pointer:fine){.metric-card:hover,.health-card:hover,.winner-card:hover,.rule-stats article:hover{transform:translateY(-2px);border-color:rgba(91,111,232,.38);box-shadow:0 12px 32px rgba(13,17,38,.12)}}
