@@ -75,7 +75,17 @@ function Landing({ onEnter, onReport, onNavigate }: { onEnter: () => void; onRep
       <motion.button custom={5} initial="hidden" animate="visible" variants={fadeDown} className="landing-menu-button" onClick={() => setMenuOpen(true)} aria-label="Open menu"><span /><span /><span /></motion.button>
     </nav>
     <section className="landing-hero">
-      <Image className="landing-hero-image" src="/images/brand/campus-night-map.webp" alt="A nocturnal campus with data trails revealing hidden operational hotspots" fill priority sizes="100vw" />
+      <div className="landing-orbital" aria-hidden="true"><i /><i /><i /><b /></div>
+      <div className="landing-media-stack" aria-label="Campus friction evidence">
+        <motion.figure custom={3} initial="hidden" animate="visible" variants={fadeUp} className="landing-media-primary">
+          <Image src="/images/brand/campus-night-map.webp" alt="Nocturnal campus hotspots connected by data trails" fill priority sizes="(max-width: 767px) 58vw, 31vw" />
+          <figcaption><span>Field signal 01</span><b>Friction map · 22:14</b></figcaption>
+        </motion.figure>
+        <motion.figure custom={4} initial="hidden" animate="visible" variants={fadeUp} className="landing-media-secondary">
+          <Image src="/images/brand/campus-friction-collage.webp" alt="Campus network, crowding, queue and projector problems" fill sizes="(max-width: 767px) 43vw, 21vw" />
+          <figcaption><span>Evidence set 04</span><b>Recurring conditions</b></figcaption>
+        </motion.figure>
+      </div>
       <div className="landing-video-overlay" />
       <div className="landing-stats" aria-label="CampusLens verified dataset statistics">
         {[[String(analyticsArtifact.datasetCount), "CAMPUS\nREPORTS"], [String(analyticsArtifact.association.rules.length), "STRONG\nRULES"], [String(analyticsArtifact.models.models[0].accuracy), "MODEL\nACCURACY"]].map(([value, label], index) => <motion.div custom={index + 2} initial="hidden" animate="visible" variants={fadeUp} className="landing-stat" key={label}><strong><span>+</span>{value}{label.startsWith("MODEL") && <small>%</small>}</strong><p>{label}</p></motion.div>)}
